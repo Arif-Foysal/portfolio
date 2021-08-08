@@ -1,0 +1,148 @@
+.aboutpage{
+  margin-top: 10%;
+  padding-left: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: inherit;
+  justify-content:space-evenly;
+  // align-items:baseline;
+  flex-grow: 1;
+  padding-bottom: 5rem;
+}
+
+#aboutsvg{
+  width: 100px;
+}
+.abouttext{
+// background-color: lightblue;
+// min-width: 70%;
+flex-basis: 60%;
+// height: 50rem;
+
+}
+.aboutimg-wrapper{
+  // background-color: lightgreen;
+  width: min-content;
+  margin: auto;
+}
+.aboutimg{
+// background-color: lightcoral;
+flex-basis: 40%;
+
+}
+.line{
+  display:inline;
+  height: 10px;
+  width: 100%;
+  background-color: black;
+}
+#mypicture{
+width:300px;
+height: auto;
+border-radius: 5px;
+}
+#img1{
+  text-align: start;
+}
+#img2{
+  text-align: end;
+}
+
+
+// Experimental
+
+.border {
+  height: 369px;
+  width: 290px;
+  background: transparent;
+  border-radius: 10px;
+  transition: border 1s;
+  position: relative;
+}
+.border:hover {
+  border: 1px solid #fff;
+}
+.card {
+  height: 379px;
+  width: 300px;
+  background: #808080;
+  border-radius: 10px;
+  transition: background 0.8s;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 70px 63px -60px #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.card0 {
+  background: url("../images/about.jpg") center center no-repeat;
+  background-size: 300px;
+}
+.card0:hover {
+  background: url("../images/about.jpg") left top no-repeat;
+  background-size: 600px;
+}
+.card0:hover h2 {
+  opacity: 1;
+}
+.card0:hover .fa {
+  opacity: 1;
+}
+.card h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  margin: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.fa {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.icons {
+  position: absolute;
+  fill: #fff;
+  color: #fff;
+  height: 130px;
+  top: 226px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+#facebook:hover{
+  fill:  #2e70ff;
+  color: #2e70ff;
+  cursor: pointer;
+}
+#github:hover{
+  color: #c9510c;
+  cursor: pointer;
+}
+#linkedin:hover{
+  color: #5e89e6;
+  cursor: pointer;
+}
+#email:hover{
+  color:#EA4335;
+  cursor: pointer;
+}
+@media only screen and ( max-width:450px) {
+  .abouttext{
+    p{
+      font-size: 1.8rem;
+    }
+  }
+
+
+
+
+}
+
+

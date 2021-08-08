@@ -1,0 +1,141 @@
+#footersvg{
+  
+  // height: 100px;
+  #lamppost-light{
+    animation: lamppost-light 2s linear infinite;
+    
+    }
+    #lamppost-dark{
+      animation: lamppost-dark 2s linear infinite;
+    }
+    #leaf1{
+    animation: leaf1 2s ease-in-out alternate infinite;
+    transform-origin: center;
+    }
+    #leaf2{
+      animation: leaf1 2s ease-in-out alternate infinite;
+      animation-delay: .5s;
+      transform-origin: center;
+      }
+      #leaf3{
+        animation: leaf1 2s ease-in-out alternate infinite;
+        transform-origin: center;
+        }
+}
+
+  @keyframes leaf1{
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(-40%);
+  }
+  
+  }
+  
+  @keyframes leaf2{
+    0%{
+      transform: translateY(0);
+    }
+    100%{
+      transform: translateY(-30%);
+    }
+    
+    }
+    @keyframes leaf3{
+      0%{
+        transform: translateY(0);
+      }
+      100%{
+        transform: translateY(-40%);
+      }
+      
+      }
+      
+  
+  
+  @keyframes lamppost-light{
+  0%{
+  fill: #6C63FF;
+  }
+  
+  10%{
+    fill:#F6FF8A;
+  }
+  13%{
+    fill: #6C63FF;
+    }
+    15%{
+      fill: #6C63FF;
+      }
+        
+  25%{
+    fill: #F6FF8A;
+  }
+  30%{
+    fill: #6C63FF;
+    }
+    33%{
+      fill: #6C63FF;
+      }
+        
+  35%{
+    fill:#F6FF8A;
+  }
+  36%{
+    fill: #6C63FF;
+    }
+    390%{
+      fill: #6C63FF;
+      }
+        
+  40%{
+    fill: #F6FF8A;
+  }     
+  100%{
+    fill: #F6FF8A;
+  }
+  }
+  @keyframes lamppost-dark{
+    0%{
+      fill: #3F3D56;
+      }
+      
+      10%{
+        fill: #C5B210;
+      }
+      13%{
+        fill: #3F3D56;
+        }
+        15%{
+          fill: #3F3D56;
+          }
+            
+      25%{
+        fill: #C5B210;
+      }
+      30%{
+        fill: #3F3D56;
+        }
+        33%{
+          fill: #3F3D56;
+          }
+            
+      35%{
+        fill: #C5B210;
+      }
+      36%{
+        fill: #3F3D56;
+        }
+        390%{
+          fill: #3F3D56;
+          }
+            
+      40%{
+        fill: #C5B210;
+      }     
+      100%{
+        fill: #C5B210;
+      }
+  
+  }

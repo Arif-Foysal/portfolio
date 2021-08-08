@@ -1,0 +1,63 @@
+.contactpage{
+  // margin-top: 10vh;
+height: 100vh;
+text-align: center;
+}
+.relaunch{
+  width: 100px;
+  margin-left: 5%;
+}
+.contacth{
+  width:fit-content;
+  margin: auto;
+}
+
+#h13{
+text-align: start;
+}
+#h14{
+  text-align: end;
+}
+#p3{
+  text-align: start;
+}
+#p4{
+  text-align: end;
+}
+#button3{
+text-align: start;
+}
+#button4{
+  text-align: end;
+}
+.contactp{
+padding:0% 20% 0% 20%;
+}
+
+.footericons{
+// background-color: lightseagreen;
+height: 50px;
+margin: auto;
+margin-top: 20vh;
+svg{
+fill: black;
+margin: 5px;
+}
+}
+
+
+#facebook-footer:hover{
+  fill: #2e70ff;
+
+}
+#github-footer:hover{
+  fill: #c9510c;
+
+}
+#linkedin-footer:hover{
+  fill: #5e89e6;
+}
+#email-footer:hover{
+  fill:#EA4335;
+
+}
