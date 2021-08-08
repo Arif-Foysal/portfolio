@@ -1034,8 +1034,8 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #html-bar {
-  -webkit-animation: html-fill 2s forwards;
-          animation: html-fill 2s forwards;
+  -webkit-animation: html-fill 5s ease forwards;
+          animation: html-fill 5s ease forwards;
 }
 
 @-webkit-keyframes html-fill {
@@ -1051,8 +1051,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #css-bar {
-  -webkit-animation: css-fill 2s forwards;
-          animation: css-fill 2s forwards;
+  -webkit-animation: css-fill 5s forwards;
+          animation: css-fill 5s forwards;
+  -webkit-animation-delay: .3s;
+          animation-delay: .3s;
 }
 
 @-webkit-keyframes css-fill {
@@ -1068,8 +1070,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #sass-bar {
-  -webkit-animation: sass-fill 2s forwards;
-          animation: sass-fill 2s forwards;
+  -webkit-animation: sass-fill 2.4s forwards;
+          animation: sass-fill 2.4s forwards;
+  -webkit-animation-delay: .6s;
+          animation-delay: .6s;
 }
 
 @-webkit-keyframes sass-fill {
@@ -1085,8 +1089,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #js-bar {
-  -webkit-animation: js-fill 2s forwards;
-          animation: js-fill 2s forwards;
+  -webkit-animation: js-fill 2.2s forwards;
+          animation: js-fill 2.2s forwards;
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
 }
 
 @-webkit-keyframes js-fill {
@@ -1102,8 +1108,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #bootstrap-bar {
-  -webkit-animation: bootstrap-fill 2s forwards;
-          animation: bootstrap-fill 2s forwards;
+  -webkit-animation: bootstrap-fill 2.5s forwards;
+          animation: bootstrap-fill 2.5s forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 @-webkit-keyframes bootstrap-fill {
@@ -1119,8 +1127,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #jQuery-bar {
-  -webkit-animation: jQuery-fill 2s forwards;
-          animation: jQuery-fill 2s forwards;
+  -webkit-animation: jQuery-fill 2.7s forwards;
+          animation: jQuery-fill 2.7s forwards;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
 }
 
 @-webkit-keyframes jQuery-fill {
@@ -1136,8 +1146,10 @@ make it thinner, then set it to again wrap around the entire parent element.
 }
 
 #figma-bar {
-  -webkit-animation: figma-fill 2s forwards;
-          animation: figma-fill 2s forwards;
+  -webkit-animation: figma-fill 2.4s ease forwards;
+          animation: figma-fill 2.4s ease forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
 }
 
 @-webkit-keyframes figma-fill {
