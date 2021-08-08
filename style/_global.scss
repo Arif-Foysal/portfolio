@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+color: white;
+}
+.introduction{
+
+height: max-content;
+}
+// Variables
+$button-color:green;
+$primary-color:#072c33;
+
+
+
+// Font Management
+html{
+  font-size: 62.5%;
+  font-family: 'Josefin Sans', sans-serif;
+}
+h1{
+  font-size: 7.5rem;
+ color: $primary-color;
+}
+
+h2{
+  font-size: 4rem;
+ 
+}
+h3{
+  font-size: 2.8rem;
+ 
+}
+h4,h5{
+  font-size: 2.6rem;
+}
+li,button,label,input{
+  font-size: 2rem;
+}
+p{
+  font-size: 2rem;
+}
+ul{
+  list-style: none;
+  font-size: 2.5rem;
+}
+a{
+  text-decoration: none;
+}
+.tag-text{
+  font-family: 'Sacramento', cursive;
+  color: rgba(0, 0, 0, 0.644);
+  
+}
+.introp{
+  
+  font-family: 'Nanum Gothic', sans-serif;
+  color:#314E59;
+  
+  padding: 0rem 0.5rem;
+}
+
+@mixin flex($direction,$justify,$align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
