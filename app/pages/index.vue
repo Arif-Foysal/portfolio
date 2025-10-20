@@ -1,8 +1,19 @@
 <template>
-    <div>
-        <h1 class="text-4xl font-bold text-gray-800 bg-amber-300">Welcome to the homepage</h1>
-        <AppAlert>
-        This is an auto-imported component
-        </AppAlert>
+  <div class="relative flex h-96 flex-col items-center justify-center">
+    <FallingStarsBg
+      class="bg-white dark:bg-black"
+      :color="isDark ? '#FFF' : '#555'"
+    />
+    <div class="z-[1] flex items-center">
+      <span class="text-6xl font-bold text-black dark:text-white">Inspira UI</span>
     </div>
+  </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import { useColorMode } from "@vueuse/core";
+import { FallingStarsBg } from "../components/ui/bg-falling-stars";
+
+const isDark = computed(() => useColorMode().value == "dark");
+</script>
