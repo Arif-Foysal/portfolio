@@ -2,6 +2,12 @@ import tailwindcss from "@tailwindcss/vite";
 import type { NuxtConfig } from 'nuxt/schema'
 
 export default defineNuxtConfig(<NuxtConfig>{
+  ssr: true, // or false, but SSR is okay for static too
+  nitro: {
+    preset: 'netlify'
+  },
+
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
   },
