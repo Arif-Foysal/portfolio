@@ -5,7 +5,7 @@ import { Icon } from '@iconify/vue'
 
 <template>
   <div class="flex justify-center items-center w-full">
-    <Dock class="mb-2 mt-2 md:mb-4 md:mt-4 scale-70 sm:scale-80 md:scale-100">
+    <Dock class="mb-2 mt-2 scale-70 sm:scale-80 md:scale-100">
     <DockIcon class="gap-1 sm:gap-3">
       <Icon
         icon="mdi:github"
