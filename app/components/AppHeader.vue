@@ -150,6 +150,11 @@ const defaultItems = computed<NavigationMenuItem[]>(() => [
     active: route.path === '/chat'
   },
   {
+    label: 'Docs',
+    to: '/docs',
+    active: route.path === '/docs'
+  },
+  {
     label: 'About',
     to: '/about',
     active: route.path === '/about'

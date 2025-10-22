@@ -1,6 +1,18 @@
+<script setup lang="ts">
+import { RadiantText } from '~/components/ui/radiant-text'
+import { InteractiveHoverButton } from '~/components/ui/interactive-hover-button'
+</script>
 <template>
-    <div>
-        <h1  class="text-black dark:text-red-400">Welcome to the Chat Page</h1>
-        <p class="">This is the chatbot where you chat with my second brain XD</p>
-    </div>
+
+
+        <div class="flex flex-col items-center justify-center gap-6">
+    <RadiantText
+    class="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400"
+    :duration="5"
+    >
+    <span class="text-3xl font-bold">✨ Introducing Inspira UI</span>
+</RadiantText>
+<InteractiveHoverButton />
+</div>
+
 </template>
