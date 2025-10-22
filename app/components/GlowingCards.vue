@@ -123,9 +123,9 @@ const gridItems: GridItem[] = [
       { name: "PyTorch", icon: "devicon:pytorch" },
       { name: "Langchain", icon: "simple-icons:langchain" },
       { name: "OpenAI", icon: "simple-icons:openai" },
-      { name: "Hugging Face", icon: "simple-icons:huggingface" },
-      { name: "scikit-learn", icon: "devicon:scikit" },
-      { name: "CUDA", icon: "simple-icons:nvidia" },
+      { name: "Hugging Face", icon: "logos:hugging-face-icon" },
+      { name: "scikit-learn", icon: "skill-icons:scikitlearn-light" },
+      { name: "CUDA", icon: "vscode-icons:file-type-cuda" },
       { name: "Jupyter", icon: "devicon:jupyter" },
     ]
   },
