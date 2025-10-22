@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white/75 dark:bg-gray-900/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 h-16 sticky top-0 z-50 transition-colors duration-200">
+  <header class=" backdrop-blur border-b border-gray-200 dark:border-gray-800 h-16 sticky top-0 z-50 transition-colors duration-200">
     <div class="flex items-center justify-between gap-3 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Left Section -->
       <div class="lg:flex-1 flex items-center gap-1.5">
@@ -7,7 +7,7 @@
           <!-- Title/Logo -->
           <NuxtLink 
             :to="to" 
-            class="shrink-0 font-bold text-xl text-gray-900 dark:text-white flex items-end gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="shrink-0 font-bold text-3xl text-gray-900 dark:text-white flex items-end gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <slot name="title">
               {{ title }}
@@ -25,8 +25,10 @@
               :key="item.label"
               :to="item.to"
               :target="item.target"
-              class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              :class="{ 'text-blue-600 dark:text-blue-400': item.active }"
+              class="text-lg font-medium transition-colors"
+              :class="item.active 
+                ? 'text-blue-600 dark:text-blue-400' 
+                : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'"
             >
               {{ item.label }}
             </NuxtLink>
@@ -79,7 +81,7 @@
       leave-from-class="transform scale-100 opacity-100"
       leave-to-class="transform scale-95 opacity-0"
     >
-      <div v-if="isMenuOpen" class="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur">
+      <div v-if="isMenuOpen" class="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white/95 backdrop-blur">
         <slot name="body">
           <div class="p-4 sm:p-6 overflow-y-auto space-y-1">
             <NuxtLink 
@@ -88,8 +90,10 @@
               :to="item.to"
               :target="item.target"
               @click="closeMobileMenu"
-              class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors"
-              :class="{ 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400': item.active }"
+              class="block px-3 py-2 rounded-lg text-base font-medium transition-colors"
+              :class="item.active
+                ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'"
             >
               {{ item.label }}
             </NuxtLink>
@@ -115,31 +119,23 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Portfolio',
+  title: 'Arif Foysal',
   to: '/',
   navigationItems: () => []
 })
 
 const route = useRoute()
 const isMenuOpen = ref(false)
-const isDarkMode = ref(false)
 
-// Check initial theme and watch for changes
-onMounted(() => {
-  isDarkMode.value = document.documentElement.classList.contains('dark')
-  
-  // Set initial theme based on system preference or localStorage
-  const savedTheme = localStorage.getItem('color-mode')
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  
-  if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-    document.documentElement.classList.add('dark')
-    isDarkMode.value = true
-  } else {
-    document.documentElement.classList.remove('dark')
-    isDarkMode.value = false
-  }
-})
+// Nuxt Color Mode + Tailwind (no manual DOM/localStorage)
+
+import { useColorMode } from '#imports'
+const colorMode = useColorMode()
+const isDarkMode = computed(() => colorMode.value === 'dark')
+const toggleColorMode = () => {
+//   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+  colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark';
+}
 
 // Default navigation items if none provided
 const defaultItems = computed<NavigationMenuItem[]>(() => [
@@ -147,6 +143,11 @@ const defaultItems = computed<NavigationMenuItem[]>(() => [
     label: 'Home',
     to: '/',
     active: route.path === '/'
+  },
+  {
+    label: 'Chat',
+    to: '/chat',
+    active: route.path === '/chat'
   },
   {
     label: 'About',
@@ -177,22 +178,6 @@ const closeMobileMenu = () => {
   isMenuOpen.value = false
 }
 
-const toggleColorMode = () => {
-  const html = document.documentElement
-  const currentIsDark = html.classList.contains('dark')
-  
-  if (currentIsDark) {
-    html.classList.remove('dark')
-    localStorage.setItem('color-mode', 'light')
-    isDarkMode.value = false
-  } else {
-    html.classList.add('dark')
-    localStorage.setItem('color-mode', 'dark')
-    isDarkMode.value = true
-  }
-}
-
-// Close mobile menu when route changes
 watch(() => route.path, () => {
   closeMobileMenu()
 })
