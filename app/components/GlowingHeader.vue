@@ -13,7 +13,7 @@ import { GlowBorder } from '~/components/ui/glow-border'
       <span
         class=" text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-gray-900 dark:text-gray-200"
       >
-        Tools that I love working with
+        Tools I love working with
       </span>
     </div>
   </div>
