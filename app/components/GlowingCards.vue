@@ -137,7 +137,7 @@ const gridItems: GridItem[] = [
       { name: "Postman", icon: "devicon:postman" },
       { name: "Arduino", icon: "devicon:arduino" },
       { name: "Vim", icon: "devicon:vim" },
-      { name: "Bash", icon: "devicon:bash" },
+      { name: "Bash", icon: "logos:bash-icon" },
       { name: "WebAssembly", icon: "simple-icons:webassembly" },
       { name: "WebRTC", icon: "simple-icons:webrtc" },
     ]
