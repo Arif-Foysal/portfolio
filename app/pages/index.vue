@@ -1,8 +1,7 @@
 <template>
+  <div class="flex flex-col gap-8">
     <Hero/>
-    <!-- <br> -->
-    <!-- <HeaderCard/> -->
-<br>
-<GlowingHeader/>
-<br>
+    <GlowingHeader/>
+    <GlowingCards/>
+  </div>
 </template>
