@@ -80,7 +80,7 @@ const gridItems: GridItem[] = [
     technologies: [
         { name: "Python", icon: "devicon:python" },
         { name: "Django", icon: "logos:django-icon" },
-        { name: "FastAPI", icon: "logos:fastapi" },
+        { name: "FastAPI", icon: "devicon:fastapi" },
         { name: "PHP", icon: "material-icon-theme:php" },
         {name: "Laravel", icon: "devicon:laravel" },
       { name: "Node.js", icon: "devicon:nodejs" },
