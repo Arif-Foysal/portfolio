@@ -26,7 +26,7 @@ export default defineNuxtConfig(<NuxtConfig>{
   colorMode: {
     classSuffix: '', // Important to work with Tailwind's dark mode
     preference: 'system', // or 'light' or 'dark'
-    fallback: 'light',
+    fallback: 'dark', // fallback value if not system preference found
   },
   vite: {
     plugins: [

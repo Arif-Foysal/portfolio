@@ -89,7 +89,7 @@ const toggleColorMode = () => {
     >
       <div v-if="isMenuOpen" class="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white/95 backdrop-blur">
         <slot name="body">
-          <div class="p-4 sm:p-6 overflow-y-auto space-y-1">
+          <div class="p-4 sm:p-6 overflow-y-auto space-y-1 dark:bg-gray-950">
             <NuxtLink 
               v-for="item in navigationItems" 
               :key="item.label"
