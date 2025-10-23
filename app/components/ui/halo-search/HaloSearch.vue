@@ -89,7 +89,7 @@ const props = defineProps<Props>();
 .search-field {
   background-color: #010201;
   border: none;
-  width: 335px; /* Mobile default */
+  width: 360px; /* Mobile default */
   box-sizing: border-box;
   height: 56px;
   border-radius: 10px;
@@ -98,6 +98,7 @@ const props = defineProps<Props>();
   padding-left: 16px;
   font-size: 18px;
   min-width: 140px;
+  padding-right:170px;
 }
 
 .search-field::placeholder {
@@ -125,7 +126,7 @@ const props = defineProps<Props>();
 
 .inner-glow {
   max-height: 63px;
-  max-width: 335px; /* Mobile default */
+  max-width: 360px; /* Mobile default */
   border-radius: 10px;
   filter: blur(2px);
 }
@@ -156,7 +157,7 @@ const props = defineProps<Props>();
 
 .main-border {
   max-height: 59px;
-  max-width: 335px; /* Mobile default */
+  max-width: 360px; /* Mobile default */
   border-radius: 11px;
   filter: blur(0.5px);
 }
@@ -368,25 +369,25 @@ const props = defineProps<Props>();
 /* sm: 640px and up */
 @media (min-width: 640px) {
   .search-field {
-    width: 360px;
+    width: 580px;
   }
   
   .inner-glow {
-    max-width: 360px;
+    max-width: 560px;
   }
   
   .main-border {
-    max-width: 360px;
+    max-width: 560px;
   }
 }
 
 /* md: 768px and up */
-@media (min-width: 768px) {
-  .search-field .inner-glow .main-border{
+/* @media (min-width: 768px) {
+  .search-field .inner-glow .main-border {
     width: 440px;
   }
   
-}
+} */
 
 /* lg: 1024px and up */
 
