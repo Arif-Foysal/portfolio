@@ -1,61 +1,61 @@
 <template>
 
-  <footer class="bg-gray-900 text-gray-300 dark:bg-gray-950 py-12 px-6">
+  <footer class="bg-gray-100 text-gray-900 dark:text-gray-300 dark:bg-gray-950 py-12 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         <!-- Solutions Column -->
         <div>
-          <h3 class="text-lg font-medium text-white mb-4">Projects</h3>
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Projects</h3>
           <ul class="space-y-3">
-            <li><a href="/projects" class="text-gray-400 hover:text-white transition">Portfolio</a></li>
-            <li><a href="/projects/case-studies" class="text-gray-400 hover:text-white transition">Case studies</a></li>
-            <li><a href="/projects/apis" class="text-gray-400 hover:text-white transition">APIs & services</a></li>
-            <li><a href="/projects/libraries" class="text-gray-400 hover:text-white transition">Libraries & tooling</a></li>
-            <li><a href="/projects/cli" class="text-gray-400 hover:text-white transition">CLI tools</a></li>
+            <li><a href="/projects" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Portfolio</a></li>
+            <li><a href="/projects/case-studies" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Case studies</a></li>
+            <li><a href="/projects/apis" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">APIs & services</a></li>
+            <li><a href="/projects/libraries" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Libraries & tooling</a></li>
+            <li><a href="/projects/cli" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">CLI tools</a></li>
           </ul>
         </div>
 
         <!-- Open Source Column -->
         <div>
-          <h3 class="text-lg font-medium text-white mb-4">Open Source</h3>
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Open Source</h3>
           <ul class="space-y-3">
             <li>
-              <a href="https://github.com/arif" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition">
+              <a href="https://github.com/arif" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">
             GitHub profile
               </a>
             </li>
-            <li><a href="/opensource/contributions" class="text-gray-400 hover:text-white transition">Contributions</a></li>
-            <li><a href="/opensource/stars" class="text-gray-400 hover:text-white transition">Starred projects</a></li>
-            <li><a href="/packages" class="text-gray-400 hover:text-white transition">Published packages</a></li>
+            <li><a href="/opensource/contributions" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Contributions</a></li>
+            <li><a href="/opensource/stars" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Starred projects</a></li>
+            <li><a href="/packages" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Published packages</a></li>
           </ul>
         </div>
 
         <!-- Resources Column -->
         <div>
-          <h3 class="text-lg font-medium text-white mb-4">Resources</h3>
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Resources</h3>
           <ul class="space-y-3">
-            <li><a href="/blog" class="text-gray-400 hover:text-white transition">Blog & posts</a></li>
-            <li><a href="/tutorials" class="text-gray-400 hover:text-white transition">Tutorials</a></li>
-            <li><a href="/talks" class="text-gray-400 hover:text-white transition">Talks & slides</a></li>
-            <li><a href="/notes" class="text-gray-400 hover:text-white transition">Architecture notes</a></li>
+            <li><a href="/blog" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Blog & posts</a></li>
+            <li><a href="/tutorials" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Tutorials</a></li>
+            <li><a href="/talks" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Talks & slides</a></li>
+            <li><a href="/notes" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Architecture notes</a></li>
           </ul>
         </div>
 
         <!-- About Column -->
         <div>
-          <h3 class="text-lg font-medium text-white mb-4">About</h3>
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">About</h3>
           <ul class="space-y-3">
-            <li><a href="/about" class="text-gray-400 hover:text-white transition">About me</a></li>
-            <li><a href="/resume.pdf" class="text-gray-400 hover:text-white transition" target="_blank" rel="noopener noreferrer">Resume</a></li>
-            <li><a href="/speaking" class="text-gray-400 hover:text-white transition">Speaking & workshops</a></li>
-            <li><a href="mailto:hello@example.com" class="text-gray-400 hover:text-white transition">Hire / contact</a></li>
+            <li><a href="/about" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">About me</a></li>
+            <li><a href="/resume.pdf" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition" target="_blank" rel="noopener noreferrer">Resume</a></li>
+            <li><a href="/speaking" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Speaking & workshops</a></li>
+            <li><a href="mailto:hello@example.com" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">Hire / contact</a></li>
           </ul>
         </div>
 
         <!-- Newsletter Column -->
         <div class="md:col-span-2 lg:col-span-1">
-          <h3 class="text-2xl font-medium text-white mb-4">Subscribe to my newsletter</h3>
-          <p class="text-sm text-gray-400 mb-4">
+          <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4">Subscribe to my newsletter</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Hey, I’m sharing what I learn while building and experimenting with intelligent systems.
 Subscribe if you want simple, practical, and inspiring tech content in your inbox.
           </p>
@@ -67,13 +67,13 @@ Subscribe if you want simple, practical, and inspiring tech content in your inbo
             v-model="email"
             type="email"
             required
-            class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-300"
+            class="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900 dark:text-gray-300 placeholder-gray-500 dark:placeholder-gray-400"
             placeholder="Your email address"
               />
             </div>
             <button
               type="submit"
-              class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 transition text-white font-medium rounded-md"
+              class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition text-white font-medium rounded-md"
             >
               Subscribe
             </button>
@@ -81,9 +81,9 @@ Subscribe if you want simple, practical, and inspiring tech content in your inbo
         </div>
       </div>
 
-      <div class="mt-12 pt-8 border-t border-gray-800">
+      <div class="mt-12 pt-8 border-t border-gray-300 dark:border-gray-700">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-gray-500 text-lg">
+          <p class="text-gray-600 dark:text-gray-400 text-lg">
             © {{ new Date().getFullYear() }} Arif Foysal. All rights reserved.
           </p>
           <div class="scale-65 md:scale-100">
@@ -107,3 +107,5 @@ function subscribe() {
   email.value = "";
 }
 </script>
+
+

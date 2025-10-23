@@ -20,7 +20,8 @@ export default defineNuxtConfig(<NuxtConfig>{
   modules: [
     '@nuxtjs/color-mode',
     'nuxt-icon',
-    '@nuxt/image'
+    '@nuxt/image',
+    
   ],
   colorMode: {
     classSuffix: '', // Important to work with Tailwind's dark mode
