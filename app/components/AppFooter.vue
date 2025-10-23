@@ -20,7 +20,7 @@
           <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Open Source</h3>
           <ul class="space-y-3">
             <li>
-              <a href="https://github.com/arif" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">
+              <a href="https://github.com/arif-foysal" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition">
             GitHub profile
               </a>
             </li>
