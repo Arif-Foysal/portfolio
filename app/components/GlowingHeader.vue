@@ -2,6 +2,14 @@
 
 import { GlowBorder } from '~/components/ui/glow-border'
 
+interface Props {
+  text?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  text: 'This is Default Text',
+})
+
 </script>
 <template>
   <div class="bg-white dark:bg-gray-950 rounded-lg relative h-[150px] md:h-[180px] lg:h-[200px] w-full overflow-hidden">
@@ -13,7 +21,7 @@ import { GlowBorder } from '~/components/ui/glow-border'
       <span
         class=" text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-gray-900 dark:text-gray-200"
       >
-        Tools I love working with
+        {{ props.text }}
       </span>
     </div>
   </div>
