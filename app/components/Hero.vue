@@ -91,7 +91,7 @@
 
                         <!-- Image container -->
                         <div class="relative rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
-                            <img src="/profile.png" alt="Portfolio profile" class="w-full h-auto object-cover" />
+                            <img src="/profile.jpeg" alt="Portfolio profile" class="w-full h-auto object-cover" />
                             <!-- Overlay gradient -->
                             <div
                                 class="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-40">
