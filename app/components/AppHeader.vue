@@ -7,7 +7,7 @@
           <!-- Title/Logo -->
           <NuxtLink 
             :to="to" 
-            class="shrink-0 font-bold text-3xl text-gray-900 dark:text-white flex items-end gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="shrink-0  text-3xl text-gray-900 dark:text-white flex items-end gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <slot name="title">
               {{ title }}
