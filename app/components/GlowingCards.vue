@@ -36,7 +36,7 @@
                     tech.iconClass || 'text-gray-700 dark:text-gray-300'
                   ]"
                 />
-                <span class="text-xs sm:text-sm text-center text-gray-600 dark:text-gray-400">
+                <span class="text-md sm:text-xl text-center text-gray-600 dark:text-gray-300">
                   {{ tech.name }}
                 </span>
               </div>
