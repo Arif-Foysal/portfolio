@@ -40,12 +40,7 @@ import { Icon } from '@iconify/vue'
         class="size-10 "
       />
     </DockIcon>
-    <DockIcon class="gap-1 sm:gap-3">
-      <Icon
-        icon="logos:youtube-icon"
-        class="size-10"
-      />
-    </DockIcon>
+
     <DockSeparator class="mx-1 sm:mx-2" />
     <DockIcon class="gap-1 sm:gap-3">
       <Icon
