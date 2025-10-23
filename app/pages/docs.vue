@@ -9,8 +9,5 @@ import { HaloSearch } from '~/components/ui/halo-search'
 
     <HaloSearch class=""/>
 
-    <span class="mt-24 text-muted-foreground font-light">
-      Try hovering over component and typing in it.
-    </span>
   </div>
 </template>

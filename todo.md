@@ -1,3 +1,3 @@
 - [ ] implement halo search in the ai chatbot.
 - [ ] add more projects component
-- [ ] 
+- [ ] toast animation for newsletter subscription https://ui.nuxt.com/docs/components/toast

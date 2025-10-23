@@ -36,6 +36,8 @@
                                 AI-powered features to full-stack development, I turn ideas into reality.
                             </p>
                         </div>
+<section class="flex flex-col gap-4 justify-center items-center"> 
+
 
                         <!-- Chat Input Section -->
                         <div class="pt-4 space-y-3">
@@ -45,37 +47,17 @@
                                 <label class="text-2xl font-bold">
                                     ✨ Chat with my second brain 🧠</label>
                             </RadiantText>
-                            <div class="flex gap-2">
+                            <div class="flex gap-2 justify-center">
 
 
-                                <!-- <input v-model="chatMessage" type="text" placeholder="Ask me anything..."
-                                    @keyup.enter="sendMessage"
-                                    class="flex-1 px-4 py-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-gray-700 dark:text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all" /> -->
-                                    
     <HaloSearch class=""/>
 
-    <!-- <Button>
-            <span class="inline-flex items-center gap-2">
-                <Icon icon="fluent:send-20-filled" width="30" height="30" />
-                Chat Now
-            </span>
-    </Button> -->
- 
-
-                                <!-- <button @click="sendMessage" :disabled="!chatMessage.trim()"
-                                    class="px-6 py-3 rounded-lg bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2">
-                                    <span class="hidden sm:inline">Send</span>
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                </button> -->
                             </div>
                         </div>
 
                         <!-- Social Links -->
                         <ContactIcons />
-
+</section>
                     </div>
                 </div>
 
