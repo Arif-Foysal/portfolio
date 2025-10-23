@@ -8,6 +8,7 @@
            [--pattern-fg:#e5e7eb] dark:[--pattern-fg:#374151]">
           <slot />
         </div>
+        
         <AppFooter />
     </div>
   </ColorScheme>

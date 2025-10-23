@@ -10,7 +10,7 @@
 
             <!-- Grid container for responsive layout -->
             <div
-                class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-6 sm:px-8 lg:px-16 py-12 lg:py-20 max-w-8xl mx-auto">
+                class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-6 sm:px-8 lg:px-16 py-12 lg:py-20 max-w-7xl mx-auto">
                 <!-- Left Content Section -->
                 <div class="flex flex-col justify-center space-y-8">
                     <!-- Content (above pattern) -->
@@ -129,7 +129,7 @@ const isDark = computed(() => colorMode.value === "dark")
 
 const chatMessage = ref('')
 const showNotification = ref(false)
-const notificationMessage = ref('')
+const notificationMessage = ref('Chat with me! Ask me anything about my work or projects.')
 
 const sendMessage = () => {
     if (!chatMessage.value.trim()) return
