@@ -31,7 +31,10 @@
               >
                 <Icon
                   :icon="tech.icon"
-                  class="h-8 w-8 sm:h-10 sm:w-10 text-gray-700 dark:text-gray-300"
+                  :class="[
+                    'h-8 w-8 sm:h-10 sm:w-10',
+                    tech.iconClass || 'text-gray-700 dark:text-gray-300'
+                  ]"
                 />
                 <span class="text-xs sm:text-sm text-center text-gray-600 dark:text-gray-400">
                   {{ tech.name }}
@@ -55,6 +58,7 @@ import { Icon } from '@iconify/vue'
 interface Technology {
   name: string;
   icon: string;
+  iconClass?: string;
 }
 
 interface GridItem {
@@ -66,11 +70,17 @@ const gridItems: GridItem[] = [
   {
     title: "Front End",
     technologies: [
-      { name: "React", icon: "devicon:react" },
       { name: "Vue", icon: "devicon:vuejs" },
-      { name: "Next.js", icon: "devicon:nextjs" },
+
+      { name: "React", icon: "devicon:react" },
+
+      { name: "Svelte", icon: "vscode-icons:file-type-svelte" },
+      { name: "Shadcn", icon: "vscode-icons:file-type-shadcn" },
       { name: "Nuxt", icon: "devicon:nuxtjs" },
+      { name: "Next.js", icon: "devicon:nextjs" },
       { name: "TailwindCSS", icon: "devicon:tailwindcss" },
+      { name: "Streamlit", icon: "logos:streamlit" },
+      { name: "Vite", icon: "vscode-icons:file-type-vite" },
       { name: "TypeScript", icon: "devicon:typescript" },
       { name: "JavaScript", icon: "devicon:javascript" },
       { name: "HTML5", icon: "devicon:html5" },
@@ -82,15 +92,26 @@ const gridItems: GridItem[] = [
         { name: "Python", icon: "devicon:python" },
         { name: "Django", icon: "logos:django-icon" },
         { name: "FastAPI", icon: "devicon:fastapi" },
+        {name: "Flask", icon: "file-icons:flask" },
+        // { name: "Node.js", icon: "devicon:nodejs" },
+              { name: "Next.js", icon: "devicon:nextjs" },
+                    { name: "Nuxt", icon: "devicon:nuxtjs" },
         { name: "PHP", icon: "material-icon-theme:php" },
         {name: "Laravel", icon: "devicon:laravel" },
-      { name: "Node.js", icon: "devicon:nodejs" },
       { name: "Express", icon: "skill-icons:expressjs-light" },
-      { name: "NestJS", icon: "devicon:nestjs" },
       { name: "GraphQL", icon: "logos:graphql" },
       { name: "REST", icon: "simple-icons:openapiinitiative" },
     ]
   },
+    {
+    title: "Mobile Development",
+    technologies: [
+      { name: "React Native", icon: "devicon:reactnative" },
+      { name: "NestJs", icon: "devicon:nestjs" },
+      { name: "Appwrite", icon: "devicon:appwrite" },
+    ]
+  },
+
   {
     title: "Database",
     technologies: [
@@ -122,7 +143,7 @@ const gridItems: GridItem[] = [
     technologies: [
       { name: "TensorFlow", icon: "devicon:tensorflow" },
       { name: "PyTorch", icon: "devicon:pytorch" },
-      { name: "Langchain", icon: "simple-icons:langchain" },
+      { name: "Langchain", icon: "simple-icons:langchain", iconClass: "text-teal-600" },
       { name: "OpenAI", icon: "simple-icons:openai" },
       { name: "Hugging Face", icon: "logos:hugging-face-icon" },
       { name: "scikit-learn", icon: "skill-icons:scikitlearn-light" },
@@ -130,12 +151,21 @@ const gridItems: GridItem[] = [
       { name: "Jupyter", icon: "devicon:jupyter" },
     ]
   },
+    {
+    title: "Testing",
+    technologies: [
+      { name: "Postman", icon: "devicon:postman" },
+      { name: "Swagger", icon: "devicon:swagger" },
+      { name: "Pytest", icon: "vscode-icons:file-type-pytest" },
+
+    ]
+  },
   {
     title: "Tools & Others",
     technologies: [
       { name: "Git", icon: "devicon:git" },
       { name: "VS Code", icon: "devicon:vscode" },
-      { name: "Postman", icon: "devicon:postman" },
+      { name: "Micro Python", icon: "simple-icons:micropython", iconClass: "text-green-500" },
       { name: "Arduino", icon: "devicon:arduino" },
       { name: "Vim", icon: "devicon:vim" },
       { name: "Bash", icon: "logos:bash-icon" },
