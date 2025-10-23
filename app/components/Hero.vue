@@ -51,11 +51,9 @@
                                 <!-- <input v-model="chatMessage" type="text" placeholder="Ask me anything..."
                                     @keyup.enter="sendMessage"
                                     class="flex-1 px-4 py-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-gray-700 dark:text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all" /> -->
-                                    <IInput
-      id="inputDemo"
-      placeholder="Ask me anything..."
-      container-class="w-full max-w-sm"
-    ></IInput>
+                                    
+    <HaloSearch class=""/>
+
     <!-- <Button>
             <span class="inline-flex items-center gap-2">
                 <Icon icon="fluent:send-20-filled" width="30" height="30" />
@@ -63,7 +61,7 @@
             </span>
     </Button> -->
  
-                                <InteractiveHoverButton />
+
                                 <!-- <button @click="sendMessage" :disabled="!chatMessage.trim()"
                                     class="px-6 py-3 rounded-lg bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2">
                                     <span class="hidden sm:inline">Send</span>
@@ -117,6 +115,7 @@ import { ref } from 'vue'
 import ParticlesBg from '~/components/ui/particles-bg/ParticlesBg.vue'
 import { RadiantText } from '~/components/ui/radiant-text'
 import { InteractiveHoverButton } from '~/components/ui/interactive-hover-button'
+import { HaloSearch } from '~/components/ui/halo-search'
 import { Button } from "@/components/ui/button"
 import { Icon } from '@iconify/vue'
 

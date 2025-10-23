@@ -1,0 +1,3 @@
+- [ ] implement halo search in the ai chatbot.
+- [ ] add more projects component
+- [ ] 
