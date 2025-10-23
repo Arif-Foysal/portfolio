@@ -2,9 +2,9 @@
     <div>
         <!-- <ContactIcons /> -->
 <br>
-        <section class="relative bg-white dark:bg-gray-950 rounded-2xl">
+        <section class="relative bg-white dark:bg-gray-950 rounded-2xl [--particle-color:#000] dark:[--particle-color:#FFF]">
             <!-- Pattern background absolutely positioned behind content -->
-            <ParticlesBg class="absolute inset-0" :quantity="100" :ease="100" :color="isDark ? '#FFF' : '#000'"
+            <ParticlesBg class="absolute inset-0" :quantity="100" :ease="100" :color="'var(--particle-color)'"
                 :staticity="10" refresh />
 
 
@@ -121,12 +121,6 @@ import { Button } from "@/components/ui/button"
 import { Icon } from '@iconify/vue'
 
 import { IInput } from '~/components/ui/input'
-import { useColorMode } from "@vueuse/core"
-import { computed } from 'vue'
-
-const colorMode = useColorMode()
-const isDark = computed(() => colorMode.value === "dark")
-
 const chatMessage = ref('')
 const showNotification = ref(false)
 const notificationMessage = ref('Chat with me! Ask me anything about my work or projects.')
