@@ -3,150 +3,122 @@ title: "Hey it works, I'm [Arif Foysal]{class=\"text-primary\"}.<br>[AI and Soft
 
 description: I help startups scale their business with intelligent software solutions. From AI-powered features to full-stack development, I turn ideas into reality.
 seo:
-  title: Nuxt UI SaaS Template
-  description: Create stunning, fast and production-ready SaaS applications with Nuxt UI. 100+ Vue components, authentication, dark mode, and enterprise features built on Tailwind CSS.
+  title: Arif Foysal - AI & Full-Stack Developer | Python, Vue.js, React Expert
+  description: Experienced AI and full-stack developer specializing in Python, Django, Vue.js, React, and machine learning. Building intelligent software solutions for startups and enterprises.
 navigation: false
 hero:
   links:
-    - label: Get started
+    - label: View My Work
       icon: i-lucide-arrow-right
       trailing: true
-      to: https://ui.nuxt.com/docs/getting-started/installation/nuxt
-      target: _blank
+      to: /projects
       size: xl
-    - label: Use this template
-      icon: i-simple-icons-github
+    - label: Contact Me
+      icon: i-lucide-mail
       size: xl
       color: neutral
       variant: subtle
-      to: https://github.com/nuxt-ui-templates/saas
-      target: _blank
+      to: /contact
 sections:
-  - title: Powered by Nuxt UI Components
-    description: Access the complete Nuxt UI component library with 100+ beautifully styled, accessible, and customizable Vue components. Everything you need to build professional SaaS applications.
-    id: features
+  - title: Full-Stack Development Excellence
+    description: I specialize in building modern web applications using cutting-edge technologies. From responsive frontends to scalable backends, I deliver complete solutions.
+    id: development
     orientation: horizontal
     features:
-      - name: 100+ UI Components
-        description: From buttons to modals, data tables to forms - all styled with Tailwind CSS and accessible out of the box.
-        icon: i-lucide-package
-      - name: Authentication Ready
-        description: Pre-built login, signup, and password reset flows. Just connect your backend and start onboarding users.
-        icon: i-lucide-shield
-      - name: TypeScript First
-        description: Full TypeScript support with auto-completion, type safety, and IntelliSense for every component and composable.
-        icon: i-lucide-code-2
-  - title: Built for Modern SaaS
-    description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
+      - name: Frontend Development
+        description: Vue.js, React, Nuxt.js, Next.js with modern styling using TailwindCSS and component libraries like Shadcn UI.
+        icon: i-lucide-monitor
+      - name: Backend Development
+        description: Python with Django, FastAPI, Flask. Node.js with Express. RESTful APIs and GraphQL endpoints.
+        icon: i-lucide-server
+      - name: Database Design
+        description: PostgreSQL, MongoDB, Redis, MySQL. Database optimization and ORM implementation with Prisma.
+        icon: i-lucide-database
+  - title: AI & Machine Learning Solutions
+    description: Leveraging the power of artificial intelligence to create intelligent applications. From chatbots to recommendation systems, I build AI that delivers real business value.
     orientation: horizontal
     reverse: true
     features:
-      - name: Edge Performance
-        description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.
+      - name: Generative AI
+        description: LangChain, OpenAI, Hugging Face integration. Building conversational AI and content generation systems.
+        icon: i-lucide-brain
+      - name: Machine Learning
+        description: TensorFlow, PyTorch, scikit-learn for predictive modeling and data analysis solutions.
+        icon: i-lucide-trending-up
+      - name: AI Integration
+        description: Seamlessly integrating AI capabilities into web applications for enhanced user experiences.
         icon: i-lucide-zap
-      - name: Dark Mode Ready
-        description: Automatic theme switching with smooth transitions. Respects system preferences and remembers user choice.
-        icon: i-lucide-moon
-      - name: Global Ready
-        description: Built-in i18n support for 50+ languages with RTL/LTR layouts and @nuxt/fonts integration.
-        icon: i-lucide-globe
 features:
-  title: Tech I love working with
-  description: These are some of the technologies I've been working with recently. I'm always eager to learn and explore new tools and frameworks.
+  title: Technologies I Work With
+  description: A comprehensive overview of my technical expertise across frontend, backend, AI/ML, mobile development, and DevOps. Always learning and adapting to new technologies.
   items:
-    - title: Beautiful Design System
-      description: Semantic color aliases, comprehensive design tokens, and Tailwind Variants for consistent, customizable styling.
-      icon: i-lucide-palette
-    - title: Accessible by Default
-      description: Built on Reka UI for robust accessibility. WCAG compliant components that work for everyone, everywhere.
-      icon: i-lucide-accessibility
-    - title: Developer Experience
-      description: Auto-imports, hot module replacement, and comprehensive documentation. Build faster with less friction.
-      icon: i-lucide-terminal
-    - title: SEO Optimized
-      description: Server-side rendering, automatic meta tags, sitemap generation, and Open Graph images out of the box.
-      icon: i-lucide-search
-    - title: Production Ready
-      description: Error handling, loading states, form validation, and security best practices built into every component.
-      icon: i-lucide-check-circle
-    - title: Infinitely Customizable
-      description: Override any style with the ui prop, customize globally with AppConfig, or use Tailwind classes directly.
-      icon: i-lucide-settings
+    - title: Modern Frontend Frameworks
+      description: Expert in Vue.js, React, Svelte with meta-frameworks like Nuxt.js and Next.js. Building responsive, performant user interfaces.
+      icon: i-lucide-layout
+    - title: Robust Backend Systems
+      description: Python ecosystem (Django, FastAPI, Flask), Node.js, PHP Laravel. Building scalable APIs and microservices.
+      icon: i-lucide-server
+    - title: AI & Machine Learning
+      description: TensorFlow, PyTorch, LangChain, OpenAI. Creating intelligent applications with natural language processing and computer vision.
+      icon: i-lucide-brain
+    - title: Database Excellence
+      description: PostgreSQL, MongoDB, Redis expertise. Database design, optimization, and modern ORM tools like Prisma.
+      icon: i-lucide-database
+    - title: Mobile Development
+      description: React Native for cross-platform mobile apps. Modern backend solutions with NestJS and cloud services like Appwrite.
+      icon: i-lucide-smartphone
+    - title: DevOps & Cloud
+      description: Docker, Kubernetes, AWS deployment. CI/CD pipelines with GitHub Actions and modern development workflows.
+      icon: i-lucide-cloud
 testimonials:
-  headline: Trusted by Developers
-  title: Join Thousands Building with Nuxt UI
-  description: See why developers choose Nuxt UI to ship their SaaS applications faster and with more confidence.
+  headline: Trusted by Clients
+  title: Building Success Stories Together
+  description: See what clients and collaborators say about working with me on their projects.
   items:
-    - quote: Nuxt UI transformed how we build. The component quality is exceptional - everything just works with perfect TypeScript support, accessibility, and dark mode built in.
+    - quote: Arif delivered an exceptional AI-powered web application that exceeded our expectations. His expertise in both frontend and backend development is remarkable.
       user:
-        name: Sarah Chen
-        description: CTO at TechScale Solutions
+        name: Sarah Johnson
+        description: CTO at TechStart Solutions
         avatar:
           src: https://i.pravatar.cc/120?img=1
-    - quote: We shipped our MVP in 2 weeks instead of 2 months. The authentication flows and form components saved us countless hours of development time.
+    - quote: The machine learning model Arif built for our recommendation system increased user engagement by 40%. His understanding of AI is impressive.
       user:
-        name: Marcus Rodriguez
-        description: VP of Engineering at DataFlow
+        name: Michael Chen
+        description: Product Manager at DataFlow
         avatar:
           src: https://i.pravatar.cc/120?img=7
-    - quote: The design system with AppConfig is brilliant. We maintain brand consistency across all our products while leveraging the full component library.
+    - quote: Working with Arif on our Vue.js application was a pleasure. Clean code, excellent documentation, and delivered on time.
       user:
-        name: David Kumar
-        description: Security Director at SecureStack
+        name: Emily Rodriguez
+        description: Lead Developer at WebScale
         avatar:
           src: https://i.pravatar.cc/120?img=3
-    - quote: Perfect Lighthouse scores out of the box. Our Core Web Vitals improved dramatically just by switching to Nuxt UI components.
+    - quote: Arif's full-stack development skills helped us launch our MVP in record time. The Django backend is robust and scalable.
       user:
-        name: Emily Zhang
-        description: Lead Architect at ScaleForce
+        name: David Kumar
+        description: Founder at StartupLab
         avatar:
           src: https://i.pravatar.cc/120?img=5
-    - quote: The Tailwind Variants system makes customization so intuitive. We can override any component style while keeping the functionality intact.
+    - quote: The React Native app Arif developed works flawlessly across platforms. His attention to detail and user experience is outstanding.
       user:
-        name: James Wilson
-        description: DevOps Lead at CloudPro
+        name: Lisa Zhang
+        description: Mobile Product Lead at AppTech
         avatar:
           src: https://i.pravatar.cc/120?img=8
-    - quote: From the SaaS template to production in days. The pre-built layouts, navigation, and content structure accelerated our launch.
+    - quote: Arif's DevOps expertise streamlined our deployment process. Docker containerization and AWS setup were handled professionally.
       user:
-        name: Lisa Patel
-        description: CEO at AutoScale
+        name: James Wilson
+        description: DevOps Manager at CloudPro
         avatar:
           src: https://i.pravatar.cc/120?img=9
-    - quote: Reka UI foundation means accessibility is never an afterthought. We achieved WCAG compliance without any custom work.
-      user:
-        name: Michael Torres
-        description: Frontend Lead at AccessFirst
-        avatar:
-          src: https://i.pravatar.cc/120?img=11
-    - quote: The documentation is outstanding. Every component has clear examples, and the community on Discord is incredibly helpful.
-      user:
-        name: Rachel Kim
-        description: Performance Engineer at APIHub
-        avatar:
-          src: https://i.pravatar.cc/120?img=10
-    - quote: We replaced three different UI libraries with Nuxt UI. The consistency and quality across all components is unmatched.
-      user:
-        name: Thomas Weber
-        description: UI Architecture Lead at DesignScale
-        avatar:
-          src: https://i.pravatar.cc/120?img=12
-    - quote: The integration with Nuxt modules is seamless. Color mode, fonts, icons - everything works together perfectly.
-      user:
-        name: Sophia Martinez
-        description: Integration Specialist at TechFlow
-        avatar:
-          src: https://i.pravatar.cc/120?img=14
 cta:
-  title: Ready to build an amazing SaaS?
-  description: Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today.
+  title: Ready to Build Something Amazing?
+  description: Let's discuss your next project. Whether it's a web application, AI solution, or mobile app, I'm here to help bring your ideas to life.
   links:
-    - label: Start building
-      to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt'
-      target: _blank
+    - label: Start a Project
+      to: '/contact'
       trailingIcon: i-lucide-arrow-right
-    - label: View on GitHub
-      to: 'https://github.com/nuxt-ui-templates/saas'
-      target: _blank
+    - label: View My Work
+      to: '/projects'
       variant: subtle
-      icon: i-simple-icons-github
+      icon: i-lucide-folder
