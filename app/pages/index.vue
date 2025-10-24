@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import PromptInput from '~/components/PromptInput.vue'
+
 const { data: page } = await useAsyncData('index', () => queryCollection('index').first())
 
 const title = page.value?.seo?.title || page.value?.title
@@ -45,7 +47,13 @@ useSeoMeta({
         />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
+      <template #links>
+            <PromptInput/>
+              <ContactIcons />
+      <!-- <MyCTAs /> -->
+    </template>
     </UPageHero>
+
     <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
       :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
       :features="section.features">
