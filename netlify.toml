@@ -1,6 +1,9 @@
 [build]
-command = "npm install && npm run generate"
+command = "rm -rf node_modules package-lock.json && npm install && npm run generate"
 publish = "dist"
+
+[build.environment]
+NODE_VERSION = "18"
 
 [functions]
 directory = "netlify/functions"
