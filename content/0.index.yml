@@ -1,5 +1,7 @@
-title: Ship Your [SaaS]{class="text-primary"} at light speed
-description: Build production-ready SaaS applications with Nuxt UI's powerful components, authentication flows, and enterprise features. The same component library trusted by the entire Nuxt ecosystem.
+# title: Hey, I'm [Arif Foysal]{class="text-primary"}.
+title: "Hey, I'm [Arif Foysal]{class=\"text-primary\"}.<br>[AI and Software Developer]{class=\"text-4xl font-medium\"}"
+
+description: I help startups scale their business with intelligent software solutions. From AI-powered features to full-stack development, I turn ideas into reality.
 seo:
   title: Nuxt UI SaaS Template
   description: Create stunning, fast and production-ready SaaS applications with Nuxt UI. 100+ Vue components, authentication, dark mode, and enterprise features built on Tailwind CSS.

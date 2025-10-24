@@ -1,34 +1,57 @@
 <script setup lang="ts">
+import { tr } from 'zod/locales';
+
 const route = useRoute()
 
-const items = computed(() => [{
+const items = computed(() => [
+{
+  label: 'Home',
+  to: '/',
+  active: route.path === '/',
+  icon: 'i-lucide-home'
+},
+{
+  label: 'Chat',
+  to: '/chat',
+  active: route.path === '/chat',
+  icon: 'i-lucide-bot'
+},
+{
   label: 'Docs',
   to: '/docs',
-  active: route.path.startsWith('/docs')
+  active: route.path.startsWith('/docs'),
+  icon: 'i-lucide-book-open'
 }, {
-  label: 'Pricing',
-  to: '/pricing'
+  label: 'About',
+  to: '/about',
+  icon: 'i-lucide-user'
 }, {
   label: 'Blog',
-  to: '/blog'
+  to: '/blog',
+  icon: 'i-lucide-file-text'
 }, {
   label: 'Changelog',
   to: '/changelog'
-}])
+},
+
+
+])
 </script>
 
 <template>
-  <UHeader>
+  <UHeader class="items-center">
     <template #left>
       <NuxtLink to="/">
-        <AppLogo class="w-auto h-6 shrink-0" />
+        <!-- <AppLogo class=" h-6" /> -->
+         
+        <h1 class="text-3xl">Arif Foysal</h1>
       </NuxtLink>
-      <TemplateMenu />
+      <!-- <TemplateMenu /> -->
     </template>
 
     <UNavigationMenu
       :items="items"
-      variant="link"
+      variant="pill"
     />
 
     <template #right>
