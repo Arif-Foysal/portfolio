@@ -51,8 +51,8 @@ sections:
         description: Built-in i18n support for 50+ languages with RTL/LTR layouts and @nuxt/fonts integration.
         icon: i-lucide-globe
 features:
-  title: Everything You Need to Ship
-  description: Stop building from scratch. Focus on your unique features while Nuxt UI handles the foundations with battle-tested components and patterns.
+  title: Tech I love working with
+  description: These are some of the technologies I've been working with recently. I'm always eager to learn and explore new tools and frameworks.
   items:
     - title: Beautiful Design System
       description: Semantic color aliases, comprehensive design tokens, and Tailwind Variants for consistent, customizable styling.
