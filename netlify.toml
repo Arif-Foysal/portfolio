@@ -1,9 +1,10 @@
 [build]
-command = "rm -rf node_modules package-lock.json && npm install && npm run generate"
+command = "rm -rf node_modules pnpm-lock.yaml && npm install && npm run generate"
 publish = "dist"
 
 [build.environment]
 NODE_VERSION = "18"
+NETLIFY_USE_NPM = "true"
 
 [functions]
 directory = "netlify/functions"
