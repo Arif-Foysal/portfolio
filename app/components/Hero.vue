@@ -25,11 +25,15 @@ const links = ref([
     orientation="horizontal"
     :links="links"
   >
-    <img
-      src="/profile.jpegd"
-      alt="App screenshot"
-      class="rounded-lg shadow-2xl ring ring-default"
-    />
-</UPageHero>
-<ContactIcons />
+    <!-- Default slot content -->
+    <div>
+      <p>This is a component</p>
+      <img
+        src="/profile.jpegd"
+        alt="App screenshot"
+        class="rounded-lg shadow-2xl ring ring-default"
+      />
+      <ContactIcons />
+    </div>
+  </UPageHero>
 </template>
