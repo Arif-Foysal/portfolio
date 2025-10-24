@@ -1,11 +1,6 @@
 [build]
-command = "export PATH=/opt/buildhome/.nvm/versions/node/v18.20.8/bin:$PATH && rm -rf node_modules pnpm-lock.yaml .pnpm && npm cache clean --force && npm install --no-package-lock && npm run generate"
+command = "npm install && npm run generate"
 publish = "dist"
-
-[build.environment]
-NODE_VERSION = "18"
-NETLIFY_USE_NPM = "true"
-NPM_FLAGS = "--no-optional"
 
 [functions]
 directory = "netlify/functions"
