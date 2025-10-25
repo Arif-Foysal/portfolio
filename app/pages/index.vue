@@ -182,7 +182,7 @@ useSeoMeta({
       <!-- Skills Section -->
       <div class="w-full  mx-auto ">
         <PatternHeader title="Tech I love working with"
-          description="These are some of the tools & technologies I've been working with recently." />
+          description="" />
       </div>
 
       <UPageSection>
@@ -211,7 +211,7 @@ useSeoMeta({
       <!-- Projects Section -->
             <div class="w-full  mx-auto ">
         <PatternHeader title="Projects I've worked on"
-          description="These are some of the projects I've built." />
+           />
       </div>
       
 
