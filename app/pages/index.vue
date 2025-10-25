@@ -159,8 +159,15 @@ useSeoMeta({
       <template #title>
         <MDC :value="page.title" unwrap="p" />
       </template>
-      <NuxtImg src="/profile.jpeg" alt="App screenshot"
-        class="w-full  object-cover rounded-lg shadow-2xl ring ring-default" format="auto" />
+      <NuxtImg 
+        src="/profile.jpeg" 
+        alt="Arif Foysal - AI and Software Developer"
+        class="w-full object-cover rounded-lg shadow-2xl ring ring-default" 
+        format="auto" 
+        loading="lazy" 
+        :modifiers="{ format: 'webp', quality: 80 }"
+        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9maWxlIEltYWdlPC90ZXh0Pjwvc3ZnPg=='" 
+      />
       <!-- <Hero/> -->
       <div class="space-y-8">
         <!-- With Card -->
