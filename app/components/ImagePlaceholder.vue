@@ -1,12 +1,7 @@
 <template>
-  <UPageCard
-    variant="subtle"
-  >
+  <UPageCard variant="subtle">
     <div class="relative overflow-hidden rounded-sm border border-dashed border-accented opacity-75 px-4 flex items-center justify-center aspect-video">
-      <svg
-        class="absolute inset-0 h-full w-full stroke-inverted/10"
-        fill="none"
-      >
+      <svg class="absolute inset-0 h-full w-full stroke-inverted/10" fill="none">
         <defs>
           <pattern
             id="pattern-5c1e4f0e-62d5-498b-8ff0-cf77bb448c8e"
@@ -27,7 +22,11 @@
         />
       </svg>
 
-      <slot />
+      <!-- Add your centered text here -->
+      <div class="relative z-10 text-center">
+        <p class="text-lg font-semibold">Your Text Here</p>
+        <p class="text-sm text-muted">Optional subtitle</p>
+      </div>
     </div>
   </UPageCard>
 </template>

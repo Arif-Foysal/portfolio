@@ -157,53 +157,70 @@ useSeoMeta({
         <HeroBackground />
       </template>
       <template #title>
-        <MDC
-          :value="page.title"
-          unwrap="p"
-        />
+        <MDC :value="page.title" unwrap="p" />
       </template>
-      <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
-      <template #links>
-            <PromptInput/>
-              <ContactIcons />
-      <!-- <MyCTAs /> -->
-    </template>
-    </UPageHero>
+      <NuxtImg src="/profile.jpeg" alt="App screenshot"
+        class="w-full  object-cover rounded-lg shadow-2xl ring ring-default" format="auto" />
+      <!-- <Hero/> -->
+      <div class="space-y-8">
+        <!-- With Card -->
 
+
+
+        <!-- With custom content -->
+
+      </div>
+      <template #links>
+        <PromptInput />
+        <ContactIcons />
+        <!-- <MyCTAs /> -->
+      </template>
+    </UPageHero>
+    
+
+    <section>
+      <!-- Skills Section -->
+      <div class="w-full  mx-auto ">
+        <PatternHeader title="Tech I love working with"
+          description="These are some of the tools & technologies I've been working with recently." />
+      </div>
+
+      <UPageSection>
+        <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
+          <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight
+            :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }">
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
+              <div v-for="tech in item.technologies" :key="tech.name"
+                class="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-200">
+                <Icon :icon="tech.icon" :class="[
+                  'h-8 w-8 sm:h-10 sm:w-10',
+                  tech.iconClass || ''
+                ]" />
+                <span class="text-md sm:text-xl text-center">
+                  {{ tech.name }}
+                </span>
+              </div>
+            </div>
+          </UPageCard>
+        </div>
+
+      </UPageSection>
+    </section>
+
+    <section>
+      <!-- Projects Section -->
+            <div class="w-full  mx-auto ">
+        <PatternHeader title="Projects I've worked on"
+          description="These are some of the projects I've built." />
+      </div>
+      
+
+    </section>
     <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
       :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
       :features="section.features">
       <ImagePlaceholder />
-      <!-- <p>fakjflkjasldkjf</p> -->
-    </UPageSection>
 
-    <UPageSection :title="page.features.title" :description="page.features.description">
-      <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <UPageCard 
-          v-for="item in skillsData" 
-          :key="item.title" 
-          :title="item.title"
-          spotlight
-          :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }"
-        >
-          <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
-            <div v-for="tech in item.technologies" :key="tech.name" 
-              class="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-200"
-            >
-              <Icon
-                :icon="tech.icon"
-                :class="[
-                  'h-8 w-8 sm:h-10 sm:w-10',
-                  tech.iconClass || ''
-                ]"
-              />
-              <span class="text-md sm:text-xl text-center">
-                {{ tech.name }}
-              </span>
-            </div>
-          </div>
-        </UPageCard>
-      </div>
     </UPageSection>
 
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
