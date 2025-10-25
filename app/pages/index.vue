@@ -169,15 +169,10 @@ useSeoMeta({
       <!-- <MyCTAs /> -->
     </template>
     </UPageHero>
-
-    <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
-      :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
-      :features="section.features">
-      <ImagePlaceholder />
-      <!-- <p>fakjflkjasldkjf</p> -->
-    </UPageSection>
-
-    <UPageSection :title="page.features.title" :description="page.features.description">
+<div>
+  <PatternHeader :title="page.features.title"/>
+</div>
+    <UPageSection>
       <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
         <UPageCard 
           v-for="item in skillsData" 
@@ -204,6 +199,15 @@ useSeoMeta({
           </div>
         </UPageCard>
       </div>
+    </UPageSection>
+
+
+
+    <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
+      :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
+      :features="section.features">
+      <ImagePlaceholder />
+      <!-- <p>fakjflkjasldkjf</p> -->
     </UPageSection>
 
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
