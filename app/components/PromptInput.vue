@@ -14,7 +14,7 @@
 
     <div id="search-wrapper">
       <input
-        placeholder="Ask me anything..."
+        placeholder="Ask anything about me..."
         type="text"
         name="text"
         class="search-field"

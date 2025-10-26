@@ -156,10 +156,11 @@ useSeoMeta({
       <template #top>
         <HeroBackground />
       </template>
-      <template #title>
+      <template #title >
         <MDC
           :value="page.title"
           unwrap="p"
+          class="leading-tight"
         />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
