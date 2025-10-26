@@ -31,13 +31,14 @@ const props = defineProps<{
       </svg>
 
       <!-- Add your centered text here -->
-      <div class="relative z-500 text-center pt-4 pb-4">
+      <div class="relative z-10 text-center pt-4 pb-4">
         <h1 class="text-3xl md:text-5xl text-gray-950 dark:text-white  font-bold ">{{ props.title }}</h1>
         <p class="text-lg text-gray-600 dark:text-white/80">{{ props.description }}</p>
          <!-- <UPageSection :title="title" :description="description"></UPageSection> -->
       </div>
     </div>
+    
+</UPageCard>
+<!-- <h1 class="text-5xl font-bold text-red-500 drop-shadow-lg">Tech I love working with</h1> -->
 
-  </UPageCard>
-  <!-- <h1 class="text-5xl font-bold text-red-500 drop-shadow-lg">Tech I love working with</h1> -->
 </template>

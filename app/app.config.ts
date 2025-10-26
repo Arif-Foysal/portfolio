@@ -4,7 +4,8 @@ export default defineAppConfig({
       primary: 'cyan',
       secondary: 'green',
       neutral: 'slate'
-    }
+    },
+    
   },
   navigationMenu: {
       slots: {
