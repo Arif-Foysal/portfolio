@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <AppHeader />
 
     <UMain>

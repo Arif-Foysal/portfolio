@@ -132,7 +132,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="page">
+  <div class="" v-if="page">
     <!-- <UPageHero
       :title="page.title"
       :description="page.description"
@@ -156,43 +156,34 @@ useSeoMeta({
       <template #top>
         <HeroBackground />
       </template>
-      <template #title >
-        <MDC
-          :value="page.title"
-          unwrap="p"
-          class="leading-tight"
-        />
+      <template #title>
+        <MDC :value="page.title" unwrap="p" class="leading-tight" />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
       <template #links>
-            <PromptInput/>
-              <ContactIcons />
-      <!-- <MyCTAs /> -->
-    </template>
+        <PromptInput />
+        <ContactIcons />
+        <!-- <MyCTAs /> -->
+      </template>
     </UPageHero>
-<div>
-  <PatternHeader :title="page.features.title"/>
-</div>
+<br>
+    <USeparator
+     />
+    <br />
+    <div>
+      <PatternHeader :title="page.features.title" />
+    </div>
     <UPageSection>
       <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <UPageCard 
-          v-for="item in skillsData" 
-          :key="item.title" 
-          :title="item.title"
-          spotlight
-          :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }"
-        >
+        <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight
+          :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }">
           <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
-            <div v-for="tech in item.technologies" :key="tech.name" 
-              class="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-200"
-            >
-              <Icon
-                :icon="tech.icon"
-                :class="[
-                  'h-8 w-8 sm:h-10 sm:w-10',
-                  tech.iconClass || ''
-                ]"
-              />
+            <div v-for="tech in item.technologies" :key="tech.name"
+              class="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-200">
+              <Icon :icon="tech.icon" :class="[
+                'h-8 w-8 sm:h-10 sm:w-10',
+                tech.iconClass || ''
+              ]" />
               <span class="text-md sm:text-xl text-center">
                 {{ tech.name }}
               </span>
@@ -201,16 +192,62 @@ useSeoMeta({
         </UPageCard>
       </div>
     </UPageSection>
+    <hr>
+    <section class="">
 
+      <div >
+        <PatternHeader title="Projects I've built" />
+      </div>
+<br>
+      <div class="divide-y divide-gray-700">
+        <p>flkajflkjas</p>
+      </div>
+<br>
 
+      <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
+        :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
+        :features="section.features"
+         :ui="{ container: 'border border-gray-700'  }"
+        >
+            <template #title>
 
-    <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
-      :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
-      :features="section.features">
-      <ImagePlaceholder />
-      <!-- <p>fakjflkjasldkjf</p> -->
-    </UPageSection>
+              <section class="flex flex-col gap-4">
 
+                <!-- Your title -->
+                <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
+        {{ section.title }}
+      </h2>
+      
+      <!-- Your custom component right below -->
+    <div class="flex gap-2">
+    <UBadge icon="devicon:javascript" size="lg" color="neutral" variant="soft">
+      JavaScript
+    </UBadge>
+    <UBadge icon="devicon:react" size="lg" color="neutral" variant="soft">
+      React
+    </UBadge>
+    <UBadge icon="devicon:vuejs" size="lg" color="neutral" variant="soft">
+      Vue
+    </UBadge>
+    <UBadge icon="devicon:vuejs" size="lg" color="neutral" variant="soft">
+      Vue
+    </UBadge>
+  </div>
+</section>
+    </template>
+      <!-- 🌆 Responsive single image -->
+  <div class="mt-6 w-full">
+    <img
+      src="/profile.jpeg"
+      :alt="section.title + ' screenshot'"
+      class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
+      loading="lazy"
+    />
+  </div>
+  </UPageSection>
+  
+</section>
+<hr>
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns class="xl:columns-4">
