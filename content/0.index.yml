@@ -13,19 +13,32 @@ hero:
       trailing: true
       to: https://ui.nuxt.com/docs/getting-started/installation/nuxt
       target: _blank
-      size: xl
+      size: 3xl
     - label: Use this template
       icon: i-simple-icons-github
       size: xl
       color: neutral
-      variant: subtle
+      
       to: https://github.com/nuxt-ui-templates/saas
       target: _blank
 sections:
-  - title: Powered by Nuxt UI Components
-    description: Access the complete Nuxt UI component library with 100+ beautifully styled, accessible, and customizable Vue components. Everything you need to build professional SaaS applications.
+  - title: Blue Horizon ROV
+    description: An advanced Remotely Operated Vehicle (ROV) designed for underwater exploration and research. Equipped with high-definition cameras, sonar systems, and robotic arms, it enables scientists to study marine environments in detail while ensuring safety and efficiency.
     id: skills
     orientation: horizontal
+    links:
+      - label: "Learn More"
+        to: "https://example.com/blue-horizon"
+        icon: "i-lucide-globe"
+        color: primary
+        variant: solid
+        target: _blank
+      - label: "Documentation"
+        to: "https://example.com/blue-horizon/docs"
+        icon: "i-lucide-book"
+        color: neutral
+        variant: soft
+        target: _blank
     skills:
       - name: 100+ UI Components
         description: From buttons to modals, data tables to forms - all styled with Tailwind CSS and accessible out of the box.
@@ -40,6 +53,19 @@ sections:
     description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
     orientation: horizontal
     reverse: true
+    links:
+      - label: "Get Started"
+        to: "https://example.com/saas"
+        icon: "i-lucide-rocket"
+        color: primary
+        variant: solid
+        target: _blank
+      - label: "Features"
+        to: "https://example.com/saas/features"
+        icon: "i-lucide-list"
+        color: neutral
+        variant: soft
+        target: _blank
     features:
       - name: Edge Performance
         description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.

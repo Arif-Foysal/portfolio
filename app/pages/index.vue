@@ -117,6 +117,23 @@ const skillsData: SkillItem[] = [
   },
 ];
 
+const Projectlinks = ref([
+  {
+    label: 'Live Demo',
+    to: '/docs/getting-started',
+    icon: 'i-lucide-square-play',
+    color: 'neutral'
+  },
+  {
+    label: 'Explore components',
+    to: '/docs/components/app',
+    color: 'neutral',
+    variant: 'subtle',
+    trailingIcon: 'i-lucide-arrow-right'
+  }
+])
+
+
 const { data: page } = await useAsyncData('index', () => queryCollection('index').first())
 
 const title = page.value?.seo?.title || page.value?.title
@@ -166,16 +183,17 @@ useSeoMeta({
         <!-- <MyCTAs /> -->
       </template>
     </UPageHero>
-<br>
-    <USeparator
-     />
-    <br />
+<!-- <br> -->
+ 
+
     <div>
       <PatternHeader :title="page.features.title" />
     </div>
     <UPageSection>
       <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight
+        <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight 
+            spotlight-color="secondary"
+            
           :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }">
           <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
             <div v-for="tech in item.technologies" :key="tech.name"
@@ -192,62 +210,59 @@ useSeoMeta({
         </UPageCard>
       </div>
     </UPageSection>
-    <hr>
+
     <section class="">
 
       <div >
         <PatternHeader title="Projects I've built" />
       </div>
-<br>
-      <div class="divide-y divide-gray-700">
-        <p>flkajflkjas</p>
-      </div>
-<br>
 
-      <UPageSection v-for="(section, index) in page.sections" :key="index" :title="section.title"
-        :description="section.description" :orientation="section.orientation" :reverse="section.reverse"
-        :features="section.features"
-         :ui="{ container: 'border border-gray-700'  }"
-        >
-            <template #title>
-
-              <section class="flex flex-col gap-4">
-
-                <!-- Your title -->
-                <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
-        {{ section.title }}
-      </h2>
-      
-      <!-- Your custom component right below -->
-    <div class="flex gap-2">
-    <UBadge icon="devicon:javascript" size="lg" color="neutral" variant="soft">
-      JavaScript
-    </UBadge>
-    <UBadge icon="devicon:react" size="lg" color="neutral" variant="soft">
-      React
-    </UBadge>
-    <UBadge icon="devicon:vuejs" size="lg" color="neutral" variant="soft">
-      Vue
-    </UBadge>
-    <UBadge icon="devicon:vuejs" size="lg" color="neutral" variant="soft">
-      Vue
-    </UBadge>
-  </div>
-</section>
-    </template>
-      <!-- 🌆 Responsive single image -->
-  <div class="mt-6 w-full">
-    <img
-      src="/profile.jpeg"
-      :alt="section.title + ' screenshot'"
-      class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
-      loading="lazy"
-    />
-  </div>
-  </UPageSection>
   
-</section>
-<hr>
+<br> <br>
+
+
+<!-- Projects section -->
+      <div v-for="(section, index) in page.sections" :key="index" class="text-secondary">
+        <hr />
+        <UPageSection
+          :title="section.title"
+          :description="section.description"
+          :orientation="section.orientation"
+          :reverse="section.reverse"
+          :links="Projectlinks"
+          :features="section.features"
+          :ui="{ container: 'border-l border-r border-secondary cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 ' }"
+        >
+          <template #title>
+            <!-- title template (unchanged) -->
+            <section class="flex flex-col gap-4">
+              <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
+                {{ section.title }}
+              </h2>
+              <div class="flex gap-2">
+                <UBadge icon="devicon:javascript" size="xl" color="neutral" variant="subtle" class="tracking-wider">JavaScript</UBadge>
+                <UBadge icon="devicon:react" size="xl" color="neutral" variant="subtle" class="tracking-wider">React</UBadge>
+                <UBadge icon="devicon:vuejs" size="xl" color="neutral" variant="subtle" class="tracking-wider">Vue</UBadge>
+                <UBadge icon="devicon:vuejs" size="xl" color="neutral" variant="subtle" class="tracking-wider">Vue</UBadge>
+              </div>
+            </section>
+          </template>
+
+          <div class="mt-6 w-full ">
+            <img
+              src="/profile.jpeg"
+              :alt="section.title + ' screenshot'"
+              class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        </UPageSection>
+
+        <!-- divider after each section (omit after last to avoid duplicate separators) -->
+        <hr/>
+      </div>
+    </section>
+
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns class="xl:columns-4">

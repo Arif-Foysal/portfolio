@@ -7,7 +7,7 @@
 @source "../../../content/**/*";
 
 @theme static {
-  --font-sans:  'Lexend Deca','poppins',  sans-serif;
+  --font-sans:  'Lexend Deca', 'poppins','Open Sans',  sans-serif;
 
   --color-green-50: #EFFDF5;
   --color-green-100: #D9FBE8;
