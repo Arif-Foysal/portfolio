@@ -250,7 +250,7 @@ useSeoMeta({
 
           <div class="mt-6 w-full ">
             <img
-              src="/profile.jpeg"
+              src="/projects/blue-horizon/main.jpg"
               :alt="section.title + ' screenshot'"
               class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
               loading="lazy"
