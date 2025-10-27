@@ -124,13 +124,13 @@ const Projectlinks = ref([
     icon: 'i-lucide-square-play',
     color: 'neutral'
   },
-  {
-    label: 'Explore components',
-    to: '/docs/components/app',
-    color: 'neutral',
-    variant: 'subtle',
-    trailingIcon: 'i-lucide-arrow-right'
-  }
+  // {
+  //   label: 'Explore components',
+  //   to: '/docs/components/app',
+  //   color: 'neutral',
+  //   variant: 'subtle',
+  //   trailingIcon: 'i-lucide-arrow-right'
+  // }
 ])
 
 
