@@ -24,21 +24,44 @@ hero:
 sections:
   - title: Blue Horizon ROV
     description: An advanced Remotely Operated Vehicle (ROV) designed for underwater exploration and research. Equipped with high-definition cameras, sonar systems, and robotic arms, it enables scientists to study marine environments in detail while ensuring safety and efficiency.
-    id: skills
+    id: projects
     orientation: horizontal
     links:
-      - label: "Learn More"
+      - label: "Watch Video"
         to: "https://example.com/blue-horizon"
-        icon: "i-lucide-globe"
-        color: primary
+        icon: "i-lucide-play"
+        color: 'secondary'
         variant: solid
         target: _blank
-      - label: "Documentation"
+      - label: "GitHub"
+        to: "https://example.com/blue-horizon/docs"
+        icon: "i-lucide-github"
+        color: 'neutral'
+        variant: solid
+        target: _blank
+      - label: "Learn More"
         to: "https://example.com/blue-horizon/docs"
         icon: "i-lucide-book"
-        color: neutral
-        variant: soft
+        color: 'neutral'
+        variant: subtle 
         target: _blank
+    badges:
+      - label: Raspberry Pi
+        icon: devicon:raspberrypi
+      - label: Esp32
+        icon: simple-icons:espressif  
+      - label: Arduino
+        icon: devicon:arduino
+      - label: C++
+        icon: devicon:cplusplus
+      - label: Python
+        icon: devicon:python
+      - label: Flask
+        icon: file-icons:flask
+      - label: JavaScript
+        icon: devicon:javascript
+      - label: WebRTC
+        icon: simple-icons:webrtc
     skills:
       - name: 100+ UI Components
         description: From buttons to modals, data tables to forms - all styled with Tailwind CSS and accessible out of the box.
@@ -49,7 +72,7 @@ sections:
       - name: TypeScript First
         description: Full TypeScript support with auto-completion, type safety, and IntelliSense for every component and composable.
         icon: i-lucide-code-2
-  - title: Built for Modern SaaS
+  - title: Adventure Amigos
     description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
     orientation: horizontal
     reverse: true
@@ -66,6 +89,13 @@ sections:
         color: neutral
         variant: soft
         target: _blank
+    badges:
+      - label: JavaScript
+        icon: devicon:javascript
+      - label: React
+        icon: devicon:react
+      - label: Vue
+        icon: devicon:vuejs
     features:
       - name: Edge Performance
         description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.
