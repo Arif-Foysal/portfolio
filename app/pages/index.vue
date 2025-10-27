@@ -229,21 +229,27 @@ useSeoMeta({
           :description="section.description"
           :orientation="section.orientation"
           :reverse="section.reverse"
-          :links="Projectlinks"
+          :links="section.links"
           :features="section.features"
           :ui="{ container: 'border-l border-r border-secondary cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 ' }"
         >
           <template #title>
-            <!-- title template (unchanged) -->
             <section class="flex flex-col gap-4">
               <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
                 {{ section.title }}
               </h2>
               <div class="flex gap-2 flex-wrap">
-                <UBadge icon="devicon:javascript" size="xl" color="neutral" variant="subtle" class="tracking-wider">JavaScript</UBadge>
-                <UBadge icon="devicon:react" size="xl" color="neutral" variant="subtle" class="tracking-wider">React</UBadge>
-                <UBadge icon="devicon:vuejs" size="xl" color="neutral" variant="subtle" class="tracking-wider">Vue</UBadge>
-                <UBadge icon="devicon:vuejs" size="xl" color="neutral" variant="subtle" class="tracking-wider">Vue</UBadge>
+                <UBadge
+                  v-for="(badge, i) in section.badges"
+                  :key="i"
+                  :icon="badge.icon"
+                  size="lg"
+                  color="neutral"
+                  variant="subtle"
+                  class="tracking-wider"
+                >
+                  {{ badge.label }}
+                </UBadge>
               </div>
             </section>
           </template>
