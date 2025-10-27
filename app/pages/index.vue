@@ -239,7 +239,7 @@ useSeoMeta({
               <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
                 {{ section.title }}
               </h2>
-              <div class="flex gap-2">
+              <div class="flex gap-2 flex-wrap">
                 <UBadge icon="devicon:javascript" size="xl" color="neutral" variant="subtle" class="tracking-wider">JavaScript</UBadge>
                 <UBadge icon="devicon:react" size="xl" color="neutral" variant="subtle" class="tracking-wider">React</UBadge>
                 <UBadge icon="devicon:vuejs" size="xl" color="neutral" variant="subtle" class="tracking-wider">Vue</UBadge>
