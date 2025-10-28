@@ -64,7 +64,7 @@ const skillsData: SkillItem[] = [
       { name: "Prisma", icon: "simple-icons:prisma" },
       { name: "MySQL", icon: "devicon:mysql" },
       { name: "SQLite", icon: "devicon:sqlite" },
-      { name: "Supabase", icon: "simple-icons:supabase" },
+      { name: "Supabase", icon: "devicon:supabase" },
       { name: "Firebase", icon: "devicon:firebase" },
     ]
   },

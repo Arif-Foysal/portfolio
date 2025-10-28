@@ -23,6 +23,7 @@ hero:
       target: _blank
 sections:
   - title: Blue Horizon ROV
+    reverse: false
     description: An advanced Remotely Operated Vehicle (ROV) designed for underwater exploration and research. Equipped with high-definition cameras, sonar systems, and robotic arms, it enables scientists to study marine environments in detail while ensuring safety and efficiency.
     id: projects
     orientation: horizontal
@@ -73,39 +74,168 @@ sections:
         description: Full TypeScript support with auto-completion, type safety, and IntelliSense for every component and composable.
         icon: i-lucide-code-2
   - title: Adventure Amigos
-    description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
-    orientation: horizontal
     reverse: true
+    description: A smart tourism web application designed to make traveling seamless and enjoyable. Adventure Amigos allows users to plan trips, book tours and accommodations, discover local businesses, and explore historical sites — all in one unified platform powered by AI-driven personalization and multilingual support.
+    id: projects
+    orientation: horizontal
     links:
-      - label: "Get Started"
-        to: "https://example.com/saas"
-        icon: "i-lucide-rocket"
-        color: primary
+      - label: "GitHub"
+        to: "https://github.com/example/adventure-amigos"
+        icon: "i-lucide-github"
+        color: 'neutral'
         variant: solid
         target: _blank
-      - label: "Features"
-        to: "https://example.com/saas/features"
-        icon: "i-lucide-list"
-        color: neutral
-        variant: soft
+      - label: "Learn More"
+        to: "https://example.com/adventure-amigos/docs"
+        icon: "i-lucide-book"
+        color: 'neutral'
+        variant: subtle 
         target: _blank
     badges:
+      - label: PHP
+        icon: devicon:php
+      - label: MySQL
+        icon: devicon:mysql
       - label: JavaScript
         icon: devicon:javascript
-      - label: React
-        icon: devicon:react
-      - label: Vue
+      - label: Vue.js
         icon: devicon:vuejs
-    features:
-      - name: Edge Performance
-        description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.
-        icon: i-lucide-zap
-      - name: Dark Mode Ready
-        description: Automatic theme switching with smooth transitions. Respects system preferences and remembers user choice.
-        icon: i-lucide-moon
-      - name: Global Ready
-        description: Built-in i18n support for 50+ languages with RTL/LTR layouts and @nuxt/fonts integration.
+      - label: TailwindCSS
+        icon: devicon:tailwindcss
+      - label: AI Integration
+        icon: simple-icons:openai
+      - label: REST API
+        icon: simple-icons:api
+      - label: Agile
+        icon: simple-icons:jirasoftware
+    skills:
+      - name: AI-Powered Historical Insights
+        description: Users can upload images of landmarks to receive detailed AI-generated historical and cultural information instantly.
+        icon: i-lucide-brain
+      - name: Seamless Booking System
+        description: Integrated booking services for tours, accommodations, and events with secure payment gateway and real-time communication.
+        icon: i-lucide-calendar
+      - name: Local Business Discovery
+        description: Explore top-rated restaurants, shops, and artisan spots with verified user reviews and exclusive local offers.
+        icon: i-lucide-map-pin
+      - name: Personalized Recommendations
+        description: AI-driven tour and activity suggestions based on traveler preferences and past behaviors.
+        icon: i-lucide-compass
+      - name: Event Management
+        description: View upcoming festivals and events, book directly, and sync plans automatically with your Google Calendar.
+        icon: i-lucide-party-popper
+      - name: Multilingual & Offline Support
+        description: Built for international travelers with real-time translation and offline access for remote destinations.
+        icon: i-lucide-globe-2
+  - title: SkinCheck AI
+    reverse: false
+    description: SkinCheck AI is an intelligent skin disease detection platform that uses deep learning to classify skin lesions as benign or malignant. Trained on the HAM10000 dataset, it combines a FastAPI backend, Supabase authentication, and secure cloud deployment to deliver accurate real-time predictions from uploaded skin images — empowering users with early awareness and actionable insights.
+    id: projects
+    orientation: horizontal
+    links:
+      - label: "Live Api"
+        to: "https://example.com/adventure-amigos"
+        icon: "i-lucide-play"
+        color: 'neutral'
+        variant: solid
+        target: _blank
+      - label: "GitHub"
+        to: "https://github.com/your-repo/skincheck-ai"
+        icon: "i-lucide-github"
+        color: 'neutral'
+        variant: solid
+        target: _blank
+      - label: "Learn More"
+        to: "https://example.com/blue-horizon/docs"
+        icon: "i-lucide-book"
+        color: 'neutral'
+        variant: subtle 
+        target: _blank
+    badges:
+      - label: FastAPI
+        icon: devicon:fastapi
+      - label: Python
+        icon: devicon:python
+      - label: Supabase
+        icon: devicon:supabase
+      - label: TensorFlow
+        icon: devicon:tensorflow
+      - label: Deep Learning
+        icon: eos-icons:neural-network
+      - label: JWT Auth
+        icon: logos:jwt-icon
+      - label: Cloud Deployment
+        icon: i-lucide-cloud
+    skills:
+      - name: Deep Learning Model
+        description: Trained using the HAM10000 dataset to classify skin lesions into benign and malignant categories with high accuracy.
+        icon: i-lucide-brain-circuit
+      - name: Secure API Backend
+        description: Built with FastAPI and Supabase Auth to handle image uploads, authentication, and predictions through protected endpoints.
+        icon: i-lucide-lock
+      - name: Scalable Deployment
+        description: Deployed online for live access with integrated authentication and storage, enabling real-time image analysis from anywhere.
         icon: i-lucide-globe
+
+  - title: ESP32 Vehicle Tracker
+    reverse: true
+    description: ESP32 Vehicle Tracker is a real-time vehicle monitoring and control system powered by MicroPython and FastAPI. It enables live tracking, collision detection, and remote vehicle control via a cloud dashboard. The system integrates sensor data, secure cloud APIs, and a modern web interface for reliable and accessible fleet management.
+    id: projects
+    orientation: horizontal
+    links:
+      - label: "Live Dashboard"
+        to: "https://esp32-vehicle-tracker.onrender.com"
+        icon: "i-lucide-monitor"
+        color: 'secondary'
+        variant: solid
+        target: _blank
+      - label: "GitHub"
+        to: "https://github.com/Arif-Foysal/esp32-vehicle-tracker"
+        icon: "i-lucide-github"
+        color: 'neutral'
+        variant: solid
+        target: _blank
+      - label: "API Docs"
+        to: "https://esp32-vehicle-tracker.onrender.com/docs"
+        icon: "i-lucide-book"
+        color: 'neutral'
+        variant: subtle
+        target: _blank
+    badges:
+      - label: FastAPI
+        icon: simple-icons:fastapi
+      - label: MicroPython
+        icon: simple-icons:micro-python
+      - label: ESP32
+        icon: simple-icons:espressif
+      - label: WebSocket
+        icon: i-lucide-radio
+      - label: Cloud Hosted
+        icon: i-lucide-cloud
+      - label: Real-Time
+        icon: i-lucide-bolt
+    skills:
+      - name: Real-Time Vehicle Tracking
+        description: Continuously streams vehicle location and status to a cloud dashboard using WebSocket or HTTP fallback.
+        icon: i-lucide-map-pin
+      - name: Collision Detection & Alerts
+        description: Detects collisions using onboard sensors and instantly notifies the backend and Telegram.
+        icon: i-lucide-alert-triangle
+      - name: Remote Vehicle Control
+        description: Lock, unlock, or trigger emergency stop remotely from the dashboard with instant feedback.
+        icon: i-lucide-lock
+      - name: Cloud API Integration
+        description: FastAPI backend with REST and WebSocket endpoints for seamless data flow and command delivery.
+        icon: i-lucide-server-cog
+      - name: MicroPython on ESP32
+        description: Lightweight, efficient firmware for sensor reading, WiFi, and secure communication.
+        icon: simple-icons:micro-python
+      - name: Secure & Scalable
+        description: Hosted on Render with HTTPS, supporting multiple vehicles and real-time fleet management.
+        icon: i-lucide-shield
+
+
+
 features:
   title: Tech I love working with
   description: These are some of the technologies I've been working with recently. I'm always eager to learn and explore new tools and frameworks.
