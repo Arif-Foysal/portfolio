@@ -49,5 +49,13 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  vite: {
+    resolve: {
+      alias: {
+        'zod/locales': 'zod/lib/locales' // adjust if your zod version uses a different path
+      }
+    }
   }
 })
