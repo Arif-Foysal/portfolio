@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   vite: {
     resolve: {
       alias: {
-        'zod/locales': 'zod/lib/locales' // adjust if your zod version uses a different path
+        // 'zod/locales': 'zod/lib/locales' // adjust if your zod version uses a different path
       }
     }
   }

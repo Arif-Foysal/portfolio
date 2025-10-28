@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
 definePageMeta({
@@ -30,28 +29,34 @@ const fields = [{
   type: 'checkbox' as const
 }]
 
-const providers = [{
-  label: 'Google',
-  icon: 'i-simple-icons-google',
-  onClick: () => {
-    toast.add({ title: 'Google', description: 'Login with Google' })
+const providers = [
+  {
+    label: 'Google',
+    icon: 'i-simple-icons-google',
+    onClick: () => {
+      toast.add({ title: 'Google', description: 'Login with Google' })
+    }
+  },
+  {
+    label: 'GitHub',
+    icon: 'i-simple-icons-github',
+    onClick: () => {
+      toast.add({ title: 'GitHub', description: 'Login with GitHub' })
+    }
   }
-}, {
-  label: 'GitHub',
-  icon: 'i-simple-icons-github',
-  onClick: () => {
-    toast.add({ title: 'GitHub', description: 'Login with GitHub' })
+]
+
+function onSubmit(payload: FormSubmitEvent<any>) {
+  const { email, password } = payload.data
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    toast.add({ title: 'Error', description: 'Please enter a valid email', color: 'error' })
+    return
   }
-}]
-
-const schema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string().min(8, 'Must be at least 8 characters')
-})
-
-type Schema = z.output<typeof schema>
-
-function onSubmit(payload: FormSubmitEvent<Schema>) {
+  if (!password || password.length < 8) {
+    toast.add({ title: 'Error', description: 'Password must be at least 8 characters', color: 'error' })
+    return
+  }
+  // ...proceed with login
   console.log('Submitted', payload)
 }
 </script>
@@ -59,7 +64,6 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
 <template>
   <UAuthForm
     :fields="fields"
-    :schema="schema"
     :providers="providers"
     title="Welcome back"
     icon="i-lucide-lock"
