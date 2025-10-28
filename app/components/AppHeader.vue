@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { tr } from 'zod/locales';
 
 const route = useRoute()
 
