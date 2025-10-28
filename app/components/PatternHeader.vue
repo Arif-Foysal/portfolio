@@ -12,7 +12,7 @@ const props = defineProps<{
    <br>
   <!-- keep the rounded, colored card look but remove any visible border -->
   <div class="m-0 p-0 text-primary bg-white dark:bg-slate-900/60">
-    <hr>
+      <USeparator color="primary" type="solid" size="sm" />
   <div class="relative overflow-hidden p-6 flex items-center justify-center w-full ">
       <!-- kept SVG pattern and removed the dashed border so only the pattern + text show -->
   <svg class="absolute inset-0 h-full w-full stroke-inverted/10 dark:stroke-white/10 opacity-75" fill="none">
@@ -43,7 +43,7 @@ const props = defineProps<{
          <!-- <UPageSection :title="title" :description="description"></UPageSection> -->
       </div>
     </div>
-    <hr>
+      <USeparator color="primary" type="solid" size="sm" />
   </div>
 
 </template>

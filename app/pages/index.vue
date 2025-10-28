@@ -184,18 +184,19 @@ useSeoMeta({
         <!-- <MyCTAs /> -->
       </template>
     </UPageHero>
-<!-- <br> -->
- 
+    <!-- <br> -->
+
 
     <div>
       <PatternHeader :title="page.features.title" />
     </div>
     <UPageSection>
       <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight 
-            spotlight-color="secondary"
-            
-          :ui="{ title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted' }">
+        <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight
+          spotlight-color="secondary" :ui="{
+              root: 'ring-2 before:-inset-[2px]', // or ring-4, ring-8 for even thicker borders
+              title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted'
+          }">
           <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
             <div v-for="tech in item.technologies" :key="tech.name"
               class="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-200">
@@ -214,41 +215,28 @@ useSeoMeta({
 
     <section class="">
 
-      <div >
+      <div>
         <PatternHeader title="Projects I've built" />
       </div>
 
-  
-<br> <br>
+
+      <br> <br>
 
 
-<!-- Projects section -->
+      <!-- Projects section -->
+      <USeparator color="secondary" type="solid" size="sm" />
       <div v-for="(section, index) in page.sections" :key="index" class="text-secondary">
-        <hr />
-        <UPageSection
-          :title="section.title"
-          :description="section.description"
-          :orientation="section.orientation"
-          :reverse="section.reverse"
-          :links="section.links"
-          :features="section.features"
-          :ui="{ container: 'border-l border-r border-secondary cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 ' }"
-        >
+        <UPageSection :title="section.title" :description="section.description" :orientation="section.orientation"
+          :reverse="section.reverse" :links="section.links" :features="section.features"
+          :ui="{ container: ' md:border-l-2 md:border-r-2 border-secondary cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 ' }">
           <template #title>
             <section class="flex flex-col gap-4">
               <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
                 {{ section.title }}
               </h2>
               <div class="flex gap-2 flex-wrap">
-                <UBadge
-                  v-for="(badge, i) in section.badges"
-                  :key="i"
-                  :icon="badge.icon"
-                  size="lg"
-                  color="neutral"
-                  variant="subtle"
-                  class="tracking-wider"
-                >
+                <UBadge v-for="(badge, i) in section.badges" :key="i" :icon="badge.icon" size="lg" color="neutral"
+                  variant="subtle" class="tracking-wider">
                   {{ badge.label }}
                 </UBadge>
               </div>
@@ -256,17 +244,15 @@ useSeoMeta({
           </template>
 
           <div class="mt-6 w-full ">
-            <img
-              src="/projects/blue-horizon/main.jpg"
-              :alt="section.title + ' screenshot'"
+            <img src="/projects/blue-horizon/main.jpg" :alt="section.title + ' screenshot'"
               class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
-              loading="lazy"
-            />
+              loading="lazy" />
           </div>
         </UPageSection>
 
         <!-- divider after each section (omit after last to avoid duplicate separators) -->
-        <hr/>
+        <!-- <hr class="border-secondary" /> -->
+        <USeparator color="secondary" type="solid" size="sm" />
       </div>
     </section>
 
