@@ -4,6 +4,20 @@ const colorMode = useColorMode()
 const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
 
 useHead({
+    script: [
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-TX19JXTE2L',
+      async: true
+    },
+    {
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TX19JXTE2L');
+      `
+    }
+  ],
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
