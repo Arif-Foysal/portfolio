@@ -104,8 +104,6 @@ sections:
         icon: devicon:tailwindcss
       - label: AI Integration
         icon: simple-icons:openai
-      - label: REST API
-        icon: simple-icons:api
       - label: Agile
         icon: simple-icons:jirasoftware
     skills:
@@ -138,6 +136,12 @@ sections:
         icon: "i-lucide-play"
         color: 'neutral'
         variant: solid
+        target: _blank
+      - label: "Notebook"
+        to: "https://example.com/blue-horizon/docs"
+        icon: "devicon:googlecolab"
+        color: 'neutral'
+        variant: subtle 
         target: _blank
       - label: "GitHub"
         to: "https://github.com/your-repo/skincheck-ai"
@@ -176,9 +180,74 @@ sections:
       - name: Scalable Deployment
         description: Deployed online for live access with integrated authentication and storage, enabling real-time image analysis from anywhere.
         icon: i-lucide-globe
+  - title: Resumind
+    reverse: true
+    description: Resumind is an AI-powered resume builder that helps users create professional, personalized, and ATS-friendly resumes in minutes. Built with Nuxt for an elegant, interactive interface and Django for scalable backend APIs, it integrates OpenAI’s generative models to automatically craft job descriptions, summarize achievements, and tailor content for specific roles — making resume building faster and smarter than ever.
+    id: projects
+    orientation: horizontal
+    links:
+      - label: "Try Demo"
+        to: "https://arif.it.com/projects/resumind"
+        icon: "i-lucide-play"
+        color: 'secondary'
+        variant: solid
+        target: _blank
+      - label: "GitHub"
+        to: "https://github.com/arif-foysal/resumind"
+        icon: "i-lucide-github"
+        color: 'neutral'
+        variant: solid
+        target: _blank
+      - label: "Learn More"
+        to: "https://arif.it.com/projects/resumind"
+        icon: "i-lucide-book"
+        color: 'neutral'
+        variant: subtle
+        target: _blank
+    badges:
+      - label: Nuxt
+        icon: devicon:nuxtjs
+      - label: Django
+        icon: logos:django-icon
+      - label: Tailwind CSS
+        icon: devicon:tailwindcss
+      - label: LangGraph
+        icon: simple-icons:langgraph
+      - label: OpenAI API
+        icon: simple-icons:openai
+      - label: ChromaDB
+        icon: logos:chroma
+      - label: PostgreSQL
+        icon: devicon:postgresql
+      - label: JWT Auth
+        icon: logos:jwt-icon
+      - label: REST API
+        icon: i-lucide-network
+      - label: Generative AI
+        icon: i-lucide-brain-circuit
+    skills:
+      - name: Generative Resume Creation
+        description: Uses OpenAI’s GPT models to generate tailored, context-aware resumes — adapting tone, structure, and achievements for each job role.
+        icon: i-lucide-bot
+      - name: Smart Suggestions
+        description: Real-time improvement tips for grammar, clarity, and keyword optimization to enhance ATS ranking and readability.
+        icon: i-lucide-lightbulb
+      - name: Live Preview Editor
+        description: Rich text editor built with Nuxt for instant AI-assisted edits and real-time visual preview of resumes.
+        icon: i-lucide-edit
+      - name: User Authentication & Storage
+        description: Secure account management and resume storage handled via Django REST API and JWT-based authentication.
+        icon: i-lucide-lock
+      - name: Template Customization
+        description: Offers elegant, mobile-friendly resume templates built with Tailwind CSS and dynamic user data injection.
+        icon: i-lucide-layout-template
+      - name: AI-Powered Optimization
+        description: Analyzes content tone, action verbs, and industry keywords to improve professional appeal and match rate.
+        icon: i-lucide-gauge
+
 
   - title: ESP32 Vehicle Tracker
-    reverse: true
+    reverse: false
     description: ESP32 Vehicle Tracker is a real-time vehicle monitoring and control system powered by MicroPython and FastAPI. It enables live tracking, collision detection, and remote vehicle control via a cloud dashboard. The system integrates sensor data, secure cloud APIs, and a modern web interface for reliable and accessible fleet management.
     id: projects
     orientation: horizontal
@@ -195,7 +264,7 @@ sections:
         color: 'neutral'
         variant: solid
         target: _blank
-      - label: "API Docs"
+      - label: "Learn More"
         to: "https://esp32-vehicle-tracker.onrender.com/docs"
         icon: "i-lucide-book"
         color: 'neutral'
@@ -205,7 +274,9 @@ sections:
       - label: FastAPI
         icon: simple-icons:fastapi
       - label: MicroPython
-        icon: simple-icons:micro-python
+      # icon: "simple-icons:micropython", iconClass: "text-green-500" 
+        icon: simple-icons:micropython
+        iconClass: text-green-500
       - label: ESP32
         icon: simple-icons:espressif
       - label: WebSocket

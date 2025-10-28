@@ -28,8 +28,8 @@ const skillsData: SkillItem[] = [
       { name: "Vite", icon: "vscode-icons:file-type-vite" },
       { name: "TypeScript", icon: "devicon:typescript" },
       { name: "JavaScript", icon: "devicon:javascript" },
-      { name: "HTML5", icon: "devicon:html5" },
-      { name: "Markdown", icon: "vscode-icons:file-type-markdown" }
+      // { name: "HTML5", icon: "devicon:html5" },
+      { name: "Markdown", icon: "fa7-brands:markdown" }
     ]
   },
   {
