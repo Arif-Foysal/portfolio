@@ -29,6 +29,7 @@ const skillsData: SkillItem[] = [
       { name: "TypeScript", icon: "devicon:typescript" },
       { name: "JavaScript", icon: "devicon:javascript" },
       { name: "HTML5", icon: "devicon:html5" },
+      { name: "Markdown", icon: "vscode-icons:file-type-markdown" }
     ]
   },
   {
