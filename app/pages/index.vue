@@ -255,7 +255,7 @@ useSeoMeta({
         <USeparator color="secondary" type="solid" size="sm" />
       </div>
     </section>
-
+<!-- 
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns class="xl:columns-4">
@@ -267,7 +267,7 @@ useSeoMeta({
           </template>
         </UPageCard>
       </UPageColumns>
-    </UPageSection>
+    </UPageSection> -->
 
     <USeparator />
 

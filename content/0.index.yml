@@ -3,8 +3,8 @@ title: "Hey there, <br>I'm [Arif Foysal]{class=\"text-primary\"}.<br>[AI and Sof
 
 description: I help startups scale their business with intelligent software solutions. From AI-powered features to full-stack development, I turn ideas into reality.
 seo:
-  title: Nuxt UI SaaS Template
-  description: Create stunning, fast and production-ready SaaS applications with Nuxt UI. 100+ Vue components, authentication, dark mode, and enterprise features built on Tailwind CSS.
+  title: Arif Foysal - AI & Software Engineer
+  description: Arif Foysal is an AI & Software Engineer specializing in web development, ai engineering and intelligent automation. Passionate about building scalable digital solutions that solve real-world problems.
 navigation: false
 hero:
   links:
@@ -395,15 +395,15 @@ testimonials:
         avatar:
           src: https://i.pravatar.cc/120?img=14
 cta:
-  title: Ready to build an amazing SaaS?
-  description: Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today.
+  title: Got an idea you want to bring to life?
+  description: Let’s collaborate and turn your vision into something real.
   links:
-    - label: Start building
-      to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt'
+    - label: Send me an email
+      to: 'mailto:ariffaysal.nayem@gmail.com'
       target: _blank
-      trailingIcon: i-lucide-arrow-right
-    - label: View on GitHub
-      to: 'https://github.com/nuxt-ui-templates/saas'
+      icon: material-symbols:mail-outline-rounded
+    - label: Find me on GitHub
+      to: 'https://github.com/arif-foysal'
       target: _blank
       variant: subtle
       icon: i-simple-icons-github

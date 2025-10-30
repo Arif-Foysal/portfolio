@@ -7,23 +7,23 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-og-image',
-    'nuxt-gtag'
+    // 'nuxt-gtag'
   ],
 
 
-  runtimeConfig: {
-    public: {
-      gaId: process.env.NUXT_PUBLIC_GA_ID || '',               // set in Netlify UI
-      enableAnalytics: process.env.NUXT_PUBLIC_ENABLE_ANALYTICS === 'true'
-    }
-  },
+  // runtimeConfig: {
+  //   public: {
+  //     gaId: process.env.NUXT_PUBLIC_GA_ID || '',               // set in Netlify UI
+  //     enableAnalytics: process.env.NUXT_PUBLIC_ENABLE_ANALYTICS === 'true'
+  //   }
+  // },
 
-  gtag: {
-    id: process.env.NUXT_PUBLIC_GA_ID || '',
-  },
-  devtools: {
-    enabled: true
-  },
+  // gtag: {
+  //   id: process.env.NUXT_PUBLIC_GA_ID || '',
+  // },
+  // devtools: {
+  //   enabled: true
+  // },
 
   css: ['~/assets/css/main.css'],
 
