@@ -28,7 +28,7 @@ const items = ref([
 </script>
 
 <template>
-  <div v-if="page">
+  <!-- <div v-if="page">
     <UPageHero
       :title="page.title"
       :description="page.description"
@@ -88,5 +88,5 @@ const items = ref([
         }"
       />
     </UPageSection>
-  </div>
+  </div> -->
 </template>
