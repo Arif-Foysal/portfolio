@@ -4,18 +4,23 @@ const colorMode = useColorMode()
 const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
 
 useHead({
-    script: [
+  script: [
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-TX19JXTE2L',
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-7TDVVLESDH',
       async: true
     },
     {
-      children: `
+      innerHTML: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-TX19JXTE2L');
-      `
+        gtag('config', 'G-7TDVVLESDH');
+      `,
+      type: 'text/javascript',
+      tagPosition: 'head',
+      // Needed for Nuxt to allow inline scripts
+      // @ts-ignore
+      'data-hid': 'gtag-inline',
     }
   ],
   meta: [
