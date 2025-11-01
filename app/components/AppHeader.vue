@@ -20,20 +20,17 @@ const items = computed(() => [
   to: '/docs',
   active: route.path.startsWith('/docs'),
   icon: 'i-lucide-book-open'
-}, {
-  label: 'About',
-  to: '/about',
-  icon: 'i-lucide-user'
-}, {
+}, 
+{
   label: 'Blog',
   to: '/blog',
   icon: 'i-lucide-file-text'
-}, {
-  label: 'Changelog',
-  to: '/changelog'
-},
-
-
+}, 
+{
+  label: 'About',
+  to: '/about',
+  icon: 'i-lucide-user'
+}, 
 ])
 </script>
 
