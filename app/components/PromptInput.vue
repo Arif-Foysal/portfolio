@@ -1,16 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useChatState } from '~/composables/useChat';
+const { initialMessage } = useChatState()
 
+const loading = ref(false)
 const prompt = ref('')
 const errorlabel = ref('')
+const router = useRouter()
 const handleChat = () => {
   if (prompt.value.trim() === '') {
     errorlabel.value = 'Please enter a prompt.'
     return
   }
-  // For demonstration, we'll just log the prompt. Replace this with actual chat logic.
-  console.log('User prompt:', prompt.value)
-  prompt.value = ''
+  initialMessage.value = prompt.value
+  errorlabel.value = ''
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+    router.push({ path: '/chat', query: { prompt: prompt.value } })
+  }, 2000); // Simulate async operation
+  // prompt.value = ''
 }
 
 </script>
@@ -26,6 +36,7 @@ const handleChat = () => {
         icon="material-symbols:magic-button-outline" 
         color="primary" 
         @click="handleChat"
+        :loading="loading"
       > 
         Chat Now
       </UButton>
