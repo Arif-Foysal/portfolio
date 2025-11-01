@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import PromptInput from '~/components/PromptInput.vue'
 import { Icon } from '@iconify/vue'
+import { ref } from 'vue';
+
 
 interface Technology {
   name: string;
