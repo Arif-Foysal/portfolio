@@ -15,8 +15,8 @@ const handleChat = () => {
 
 </script>
 <template>
-  <UFormField :label="errorlabel" color="error">
-    <UFieldGroup class="w-full" size="xl">
+  <UFormField :label="errorlabel" size="xl" color="error">
+    <UFieldGroup class="w-full" >
       <UInput 
         v-model="prompt" 
         color="secondary" 
