@@ -19,12 +19,12 @@ const handleChat = () => {
     <UFieldGroup class="w-full" >
       <UInput 
         v-model="prompt" 
-        color="secondary" 
+        color="primary" 
         placeholder="Ask anything about me..." 
       />
       <UButton 
         icon="material-symbols:magic-button-outline" 
-        color="secondary" 
+        color="primary" 
         @click="handleChat"
       > 
         Chat Now
