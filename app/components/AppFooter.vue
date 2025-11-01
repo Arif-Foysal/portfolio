@@ -95,7 +95,7 @@ function onSubmit() {
     </template>
 
     <template #right>
-      <UButton
+      <!-- <UButton
         to="https://go.nuxt.com/discord"
         target="_blank"
         icon="i-simple-icons-discord"
@@ -118,7 +118,8 @@ function onSubmit() {
         aria-label="Nuxt UI on GitHub"
         color="neutral"
         variant="ghost"
-      />
+      /> -->
+      <SocialIcons />
     </template>
   </UFooter>
 </template>
