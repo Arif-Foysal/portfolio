@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useToast } from '#imports'
+
 const columns = [{
   label: 'Resources',
   children: [{
@@ -39,9 +42,26 @@ const toast = useToast()
 const email = ref('')
 const loading = ref(false)
 
-function onSubmit() {
-  loading.value = true
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
 
+async function onSubmit() {
+  if (!isValidEmail(email.value)) {
+    toast.clear() // Clear previous toasts
+    toast.add({
+      title: 'Invalid Email',
+      description: 'Please enter a valid email address.',
+      color: 'error'
+    })
+    return
+  }
+  loading.value = true
+  // Mock API call: wait 2 seconds
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  loading.value = false
+
+  toast.clear() // Clear previous toasts
   toast.add({
     title: 'Subscribed!',
     description: 'You\'ve been subscribed to our newsletter.'
@@ -50,10 +70,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <USeparator
-    icon="i-simple-icons-nuxtdotjs"
-    class="h-px"
-  />
+  <USeparator icon="i-simple-icons-nuxtdotjs" class="h-px" />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
@@ -61,26 +78,13 @@ function onSubmit() {
         <UFooterColumns :columns="columns">
           <template #right>
             <form @submit.prevent="onSubmit">
-              <UFormField
-                name="email"
-                label="Subscribe to our newsletter"
-                size="lg"
-              >
-                <UInput
-                  v-model="email"
-                  type="email"
-                  class="w-full"
-                  placeholder="Enter your email"
-                >
-                  <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      color="neutral"
-                      label="Subscribe"
-                    />
-                  </template>
-                </UInput>
+              <UFormField size="xl" >
+                <UFieldGroup class="w-full">
+                  <UInput v-model="email" color="primary" placeholder="Your Email" />
+                  <UButton  type="submit" icon="ic:outline-email" color="primary" :loading="loading">
+                    Subscribe
+                  </UButton>
+                </UFieldGroup>
               </UFormField>
             </form>
           </template>
@@ -95,30 +99,7 @@ function onSubmit() {
     </template>
 
     <template #right>
-      <!-- <UButton
-        to="https://go.nuxt.com/discord"
-        target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Nuxt on Discord"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://go.nuxt.com/x"
-        target="_blank"
-        icon="i-simple-icons-x"
-        aria-label="Nuxt on X"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://github.com/nuxt-ui-templates/saas"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="Nuxt UI on GitHub"
-        color="neutral"
-        variant="ghost"
-      /> -->
+
       <SocialIcons />
     </template>
   </UFooter>
