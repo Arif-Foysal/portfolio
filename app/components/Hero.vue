@@ -33,7 +33,7 @@ const links = ref([
         alt="App screenshot"
         class="rounded-lg shadow-2xl ring ring-default"
       />
-      <ContactIcons />
+      <!-- <ContactIcons /> -->
     </div>
   </UPageHero>
 </template>

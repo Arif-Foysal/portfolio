@@ -178,10 +178,12 @@ useSeoMeta({
         <MDC :value="page.title" unwrap="p" class="leading-tight" />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
+      
       <template #links>
-        <PromptInput />
-        <ContactIcons />
-        <!-- <MyCTAs /> -->
+        <div class="flex flex-col justify-center items-center gap-8">
+          <PromptInput />
+          <SocialIcons />
+        </div>
       </template>
     </UPageHero>
     <!-- <br> -->
