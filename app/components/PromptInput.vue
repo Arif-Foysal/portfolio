@@ -31,6 +31,7 @@ const handleChat = () => {
         <UInput
           v-model="prompt"
           color="primary"
+          variant="outline"
           placeholder="Ask anything about me..."
           :disabled="loading"
           class="flex-1 w-full"

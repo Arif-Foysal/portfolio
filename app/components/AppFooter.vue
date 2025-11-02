@@ -94,7 +94,7 @@ async function onSubmit() {
 
     <template #left>
       <p class="text-muted text-sm">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+      © {{ new Date().getFullYear() }} Arif Foysal - All rights reserved.
       </p>
     </template>
 
