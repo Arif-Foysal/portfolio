@@ -127,13 +127,6 @@ const Projectlinks = ref([
     icon: 'i-lucide-square-play',
     color: 'neutral'
   },
-  // {
-  //   label: 'Explore components',
-  //   to: '/docs/components/app',
-  //   color: 'neutral',
-  //   variant: 'subtle',
-  //   trailingIcon: 'i-lucide-arrow-right'
-  // }
 ])
 
 
@@ -153,24 +146,7 @@ useSeoMeta({
 
 <template>
   <div class="" v-if="page">
-    <!-- <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.hero.links"
-    >
-      <template #top>
-        <HeroBackground />
-      </template>
 
-<template #title>
-        <MDC
-          :value="page.title"
-          unwrap="p"
-        />
-      </template>
-
-<PromotionalVideo />
-</UPageHero> -->
     <UPageHero :title="page.title" :description="page.description" :links="page.hero.links" headline="Welcome"
       orientation="horizontal">
       <template #top>
@@ -182,11 +158,12 @@ useSeoMeta({
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
       
       <template #links>
-        <div class="flex flex-col justify-center items-center gap-8">
+        <div class="flex flex-col justify-center items-center gap-8 w-full">
           <PromptInput />
           <SocialIcons />
         </div>
       </template>
+      <LazyStarsBg />
     </UPageHero>
     <!-- <br> -->
 

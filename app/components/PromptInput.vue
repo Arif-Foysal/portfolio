@@ -18,28 +18,43 @@ const handleChat = () => {
   loading.value = true
   setTimeout(() => {
     loading.value = false
-    router.push({ path: '/chat', query: { prompt: prompt.value } })
+    router.push({ path: '/chat' })
   }, 2000); // Simulate async operation
   // prompt.value = ''
 }
 
 </script>
 <template>
-  <UFormField :label="errorlabel" size="xl" color="error">
-    <UFieldGroup class="w-full" >
-      <UInput 
-        v-model="prompt" 
-        color="primary" 
-        placeholder="Ask anything about me..." 
-      />
-      <UButton 
-        icon="material-symbols:magic-button-outline" 
-        color="primary" 
-        @click="handleChat"
-        :loading="loading"
-      > 
-        Chat Now
-      </UButton>
-    </UFieldGroup>
-  </UFormField>
+  <form @submit.prevent="handleChat" class="w-full">
+    <UFormField :label="errorlabel" size="xl" color="error" class="w-full">
+      <UFieldGroup class="w-full">
+        <UInput
+          v-model="prompt"
+          color="primary"
+          placeholder="Ask anything about me..."
+          :disabled="loading"
+          class="flex-1 w-full"
+              :ui="{ 
+      base: 'md:px-4 md:py-3 md:text-xl md:placeholder:text-xl',
+      leadingIcon: 'md:size-7',
+      trailingIcon: 'md:size-7'
+    }"
+        />
+        <UButton
+          icon="material-symbols:magic-button-outline"
+          color="primary"
+          @click="handleChat"
+          :loading="loading"
+          class="shrink-0"
+              :ui="{ 
+      base: 'md:px-4 md:py-3 md:text-xl md:gap-2.5',
+      leadingIcon: 'md:size-7',
+      trailingIcon: 'md:size-7'
+    }"
+        >
+          Chat Now
+        </UButton>
+      </UFieldGroup>
+    </UFormField>
+  </form>
 </template>
