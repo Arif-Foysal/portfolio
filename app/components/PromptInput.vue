@@ -36,9 +36,9 @@ const handleChat = () => {
           :disabled="loading"
           class="flex-1 w-full"
               :ui="{ 
-      base: 'md:px-4 md:py-3 md:text-xl md:placeholder:text-xl',
-      leadingIcon: 'md:size-7',
-      trailingIcon: 'md:size-7'
+      base: 'px-3 py-3 md:px-4 md:py-3 text-md md:text-xl md:placeholder:text-xl',
+      leadingIcon: ' md:size-7',
+      trailingIcon: ' md:size-7'
     }"
         />
         <UButton
@@ -48,7 +48,7 @@ const handleChat = () => {
           :loading="loading"
           class="shrink-0"
               :ui="{ 
-      base: 'md:px-4 md:py-3 md:text-xl md:gap-2.5',
+      base: 'md:px-4 md:py-3 text-md md:text-xl md:gap-2.5',
       leadingIcon: 'md:size-7',
       trailingIcon: 'md:size-7'
     }"
