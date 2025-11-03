@@ -213,10 +213,8 @@ const startReveal = () => {
     }
   }
 
-  // Start with a small delay to ensure DOM is ready
-  setTimeout(() => {
-    revealNext()
-  }, 100)
+  // Start immediately without any delay
+  revealNext()
 }
 
 // Reset animation
@@ -236,6 +234,7 @@ defineExpose({
 // Auto-start on mount
 onMounted(() => {
   if (props.autoStart) {
+    // Start immediately without any delay
     startReveal()
   }
 })

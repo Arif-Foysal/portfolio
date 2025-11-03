@@ -164,6 +164,7 @@ useSeoMeta({
           :revealMs="150"
           :stagger="30"
           :showShimmer="false"
+          :autoStart="true"
           class="text-lg leading-relaxed"
         />
       </template>
