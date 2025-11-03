@@ -10,18 +10,36 @@ const posts = ref([
     }
   },
   {
-    title: 'Nuxt 3.14',
-    description: 'Nuxt 3.14 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.14.png',
+    title: 'Champion - UIU CSE Project Show, Fall 2023',
+    description: 'Nuxt 3.13 is out!',
+    image: '/projects/blue-horizon/award.jpg',
     date: '2024-11-04',
     ui: {
       title: 'text-2xl sm:text-3xl font-bold'
     }
   },
   {
-    title: 'Nuxt 3.13',
+    title: 'Finalist - National Project Showcase, Inventious 4.1, MIST',
     description: 'Nuxt 3.13 is out!',
-    image: 'https://nuxt.com/assets/blog/v3.13.png',
+    image: '/certs/inventious.png',
+    date: '2024-08-22',
+    ui: {
+      title: 'text-2xl sm:text-3xl font-bold'
+    }
+  },
+    {
+    title: 'Finalist - National Project Showcase, Hult Prize Bangladesh 2025',
+    description: 'Nuxt 3.13 is out!',
+    image: '/hult2.jpg',
+    date: '2024-08-22',
+    ui: {
+      title: 'text-2xl sm:text-3xl font-bold'
+    }
+  },
+      {
+    title: 'Google IT Support Professional Certificate',
+    description: 'Nuxt 3.13 is out!',
+    image: '/certs/os&u.jpg',
     date: '2024-08-22',
     ui: {
       title: 'text-2xl sm:text-3xl font-bold'
@@ -31,8 +49,12 @@ const posts = ref([
 </script>
 
 <template>
-  <UBlogPosts 
+
+
+    <UBlogPosts 
+ 
     orientation="vertical" 
     :posts="posts" 
-  />
+    />
+ 
 </template>

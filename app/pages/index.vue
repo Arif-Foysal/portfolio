@@ -155,7 +155,7 @@ useSeoMeta({
       <template #title>
         <MDC :value="page.title" unwrap="p" class="leading-tight" />
       </template>
-      <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
+      <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl  drop-shadow-[0_0_15px_var(--ui-primary)]" />
 
       <template #links>
         <div class="flex flex-col justify-center items-center gap-8 w-full">

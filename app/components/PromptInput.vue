@@ -30,7 +30,7 @@ const handleChat = () => {
       <UFieldGroup class="w-full">
         <UInput
           v-model="prompt"
-          color="primary"
+          color="secondary"
           variant="outline"
           placeholder="Ask anything about me..."
           :disabled="loading"
@@ -43,7 +43,7 @@ const handleChat = () => {
         />
         <UButton
           icon="material-symbols:magic-button-outline"
-          color="primary"
+          color="secondary"
           @click="handleChat"
           :loading="loading"
           class="shrink-0"
