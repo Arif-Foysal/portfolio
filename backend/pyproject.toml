@@ -6,6 +6,10 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "fastapi>=0.120.4",
+    "langchain>=1.0.3",
+    "langchain-community>=0.4.1",
+    "langchain-openai>=1.0.2",
+    "openai>=2.6.1",
     "pydantic[email]>=2.12.3",
     "python-dotenv>=1.2.1",
     "supabase>=2.23.0",

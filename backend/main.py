@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from config import settings
-from routes import main as main_routes, newsletter
+from routes import main as main_routes, newsletter, chat
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -22,7 +22,8 @@ app.add_middleware(
 # Include routers
 app.include_router(main_routes.router)
 app.include_router(newsletter.router)
-
+app.include_router(chat.router)
+    
 def run_server():
     """Run the FastAPI application locally"""
     print(f"Starting {settings.APP_NAME}...")

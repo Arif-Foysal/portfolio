@@ -25,3 +25,8 @@ logs
 
 # VSC
 .history
+
+
+#backend
+__pycache__
+*.pyc

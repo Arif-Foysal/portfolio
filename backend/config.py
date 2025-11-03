@@ -12,6 +12,9 @@ class Settings:
     SUPABASE_URL: Optional[str] = os.environ.get("SUPABASE_URL")
     SUPABASE_KEY: Optional[str] = os.environ.get("SUPABASE_KEY")
     
+    # OpenAI configuration
+    OPENAI_API_KEY: Optional[str] = os.environ.get("OPENAI_API_KEY")
+    
     # Server configuration
     HOST: str = os.environ.get("HOST", "0.0.0.0")
     PORT: int = int(os.environ.get("PORT", "8000"))
