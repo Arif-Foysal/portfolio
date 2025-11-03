@@ -9,7 +9,17 @@
 
 # Urgent fixes
 - [ ] Add photos to all projects
-- [ ] Change the prompt input box design to match the overall site theme
+- [x] Change the prompt input box design to match the overall site theme
+- [x] Fix the newsletter duplicate email error handling
+- [x] Fix the Vercel deployment so that the backend works correctly
+- [x] Add education and achievements sections
+Achievements to add:
+1. finalist, uiu cse fest
+2. Champion, uiu cse project show
+3. finalist, mist invention
+4. finalist, hult prize bangladesh
+5. google tech support certification - operating system and you: becoming a power user
+6.  
 # Later improvements
 - [ ] Project DetailsPage
 - [ ] Add videos and gifs in the projects section

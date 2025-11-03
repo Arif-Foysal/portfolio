@@ -156,7 +156,7 @@ useSeoMeta({
         <MDC :value="page.title" unwrap="p" class="leading-tight" />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
-      
+
       <template #links>
         <div class="flex flex-col justify-center items-center gap-8 w-full">
           <PromptInput />
@@ -175,8 +175,8 @@ useSeoMeta({
       <div class="relative grid grid-cols-1 xl:grid-cols-2 gap-8">
         <UPageCard v-for="item in skillsData" :key="item.title" :title="item.title" spotlight
           spotlight-color="secondary" :ui="{
-              root: 'ring-2 before:-inset-[2px]', // or ring-4, ring-8 for even thicker borders
-              title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted'
+            root: 'ring-2 before:-inset-[2px]', // or ring-4, ring-8 for even thicker borders
+            title: 'text-xl sm:text-2xl lg:text-3xl font-medium text-highlighted'
           }">
           <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
             <div v-for="tech in item.technologies" :key="tech.name"
@@ -235,8 +235,28 @@ useSeoMeta({
         <!-- <hr class="border-secondary" /> -->
         <USeparator color="secondary" type="solid" size="sm" />
       </div>
+      <br> <br>
+
+      <div>
+        <PatternHeader title="Education" />
+      </div>
+      <br> <br>
+      <section class="max-w-7xl  mx-auto ">
+        <Education />
+      </section>
+      <br> <br>
     </section>
-<!-- 
+
+    <section>
+      <PatternHeader title="Achievements" />
+      <br> <br>
+      <section class="max-w-7xl  mx-auto ">
+        <Achievements />
+      </section>
+      <br> <br>
+    </section>
+
+    <!-- 
     <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns class="xl:columns-4">
