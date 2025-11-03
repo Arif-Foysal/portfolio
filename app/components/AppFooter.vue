@@ -56,16 +56,57 @@ async function onSubmit() {
     })
     return
   }
+  
   loading.value = true
-  // Mock API call: wait 2 seconds
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  loading.value = false
-
-  toast.clear() // Clear previous toasts
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
+  
+  try {
+    const response = await fetch('https://portfolio-lyart-rho-bxg93lsyt1.vercel.app/newsletter/subscribe', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email.value
+      })
+    })
+    
+    const data = await response.json()
+    
+    toast.clear() // Clear previous toasts
+    
+    if (response.ok && data.success) {
+      toast.add({
+        title: 'Subscribed!',
+        description: data.message || 'You\'ve been subscribed to our newsletter.'
+      })
+      email.value = '' // Clear the email input
+    } else if (response.ok && !data.success) {
+      // Handle case where email is already subscribed
+      toast.add({
+        title: 'Already Subscribed',
+        description: data.message || 'You are already subscribed.',
+        color: 'warning'
+      })
+    } else {
+      // Handle HTTP errors
+      toast.add({
+        title: 'Subscription Failed',
+        description: 'There was an error subscribing to the newsletter. Please try again.',
+        color: 'error'
+      })
+    }
+  } catch (error) {
+    console.error('Newsletter subscription error:', error)
+    toast.clear()
+    toast.add({
+      title: 'Network Error',
+      description: 'Unable to connect to the server. Please check your connection and try again.',
+      color: 'error'
+    })
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 

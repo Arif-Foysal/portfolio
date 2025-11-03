@@ -20,14 +20,14 @@ const skillsData: SkillItem[] = [
     title: "Front End",
     technologies: [
       { name: "Vue", icon: "devicon:vuejs" },
-      { name: "React", icon: "devicon:react" },
-      { name: "Svelte", icon: "vscode-icons:file-type-svelte" },
-      { name: "Shadcn", icon: "vscode-icons:file-type-shadcn" },
       { name: "Nuxt", icon: "devicon:nuxtjs" },
+      { name: "React", icon: "devicon:react" },
       { name: "Next.js", icon: "devicon:nextjs" },
-      { name: "TailwindCSS", icon: "devicon:tailwindcss" },
-      { name: "Streamlit", icon: "logos:streamlit" },
       { name: "Vite", icon: "vscode-icons:file-type-vite" },
+      { name: "Shadcn", icon: "simple-icons:shadcnui" },
+      { name: "Svelte", icon: "vscode-icons:file-type-svelte" },
+      { name: "Streamlit", icon: "logos:streamlit" },
+      { name: "TailwindCSS", icon: "devicon:tailwindcss" },
       { name: "TypeScript", icon: "devicon:typescript" },
       { name: "JavaScript", icon: "devicon:javascript" },
       // { name: "HTML5", icon: "devicon:html5" },
@@ -101,6 +101,7 @@ const skillsData: SkillItem[] = [
     title: "Testing",
     technologies: [
       { name: "Postman", icon: "devicon:postman" },
+      { name: "Curl", icon: "simple-icons:curl" },
       { name: "Swagger", icon: "devicon:swagger" },
       { name: "Pytest", icon: "vscode-icons:file-type-pytest" },
     ]
@@ -114,7 +115,6 @@ const skillsData: SkillItem[] = [
       { name: "Arduino", icon: "devicon:arduino" },
       { name: "Vim", icon: "devicon:vim" },
       { name: "Bash", icon: "logos:bash-icon" },
-      { name: "WebAssembly", icon: "simple-icons:webassembly" },
       { name: "WebRTC", icon: "simple-icons:webrtc" },
     ]
   },
