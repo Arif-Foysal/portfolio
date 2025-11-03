@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PromptInput from '~/components/PromptInput.vue'
+import TextGen from '~/components/TextGen.vue'
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue';
 
@@ -147,13 +148,24 @@ useSeoMeta({
 <template>
   <div class="" v-if="page">
 
-    <UPageHero :title="page.title" :description="page.description" :links="page.hero.links" headline="Welcome"
+    <UPageHero :title="page.title" :links="page.hero.links" headline="Welcome"
       orientation="horizontal">
       <template #top>
         <HeroBackground />
       </template>
       <template #title>
         <MDC :value="page.title" unwrap="p" class="leading-tight" />
+      </template>
+      <template #description>
+        <TextGen
+          :byWord="true"
+          wordEffect="fade"
+          :text="page.description"
+          :revealMs="150"
+          :stagger="30"
+          :showShimmer="false"
+          class="text-lg leading-relaxed"
+        />
       </template>
       <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl  drop-shadow-[0_0_15px_var(--ui-primary)]" />
 
