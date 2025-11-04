@@ -3,7 +3,7 @@ const posts = ref([
   {
     title: 'Finalist – National Project Showcase, UIU CSE Fest',
     description: 'Selected as a finalist in the national-level project showcase at UIU CSE Fest — recognized among top student innovators for presenting a solution-driven tech project demonstrating strong concept, execution and real-world relevance.',
-    image: 'https://nuxt.com/assets/blog/nuxt-icon/cover.png',
+    image: '/projectshow.jpg',
     date: '2024-11-25',
     ui: {
       title: 'text-2xl sm:text-3xl font-bold'

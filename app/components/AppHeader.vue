@@ -26,11 +26,11 @@ const items = computed(() => [
   to: '/blog',
   icon: 'i-lucide-file-text'
 }, 
-{
-  label: 'About',
-  to: '/about',
-  icon: 'i-lucide-user'
-}, 
+// {
+//   label: 'About',
+//   to: '/about',
+//   icon: 'i-lucide-user'
+// }, 
 ])
 </script>
 

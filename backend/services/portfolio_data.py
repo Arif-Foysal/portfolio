@@ -18,28 +18,52 @@ class PortfolioDataService:
         # Projects data
         self.projects = [
             ProjectData(
-                name="Skin Disease Detection System",
-                description="AI-powered mobile application for detecting skin diseases using computer vision and deep learning",
-                technologies=["Python", "TensorFlow", "Flutter", "FastAPI", "OpenCV"],
-                link="https://example.com/skin-detection",
-                github_link="https://github.com/arif-foysal/skin-detection",
-                image="/projects/skin-detection.jpg"
+                name="Blue Horizon ROV",
+                description="An advanced Remotely Operated Vehicle (ROV) designed for underwater exploration and research. Equipped with high-definition cameras, sonar systems, and robotic arms, it enables scientists to study marine environments in detail while ensuring safety and efficiency.",
+                technologies=["Raspberry Pi", "ESP32", "Arduino", "C++", "Python", "Flask", "JavaScript", "WebRTC"],
+                link="https://example.com/blue-horizon",
+                github_link="https://github.com/arif-foysal/blue-horizon-rov",
+                image="/projects/blue-horizon/main.jpg"
+            ),
+            ProjectData(
+                name="Adventure Amigos",
+                description="A smart tourism web application designed to make traveling seamless and enjoyable. Adventure Amigos allows users to plan trips, book tours and accommodations, discover local businesses, and explore historical sites — all in one unified platform powered by AI-driven personalization and multilingual support.",
+                technologies=["PHP", "MySQL", "JavaScript", "Vue.js", "TailwindCSS", "AI Integration"],
+                link="https://example.com/adventure-amigos",
+                github_link="https://github.com/arif-foysal/adventure-amigos",
+                image="/projects/adventure-amigos.jpg"
+            ),
+            ProjectData(
+                name="SkinCheck AI",
+                description="SkinCheck AI is an intelligent skin disease detection platform that uses deep learning to classify skin lesions as benign or malignant. Trained on the HAM10000 dataset, it combines a FastAPI backend, Supabase authentication, and secure cloud deployment to deliver accurate real-time predictions from uploaded skin images.",
+                technologies=["FastAPI", "Python", "Supabase", "TensorFlow", "Deep Learning", "JWT Auth"],
+                link="https://example.com/skincheck-ai",
+                github_link="https://github.com/arif-foysal/skincheck-ai",
+                image="/projects/skincheck-ai.jpg"
+            ),
+            ProjectData(
+                name="Resumind",
+                description="Resumind is an AI-powered resume builder that helps users create professional, personalized, and ATS-friendly resumes in minutes. Built with Nuxt for an elegant, interactive interface and Django for scalable backend APIs, it integrates OpenAI's generative models to automatically craft job descriptions, summarize achievements, and tailor content for specific roles.",
+                technologies=["Nuxt", "Django", "TailwindCSS", "LangGraph", "OpenAI API", "ChromaDB", "PostgreSQL", "JWT Auth"],
+                link="https://arif.it.com/projects/resumind",
+                github_link="https://github.com/arif-foysal/resumind",
+                image="/projects/resumind.jpg"
+            ),
+            ProjectData(
+                name="ESP32 Vehicle Tracker",
+                description="ESP32 Vehicle Tracker is a real-time vehicle monitoring and control system powered by MicroPython and FastAPI. It enables live tracking, collision detection, and remote vehicle control via a cloud dashboard. The system integrates sensor data, secure cloud APIs, and a modern web interface for reliable and accessible fleet management.",
+                technologies=["FastAPI", "MicroPython", "ESP32", "WebSocket", "Real-Time"],
+                link="https://esp32-vehicle-tracker.onrender.com",
+                github_link="https://github.com/Arif-Foysal/esp32-vehicle-tracker",
+                image="/projects/esp32-tracker.jpg"
             ),
             ProjectData(
                 name="Portfolio Website",
-                description="Modern responsive portfolio website built with Nuxt 3, featuring dynamic content and interactive animations",
+                description="Modern responsive portfolio website built with Nuxt 3, featuring dynamic content, interactive animations, and AI-powered chat functionality",
                 technologies=["Nuxt.js", "Vue.js", "TypeScript", "Tailwind CSS", "FastAPI"],
                 link="https://arif.it.com",
                 github_link="https://github.com/arif-foysal/portfolio",
                 image="/projects/portfolio.jpg"
-            ),
-            ProjectData(
-                name="E-commerce Analytics Dashboard",
-                description="Real-time analytics dashboard for e-commerce businesses with advanced reporting and insights",
-                technologies=["React", "Node.js", "MongoDB", "Chart.js", "Express"],
-                link="https://example.com/analytics",
-                github_link="https://github.com/arif-foysal/analytics",
-                image="/projects/analytics.jpg"
             )
         ]
         
@@ -47,28 +71,43 @@ class PortfolioDataService:
         self.skills = [
             SkillData(
                 category="Frontend Development",
-                skills=["React", "Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
-                proficiency="Advanced"
+                skills=["Vue.js", "Nuxt.js", "React", "Next.js", "Svelte", "TypeScript", "JavaScript", "TailwindCSS", "HTML5", "Markdown"],
+              
             ),
             SkillData(
                 category="Backend Development",
-                skills=["Python", "FastAPI", "Node.js", "Express", "PostgreSQL", "MongoDB"],
-                proficiency="Advanced"
+                skills=["Python", "Django", "FastAPI", "Flask", "Next.js", "Nuxt.js", "PHP", "Laravel", "Express", "GraphQL", "REST API"],
+          
             ),
             SkillData(
                 category="Mobile Development",
-                skills=["Flutter", "React Native", "Dart", "Android Studio"],
-                proficiency="Intermediate"
+                skills=["React Native", "NestJS", "Appwrite"],
+            
             ),
             SkillData(
-                category="AI/ML",
-                skills=["TensorFlow", "PyTorch", "Scikit-learn", "OpenCV", "LangChain"],
-                proficiency="Intermediate"
+                category="Database & Storage",
+                skills=["PostgreSQL", "MongoDB", "Redis", "Prisma", "MySQL", "SQLite", "Supabase", "Firebase"],
+          
             ),
             SkillData(
                 category="DevOps & Cloud",
-                skills=["Docker", "AWS", "Vercel", "Git", "GitHub Actions", "Linux"],
-                proficiency="Intermediate"
+                skills=["Docker", "Kubernetes", "AWS", "GitHub", "GitLab", "Jenkins", "Nginx", "Linux"],
+           
+            ),
+            SkillData(
+                category="AI & Machine Learning",
+                skills=["TensorFlow", "PyTorch", "LangChain", "OpenAI", "Hugging Face", "scikit-learn", "CUDA", "Jupyter"],
+           
+            ),
+            SkillData(
+                category="Testing & API Tools",
+                skills=["Postman", "Curl", "Swagger", "Pytest"],
+            
+            ),
+            SkillData(
+                category="Tools & Others",
+                skills=["Git", "VS Code", "MicroPython", "Arduino", "Vim", "Bash", "WebRTC"],
+           
             )
         ]
         
@@ -93,44 +132,58 @@ class PortfolioDataService:
         # Experience data
         self.experience = [
             ExperienceData(
-                company="Tech Solutions Inc.",
-                position="Full Stack Developer",
+                company="Amar Fuel",
+                position="Software Engineer",
                 duration="2023 - Present",
-                description="Developing scalable web applications and AI-powered solutions for enterprise clients",
-                technologies=["React", "Python", "FastAPI", "PostgreSQL", "AWS"]
+                description="Developing backend and automation systems at AmarFuel — a startup pioneering Bangladesh's first self-service fuel station solution using IoT and cloud technologies",
+                technologies=["Python", "FastAPI", "IoT", "Postgresql", "PostgreSQL"]
             ),
             ExperienceData(
-                company="StartupXYZ",
-                position="Frontend Developer Intern",
-                duration="2022 - 2023",
-                description="Built responsive user interfaces and collaborated on mobile app development",
-                technologies=["Vue.js", "Nuxt.js", "Flutter", "Firebase"]
+                company="Fiverr",
+                position="Full Stack Developer (Freelance)",
+                duration="2024 - Present",
+                description="Delivered full-stack web solutions for global clients, building responsive interfaces and scalable backend systems to meet diverse business needs",
+                technologies=["Vue.js", "Nuxt.js", "Python", "FastAPI", "Firebase", "PostgreSQL"]
             )
         ]
         
         # Achievements data
         self.achievements = [
             AchievementData(
-                title="Best Innovation Award",
-                description="Won first place in university hackathon for AI-powered skin disease detection app",
+                title="Finalist – National Project Showcase, UIU CSE Fest",
+                description="Selected as a finalist in the national-level project showcase at UIU CSE Fest — recognized among top student innovators for presenting a solution-driven tech project demonstrating strong concept, execution and real-world relevance.",
+                date="2024",
+                link="https://example.com/uiu-cse-fest"
+            ),
+            AchievementData(
+                title="Champion - UIU CSE Project Show, Fall 2023",
+                description="Won first place in the UIU CSE Project Show Fall 2023 for outstanding project innovation and technical excellence",
                 date="2023",
-                link="https://example.com/award"
+                link="https://example.com/uiu-champion"
             ),
             AchievementData(
-                title="Open Source Contributor",
-                description="Active contributor to popular open-source projects with 50+ merged PRs",
-                date="2022-Present"
+                title="Finalist - National Project Showcase, Inventious 4.1, MIST",
+                description="Selected as finalist in the national-level project showcase at Inventious 4.1, MIST for innovative technology solution",
+                date="2024",
+                link="https://example.com/inventious-mist"
             ),
             AchievementData(
-                title="Tech Conference Speaker",
-                description="Presented on 'AI in Healthcare Applications' at regional tech conference",
-                date="2023"
+                title="Finalist - National Project Showcase, Hult Prize Bangladesh 2025",
+                description="Recognized as finalist in Hult Prize Bangladesh 2025 for social entrepreneurship and innovative business solution",
+                date="2024",
+                link="https://example.com/hult-prize"
+            ),
+            AchievementData(
+                title="Google IT Support Professional Certificate",
+                description="Completed Google IT Support Professional Certificate program, demonstrating proficiency in troubleshooting, customer service, networking, operating systems, system administration and security",
+                date="2024",
+                link="https://example.com/google-cert"
             )
         ]
         
         # Contact data
         self.contact = ContactData(
-            email="arif@example.com",
+            email="ariffaysal.nayem@gmail.com",
             linkedin="https://linkedin.com/in/arif-foysal",
             github="https://github.com/arif-foysal",
             website="https://arif.it.com"

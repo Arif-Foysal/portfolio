@@ -41,9 +41,11 @@
           <div class="w-full max-w-4xl mt-8">
             <UChatPrompt
               v-model="inputMessage"
+              color="secondary"
               :disabled="isLoading"
               placeholder="Ask me about my projects, skills, experience..."
               @send="sendMessage"
+              @keydown.enter.prevent="sendMessage"
             >
               <UChatPromptSubmit 
                 :disabled="isLoading || !inputMessage.trim()"
@@ -73,7 +75,7 @@
               <div
                 class="px-4 py-3 rounded-2xl"
                 :class="message.role === 'user' 
-                  ? ' ring-2 ring-primary ml-auto w-fit' 
+                  ? ' bg-primary/10  ml-auto w-fit' 
                   : 'bg-elevated'"
               >
                 <!-- User message -->
@@ -156,9 +158,9 @@
                             {{ skill }}
                           </span>
                         </div>
-                        <p v-if="skillCategory.proficiency" class="text-sm text-muted">
+                        <!-- <p v-if="skillCategory.proficiency" class="text-sm text-muted">
                           Proficiency: {{ skillCategory.proficiency }}
-                        </p>
+                        </p> -->
                       </div>
                     </div>
                   </div>
@@ -193,6 +195,78 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- Experience list -->
+                  <div v-else-if="message.type === 'experience_list'" class="space-y-4">
+                    <h4 class="font-semibold text-lg">Work Experience</h4>
+                    <div class="space-y-4">
+                      <div
+                        v-for="experience in message.data"
+                        :key="experience.company"
+                        class="border border-border rounded-lg p-4 bg-default"
+                      >
+                        <div class="space-y-3">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h5 class="font-semibold">{{ experience.position }}</h5>
+                              <p class="text-primary font-medium">{{ experience.company }}</p>
+                            </div>
+                            <span class="text-sm text-muted bg-muted/20 px-2 py-1 rounded-md">
+                              {{ experience.duration }}
+                            </span>
+                          </div>
+                          
+                          <p class="text-sm text-muted">{{ experience.description }}</p>
+                          
+                          <div class="flex flex-wrap gap-1" v-if="experience.technologies">
+                            <span
+                              v-for="tech in experience.technologies"
+                              :key="tech"
+                              class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs rounded-md"
+                            >
+                              {{ tech }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Achievements list -->
+                  <div v-else-if="message.type === 'achievements_list'" class="space-y-4">
+                    <h4 class="font-semibold text-lg">Achievements & Awards</h4>
+                    <div class="space-y-4">
+                      <div
+                        v-for="achievement in message.data"
+                        :key="achievement.title"
+                        class="border border-border rounded-lg p-4 bg-default"
+                      >
+                        <div class="space-y-3">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h5 class="font-semibold">{{ achievement.title }}</h5>
+                              <p class="text-sm text-muted mt-1">{{ achievement.description }}</p>
+                            </div>
+                            <span class="text-sm text-muted bg-muted/20 px-2 py-1 rounded-md">
+                              {{ achievement.date }}
+                            </span>
+                          </div>
+                          
+                          <div v-if="achievement.link" class="flex gap-2">
+                            <UButton
+                              :to="achievement.link"
+                              target="_blank"
+                              size="xs"
+                              icon="i-lucide-external-link"
+                              label="View Details"
+                              color="neutral"
+                              variant="outline"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -221,14 +295,15 @@
             <div class="size-8 bg-primary/10 rounded-full flex items-center justify-center">
               <UIcon name="i-lucide-bot" class="size-4 text-primary" />
             </div>
-            <div class="bg-elevated border border-border px-4 py-3 rounded-2xl">
-              <div class="flex items-center gap-1">
+            <div class="bg-elevated px-4 py-3 rounded-2xl">
+              <div class="flex items-center gap-2">
                 <div class="flex space-x-1">
-                  <div class="size-2 bg-muted rounded-full animate-pulse" style="animation-delay: 0ms"></div>
-                  <div class="size-2 bg-muted rounded-full animate-pulse" style="animation-delay: 150ms"></div>
-                  <div class="size-2 bg-muted rounded-full animate-pulse" style="animation-delay: 300ms"></div>
+                  <div class="size-2 bg-gray-400 rounded-full animate-pulse" style="animation-delay: 0ms"></div>
+                  <div class="size-2 bg-gray-400 rounded-full animate-pulse" style="animation-delay: 150ms"></div>
+                  <div class="size-2 bg-gray-400 rounded-full animate-pulse" style="animation-delay: 300ms"></div>
                 </div>
-                <span class="text-sm text-muted ml-2">Thinking...</span>
+
+                <span class="text-sm text-muted">Thinking...</span>
               </div>
             </div>
           </div>
@@ -256,14 +331,16 @@
     <!-- Input area - Fixed at bottom when there are messages -->
     <div 
       v-if="messages.length > 0"
-      class="fixed bottom-0 left-0 right-0 bg-default/95 backdrop-blur border-t border-border p-4 z-50"
+      class="fixed bottom-0 left-0 right-0 bg-default/95 backdrop-blur p-4 z-50"
     >
       <UContainer class="max-w-4xl mx-auto">
         <UChatPrompt
           v-model="inputMessage"
+          color="secondary"
           :disabled="isLoading"
           placeholder="Ask me about my projects, skills, experience..."
           @send="sendMessage"
+          @keydown.enter.prevent="sendMessage"
         >
           <UChatPromptSubmit 
             :disabled="isLoading || !inputMessage.trim()"

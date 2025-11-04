@@ -47,7 +47,7 @@ class SkillData(BaseModel):
     """Model for skill information"""
     category: str
     skills: List[str]
-    proficiency: Optional[str] = None
+    # proficiency: Optional[str] = None
 
 class EducationData(BaseModel):
     """Model for education information"""
