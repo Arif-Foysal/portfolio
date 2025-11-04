@@ -10,21 +10,28 @@ const prompt = ref('')
 const errorlabel = ref('')
 const router = useRouter()
 
-const handleChat = () => {
+const handleChat = async () => {
   if (prompt.value.trim() === '') {
     errorlabel.value = 'Please enter a prompt.'
     return
   }
   
-  // Set the initial message for the chat
-  initialMessage.value = prompt.value
+  // Set loading state to show animation
+  loading.value = true
   errorlabel.value = ''
   
-  // Navigate immediately to chat without artificial delay
+  // Set the initial message for the chat
+  initialMessage.value = prompt.value
+  
+  // Add a small delay to show loading animation
+  await new Promise(resolve => setTimeout(resolve, 800))
+  
+  // Navigate to chat
   router.push({ path: '/chat' })
   
-  // Clear the prompt after navigation
+  // Clear the prompt and loading state
   prompt.value = ''
+  loading.value = false
 }
 </script>
 <template>
