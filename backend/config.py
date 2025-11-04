@@ -29,8 +29,10 @@ class Settings:
         "http://localhost:3001", 
         "http://127.0.0.1:3000",  # Alternative localhost
         "http://127.0.0.1:3001",
-        "https://arif.it.com",  # Replace with your actual domain
+        "https://arif.it.com",  # Production frontend
+        "https://portfolio-lyart-rho-bxg93lsyt1.vercel.app",  # Backend URL
         "https://*.vercel.app",  # Vercel deployments
+        "https://*.netlify.app",  # Netlify deployments
         "*"  # Allow all origins (use with caution in production)
     ]
 

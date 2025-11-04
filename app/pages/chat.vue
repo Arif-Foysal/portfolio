@@ -384,8 +384,10 @@ const sessionId = ref(null)
 const messagesContainer = ref(null)
 const copiedMessageId = ref(null)
 
-// API configuration
-const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
+// API configuration  
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
+  : 'http://localhost:8000'
 
 // localStorage keys
 const STORAGE_KEYS = {

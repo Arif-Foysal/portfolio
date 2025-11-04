@@ -41,7 +41,7 @@ export const useChatState = () => {
 
 export const useAuthentication = () => {
   const { userId, sessionId, authToken, isAuthenticated } = useChatState()
-  const API_BASE_URL = process.env.NUXT_PUBLIC_API_URL || 'http://localhost:8000'
+  const API_BASE_URL = process.env.NUXT_PUBLIC_API_URL || 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
   
   const signInAnonymously = async (): Promise<AnonymousAuthResponse> => {
     try {
