@@ -1,12 +1,12 @@
 <template>
   <!-- Main chat container -->
-  <div class="min-h-screen flex flex-col">
+  <div class="h-[calc(100vh-4rem)] flex flex-col">
     <!-- Chat content -->
     <main :class="messages.length > 0 ? 'flex-1 pb-24' : 'flex-1'">
-      <UContainer class="max-w-4xl mx-auto py-8">
+      <UContainer class="max-w-4xl mx-auto py-8 h-full">
         
         <!-- Welcome screen when no messages -->
-        <div v-if="messages.length === 0" class="flex flex-col items-center justify-center gap-6 text-center min-h-[60vh]">
+        <div v-if="messages.length === 0" class="flex flex-col items-center justify-center gap-6 text-center h-full">
           <div class="space-y-4">
             <div class="size-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
               <UIcon name="i-lucide-message-circle" class="size-8 text-primary" />
@@ -387,7 +387,7 @@ const copiedMessageId = ref(null)
 // API configuration  
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
-  : 'http://localhost:8000'
+  : 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
 
 // localStorage keys
 const STORAGE_KEYS = {
@@ -486,21 +486,18 @@ onMounted(async () => {
   // Load chat history from localStorage
   const hasStoredMessages = loadMessagesFromStorage()
   
-  // Check for initial message from PromptInput component (only if no stored messages)
-  if (initialMessage.value && !hasStoredMessages) {
+  // Check for initial message from PromptInput component
+  if (initialMessage.value) {
     inputMessage.value = initialMessage.value
     // Clear the initial message to prevent it from being used again
     initialMessage.value = ''
     // Send the message automatically
-    nextTick(() => {
-      sendMessage()
-    })
+    await nextTick()
+    await sendMessage()
   } else if (hasStoredMessages) {
     // Scroll to bottom if we have stored messages
-    nextTick(() => {
-      scrollToBottom()
-      sendMessage()
-    })
+    await nextTick()
+    scrollToBottom()
   }
   
   // Refresh session every 20 minutes to keep it alive
@@ -514,9 +511,11 @@ onMounted(async () => {
 // Scroll to bottom
 async function scrollToBottom() {
   await nextTick()
-  if (messagesContainer.value) {
-    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight
-  }
+  // Use window scroll since we simplified to whole page scrolling
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  })
 }
 
 // Send quick message
@@ -614,7 +613,11 @@ async function sendMessage() {
     saveMessagesToStorage()
   } finally {
     isLoading.value = false
-    await scrollToBottom()
+    // Add a small delay to ensure DOM has updated before scrolling
+    await nextTick()
+    setTimeout(() => {
+      scrollToBottom()
+    }, 100)
   }
 }
 </script>
