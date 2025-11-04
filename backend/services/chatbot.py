@@ -7,6 +7,7 @@ import os
 import json
 import uuid
 import asyncio
+import math
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
 
@@ -211,6 +212,117 @@ class ChatbotService:
         self.session_timestamps[session_id] = current_time
         return self.session_memories[session_id]
     
+    async def _is_portfolio_relevant_semantic(self, message: str, classification: ClassificationResult) -> bool:
+        """
+        Check if message is portfolio-relevant using semantic similarity.
+        More intelligent than keyword matching!
+        """
+        
+        if not self.vector_store:
+            # Fallback to keyword matching if vector store unavailable
+            return self._is_portfolio_relevant_keywords(message, classification)
+        
+        try:
+            # Always cache structured responses
+            always_cache_categories = {
+                'projects', 'skills', 'education', 'experience', 
+                'achievements', 'contact', 'personal'
+            }
+            
+            if classification.category in always_cache_categories:
+                return True
+            
+            # Skip obvious off-topic intents
+            if classification.category == "other" and classification.intent in ["greeting", "general_question"]:
+                return False
+            
+            # For other cases, use semantic similarity
+            # Get embedding of the user message
+            message_embedding = await self.vector_store.get_embedding(message)
+            
+            # Compare with portfolio context embeddings
+            portfolio_context = """
+            Full Stack Developer projects technologies React Vue Python FastAPI 
+            machine learning AI artificial intelligence web development backend frontend 
+            database docker deployment cloud AWS skills experience achievements awards
+            education certification professional background innovation technology solutions
+            """
+            
+            portfolio_embedding = await self.vector_store.get_embedding(portfolio_context)
+            
+            # Calculate cosine similarity
+            similarity = self._cosine_similarity(message_embedding, portfolio_embedding)
+            
+            print(f"Semantic relevance for '{message[:50]}...': {similarity:.2f}")
+            
+            # Cache if similarity > 0.65 (on a scale of -1 to 1, where 1 is identical)
+            return similarity > 0.65
+            
+        except Exception as e:
+            print(f"Error in semantic relevance check: {e}")
+            # Fallback to keyword matching
+            return self._is_portfolio_relevant_keywords(message, classification)
+    
+    def _cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        """Calculate cosine similarity between two vectors"""
+        
+        if not vec1 or not vec2:
+            return 0.0
+        
+        # Dot product
+        dot_product = sum(a * b for a, b in zip(vec1, vec2))
+        
+        # Magnitudes
+        magnitude1 = math.sqrt(sum(a * a for a in vec1))
+        magnitude2 = math.sqrt(sum(b * b for b in vec2))
+        
+        if magnitude1 == 0 or magnitude2 == 0:
+            return 0.0
+        
+        # Cosine similarity
+        return dot_product / (magnitude1 * magnitude2)
+    
+    def _is_portfolio_relevant_keywords(self, message: str, classification: ClassificationResult) -> bool:
+        """
+        Fallback keyword matching for when vector store is unavailable.
+        This is the old method kept as a backup.
+        """
+        
+        portfolio_keywords = {
+            'project', 'skill', 'experience', 'work', 'technology', 'code',
+            'programming', 'development', 'developer', 'engineer', 'portfolio',
+            'github', 'fullstack', 'frontend', 'backend', 'react',
+            'vue', 'python', 'javascript', 'node', 'fastapi', 'database',
+            'deployment', 'docker', 'aws', 'education', 'degree', 'certificate',
+            'achievement', 'award', 'accomplishment', 'contact', 'email',
+            'linkedin', 'website', 'langchain', 'ai', 'ml', 'machine learning',
+            'llm', 'gpt', 'vector', 'rag', 'agent', 'automation', 'iot',
+            'api', 'rest', 'graphql', 'sql', 'mongodb', 'firebase',
+            'git', 'version control', 'scrum', 'agile', 'testing', 'ci/cd'
+        }
+        
+        always_cache_categories = {
+            'projects', 'skills', 'education', 'experience', 
+            'achievements', 'contact', 'personal'
+        }
+        
+        if classification.category in always_cache_categories:
+            return True
+        
+        message_lower = message.lower()
+        keyword_match = any(keyword in message_lower for keyword in portfolio_keywords)
+        
+        if keyword_match:
+            return True
+        
+        if classification.category == "other" and classification.intent in ["greeting", "general_question"]:
+            return False
+        
+        if classification.confidence > 0.7:
+            return True
+        
+        return False
+    
     async def classify_message(self, message: str) -> ClassificationResult:
         """Classify user message into category and intent"""
         
@@ -229,7 +341,7 @@ CLASSIFICATION CATEGORIES:
 
 INTENT TYPES:
 - "list_all" - User wants to see all items (e.g., "show me all projects", "list your skills")
-- "specific_item" - User asks about a specific project, skill, etc.
+- "specific_item" - User asks about a specific project, skill, etc. (e.g., "Tell me about Blue Horizon", "What technologies use React?")
 - "general_question" - General questions that need conversational responses
 - "greeting" - Greetings, small talk
 - "contact_request" - Direct request for contact information
@@ -281,10 +393,18 @@ User message: "{message}"
                 requires_special_ui=False
             )
     
-    def _get_portfolio_data(self, classification: ClassificationResult) -> Any:
+    def _get_portfolio_data(self, classification: ClassificationResult, message: str = "") -> Any:
         """Get relevant portfolio data based on classification"""
         
         if classification.category == "projects":
+            # If it's a specific project question, search for it
+            if classification.intent == "specific_item" and message:
+                search_results = portfolio_service.search_projects(message)
+                if search_results:
+                    # If only one result, return it as single object
+                    # If multiple results, return as list (for technology/multi-match queries)
+                    return search_results if len(search_results) > 1 else search_results[0]
+            # Otherwise return all projects
             return portfolio_service.get_projects()
         elif classification.category == "skills":
             return portfolio_service.get_skills()
@@ -301,14 +421,19 @@ User message: "{message}"
         else:
             return None
     
-    def _determine_response_type(self, classification: ClassificationResult) -> MessageType:
+    def _determine_response_type(self, classification: ClassificationResult, portfolio_data: Any = None) -> MessageType:
         """Determine the response type based on classification"""
         
         if not classification.requires_special_ui:
             return MessageType.TEXT
         
-        if classification.category == "projects" and classification.intent == "list_all":
-            return MessageType.PROJECTS_LIST
+        if classification.category == "projects":
+            # If it's a specific project (single ProjectData object) or multiple projects, show as list
+            if classification.intent == "specific_item":
+                return MessageType.PROJECTS_LIST
+            elif classification.intent == "list_all":
+                return MessageType.PROJECTS_LIST
+            return MessageType.TEXT
         elif classification.category == "skills" and classification.intent == "list_all":
             return MessageType.SKILLS_LIST
         elif classification.category == "education" and classification.intent == "list_all":
@@ -319,12 +444,31 @@ User message: "{message}"
             return MessageType.ACHIEVEMENTS_LIST
         elif classification.category == "contact":
             return MessageType.CONTACT_INFO
-        else:
-            return MessageType.TEXT
+        
+        return MessageType.TEXT
     
     async def generate_response(self, message: str, classification: ClassificationResult, 
                               portfolio_data: Any, chat_history: str) -> str:
         """Generate conversational response using OpenAI"""
+        
+        # Check if it's a specific project question
+        is_specific_project = (
+            classification.category == "projects" and 
+            classification.intent == "specific_item" and 
+            portfolio_data
+        )
+        
+        # Check if multiple projects (list) or single project
+        is_multiple_projects = (
+            is_specific_project and 
+            isinstance(portfolio_data, list) and 
+            len(portfolio_data) > 1
+        )
+        
+        is_single_project = (
+            is_specific_project and 
+            not isinstance(portfolio_data, list)
+        )
         
         response_prompt = f"""You are Arif Foysal's AI representative, speaking on his behalf in first person. 
 You are helpful, professional, and enthusiastic about technology and software development.
@@ -339,10 +483,10 @@ PERSONALITY TRAITS:
 CONTEXT ABOUT ARIF:
 - Full Stack Developer & AI Enthusiast from Bangladesh
 - 3+ years of experience in web development
-- Specializes in React, Vue.js, Python, FastAPI, AI/ML
-- Built projects like skin disease detection app, portfolio websites, analytics dashboards
+- Specializes in React, Vue.js, Python, FastAPI, Langchain, AI Agent
+- Built projects like fuel station automation solutions, RAG agents, Underwater ROV, Skin Cancer detection system and so on
 - Won innovation awards, active open-source contributor
-- Currently working as Full Stack Developer at Tech Solutions Inc.
+- Currently working as Software Engineer at Amar Fuel & freelancer on Fiverr
 
 RESPONSE GUIDELINES:
 - Keep responses conversational and engaging
@@ -351,6 +495,8 @@ RESPONSE GUIDELINES:
 - For work experience, highlight key achievements
 - Always speak in first person as Arif Foysal
 - Don't mention that you're an AI - respond as if you're the actual person
+- For specific projects: Provide a detailed description, highlight key features, technologies used, and the link
+- For multiple matching projects: List all matching projects with brief descriptions and highlights
 
 CONVERSATION HISTORY:
 {chat_history}
@@ -360,9 +506,12 @@ Category: {classification.category}
 Intent: {classification.intent}
 
 RELEVANT DATA:
-{str(portfolio_data)[:1000] if portfolio_data else "No specific data"}
+{str(portfolio_data)[:2000] if portfolio_data else "No specific data"}
 
 USER MESSAGE: {message}
+
+{"SPECIAL INSTRUCTION: The user is asking about a specific project. Provide a detailed, engaging description including what it does, the technologies used, key features, and why it's interesting." if is_single_project else ""}
+{"SPECIAL INSTRUCTION: The user is asking about projects using a specific technology or matching a criteria. List ALL matching projects with brief descriptions highlighting their key features and the specific technology/feature they asked about." if is_multiple_projects else ""}
 
 Respond naturally as Arif Foysal:"""
         
@@ -373,7 +522,7 @@ Respond naturally as Arif Foysal:"""
                     {"role": "system", "content": response_prompt}
                 ],
                 temperature=0.7,
-                max_tokens=400  # Reduced from 500
+                max_tokens=600  # Increased for multiple projects
             )
             
             return response.choices[0].message.content.strip()
@@ -406,10 +555,10 @@ Respond naturally as Arif Foysal:"""
         classification = await self.classify_message(message)
         
         # 5. Get relevant portfolio data
-        portfolio_data = self._get_portfolio_data(classification)
+        portfolio_data = self._get_portfolio_data(classification, message)
         
         # 6. Determine response type
-        response_type = self._determine_response_type(classification)
+        response_type = self._determine_response_type(classification, portfolio_data)
         
         # 7. Get chat history
         chat_history = memory.get_context()
@@ -420,28 +569,32 @@ Respond naturally as Arif Foysal:"""
         )
         
         # 9. Store in vector database for future semantic search
+        # Only cache if content is relevant to portfolio/technology (using semantic similarity!)
         if self.vector_store:
-            try:
-                # Convert response type to string enum value if needed
-                response_type_str = response_type.value if hasattr(response_type, 'value') else str(response_type)
-                
-                # For structured responses (projects_list, skills_list, etc.), store the data as JSON
-                if response_type != MessageType.TEXT and portfolio_data:
-                    response_to_store = json.dumps({
-                        "type": response_type_str,
-                        "data": portfolio_data
-                    })
-                else:
-                    response_to_store = response_text
-                
-                await self.vector_store.store_response(
-                    message, 
-                    response_to_store,
-                    {"category": classification.category, "intent": classification.intent},
-                    response_type=response_type_str
-                )
-            except Exception as e:
-                print(f"Warning: Could not store in vector database: {e}")
+            is_relevant = await self._is_portfolio_relevant_semantic(message, classification)
+            
+            if is_relevant:
+                try:
+                    response_type_str = response_type.value if hasattr(response_type, 'value') else str(response_type)
+                    
+                    if response_type != MessageType.TEXT and portfolio_data:
+                        response_to_store = json.dumps({
+                            "type": response_type_str,
+                            "data": portfolio_data
+                        })
+                    else:
+                        response_to_store = response_text
+                    
+                    await self.vector_store.store_response(
+                        message, 
+                        response_to_store,
+                        {"category": classification.category, "intent": classification.intent},
+                        response_type=response_type_str
+                    )
+                except Exception as e:
+                    print(f"Warning: Could not store in vector database: {e}")
+            else:
+                print(f"Skipping cache (not semantically relevant): {message[:50]}...")
         
         # 10. Save to memory
         memory.add_message(message, response_text)

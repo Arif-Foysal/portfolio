@@ -376,6 +376,12 @@ const copiedMessageId = ref(null)
 // API configuration
 const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app' // Update with your backend URL
 
+// localStorage keys
+const STORAGE_KEYS = {
+  MESSAGES: 'chat_messages',
+  SESSION_ID: 'chat_session_id'
+}
+
 // Quick chat suggestions
 const quickChats = [
   {
@@ -405,21 +411,69 @@ function generateSessionId() {
   return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now()
 }
 
+// Save messages to localStorage
+function saveMessagesToStorage() {
+  try {
+    if (process.client) {
+      localStorage.setItem(STORAGE_KEYS.MESSAGES, JSON.stringify(messages.value))
+    }
+  } catch (error) {
+    console.warn('Failed to save messages to localStorage:', error)
+  }
+}
+
+// Load messages from localStorage
+function loadMessagesFromStorage() {
+  try {
+    if (process.client) {
+      const stored = localStorage.getItem(STORAGE_KEYS.MESSAGES)
+      if (stored) {
+        messages.value = JSON.parse(stored)
+        return true
+      }
+    }
+  } catch (error) {
+    console.warn('Failed to load messages from localStorage:', error)
+  }
+  return false
+}
+
+// Clear chat history
+function clearChatHistory() {
+  messages.value = []
+  try {
+    if (process.client) {
+      localStorage.removeItem(STORAGE_KEYS.MESSAGES)
+    }
+  } catch (error) {
+    console.warn('Failed to clear chat history:', error)
+  }
+}
+
 // Initialize session
 onMounted(() => {
+  // Initialize session ID
   if (!sessionId.value) {
-    sessionId.value = sessionStorage.getItem('chat_session_id') || generateSessionId()
-    sessionStorage.setItem('chat_session_id', sessionId.value)
+    sessionId.value = sessionStorage.getItem(STORAGE_KEYS.SESSION_ID) || generateSessionId()
+    sessionStorage.setItem(STORAGE_KEYS.SESSION_ID, sessionId.value)
   }
   
-  // Check for initial message from PromptInput component
-  if (initialMessage.value) {
+  // Load chat history from localStorage
+  const hasStoredMessages = loadMessagesFromStorage()
+  
+  // Check for initial message from PromptInput component (only if no stored messages)
+  if (initialMessage.value && !hasStoredMessages) {
     inputMessage.value = initialMessage.value
     // Clear the initial message to prevent it from being used again
     initialMessage.value = ''
     // Send the message automatically
     nextTick(() => {
       sendMessage()
+    })
+  } else if (hasStoredMessages) {
+    // Scroll to bottom if we have stored messages
+    nextTick(() => {
+      scrollToBottom()
     })
   }
 })
@@ -469,6 +523,9 @@ async function sendMessage() {
     content: userMessage,
     timestamp: new Date()
   })
+  
+  // Save to localStorage after adding user message
+  saveMessagesToStorage()
 
   // Scroll to bottom
   await scrollToBottom()
@@ -497,11 +554,14 @@ async function sendMessage() {
       data: response.type !== 'text' ? response.data : null,
       timestamp: new Date()
     })
+    
+    // Save to localStorage after adding assistant message
+    saveMessagesToStorage()
 
     // Update session ID if provided
     if (response.session_id) {
       sessionId.value = response.session_id
-      sessionStorage.setItem('chat_session_id', response.session_id)
+      sessionStorage.setItem(STORAGE_KEYS.SESSION_ID, response.session_id)
     }
 
   } catch (error) {
@@ -514,6 +574,9 @@ async function sendMessage() {
       content: 'Sorry, I encountered an error. Please try again later.',
       timestamp: new Date()
     })
+    
+    // Save error message to localStorage
+    saveMessagesToStorage()
   } finally {
     isLoading.value = false
     await scrollToBottom()
