@@ -385,7 +385,7 @@ const messagesContainer = ref(null)
 const copiedMessageId = ref(null)
 
 // API configuration
-const API_BASE_URL = process.env.NUXT_PUBLIC_API_URL || 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
+const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
 
 // localStorage keys
 const STORAGE_KEYS = {
