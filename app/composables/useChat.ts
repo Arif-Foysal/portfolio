@@ -62,11 +62,11 @@ export const useAuthentication = () => {
         
         console.log('DEBUG: Set userId to:', userId.value)
         
-        // Save to sessionStorage for persistence
+        // Save to localStorage for persistence across browser sessions
         if (process.client) {
-          sessionStorage.setItem('user_id', response.user_id)
-          sessionStorage.setItem('session_id', response.session_id)
-          sessionStorage.setItem('auth_token', response.token)
+          localStorage.setItem('user_id', response.user_id)
+          localStorage.setItem('session_id', response.session_id)
+          localStorage.setItem('auth_token', response.token)
         }
         
         return response
@@ -108,11 +108,11 @@ export const useAuthentication = () => {
         authToken.value = response.token!
         isAuthenticated.value = true
         
-        // Save to sessionStorage
+        // Save to localStorage
         if (process.client) {
-          sessionStorage.setItem('user_id', response.user_id!)
-          sessionStorage.setItem('session_id', response.session_id!)
-          sessionStorage.setItem('auth_token', response.token!)
+          localStorage.setItem('user_id', response.user_id!)
+          localStorage.setItem('session_id', response.session_id!)
+          localStorage.setItem('auth_token', response.token!)
         }
       }
       
@@ -147,11 +147,11 @@ export const useAuthentication = () => {
       authToken.value = null
       isAuthenticated.value = false
       
-      // Clear from sessionStorage
+      // Clear from localStorage
       if (process.client) {
-        sessionStorage.removeItem('user_id')
-        sessionStorage.removeItem('session_id')
-        sessionStorage.removeItem('auth_token')
+        localStorage.removeItem('user_id')
+        localStorage.removeItem('session_id')
+        localStorage.removeItem('auth_token')
       }
     }
   }
@@ -159,9 +159,9 @@ export const useAuthentication = () => {
   const restoreSession = (): void => {
     if (!process.client) return
     
-    const storedUserId = sessionStorage.getItem('user_id')
-    const storedSessionId = sessionStorage.getItem('session_id')
-    const storedToken = sessionStorage.getItem('auth_token')
+    const storedUserId = localStorage.getItem('user_id')
+    const storedSessionId = localStorage.getItem('session_id')
+    const storedToken = localStorage.getItem('auth_token')
     
     if (storedUserId && storedSessionId && storedToken) {
       userId.value = storedUserId
