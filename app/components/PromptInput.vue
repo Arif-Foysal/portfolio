@@ -1,28 +1,31 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useChatState } from '~/composables/useChat';
+import { useChatState } from '~/composables/useChat'
+
 const { initialMessage } = useChatState()
 
 const loading = ref(false)
 const prompt = ref('')
 const errorlabel = ref('')
 const router = useRouter()
+
 const handleChat = () => {
   if (prompt.value.trim() === '') {
     errorlabel.value = 'Please enter a prompt.'
     return
   }
+  
+  // Set the initial message for the chat
   initialMessage.value = prompt.value
   errorlabel.value = ''
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-    router.push({ path: '/chat' })
-  }, 2000); // Simulate async operation
-  // prompt.value = ''
+  
+  // Navigate immediately to chat without artificial delay
+  router.push({ path: '/chat' })
+  
+  // Clear the prompt after navigation
+  prompt.value = ''
 }
-
 </script>
 <template>
   <form @submit.prevent="handleChat" class="w-full">

@@ -46,7 +46,6 @@
               @send="sendMessage"
             >
               <UChatPromptSubmit 
-                :loading="isLoading"
                 :disabled="isLoading || !inputMessage.trim()"
                 @click="sendMessage"
               />
@@ -96,7 +95,7 @@
                       <div
                         v-for="project in message.data"
                         :key="project.name"
-                        class="border border-border rounded-lg p-4 bg-default"
+                        class=" rounded-lg p-4 bg-default"
                       >
                         <div class="space-y-3">
                           <div>
@@ -267,7 +266,6 @@
           @send="sendMessage"
         >
           <UChatPromptSubmit 
-            :loading="isLoading"
             :disabled="isLoading || !inputMessage.trim()"
             @click="sendMessage"
           />
@@ -279,12 +277,16 @@
 
 <script setup>
 import { ref, nextTick } from 'vue'
+import { useChatState } from '~/composables/useChat'
 
 // Page metadata
 useSeoMeta({
   title: 'Chat with Arif - Portfolio Assistant',
   description: 'Ask me anything about my projects, skills, experience, and background.'
 })
+
+// Chat state
+const { initialMessage } = useChatState()
 
 // Reactive data
 const messages = ref([])
@@ -331,6 +333,17 @@ onMounted(() => {
   if (!sessionId.value) {
     sessionId.value = sessionStorage.getItem('chat_session_id') || generateSessionId()
     sessionStorage.setItem('chat_session_id', sessionId.value)
+  }
+  
+  // Check for initial message from PromptInput component
+  if (initialMessage.value) {
+    inputMessage.value = initialMessage.value
+    // Clear the initial message to prevent it from being used again
+    initialMessage.value = ''
+    // Send the message automatically
+    nextTick(() => {
+      sendMessage()
+    })
   }
 })
 

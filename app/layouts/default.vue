@@ -8,6 +8,6 @@
   </UMain>
 
 
-    <AppFooter />
+    <AppFooter v-if="$route.name !== 'chat'" />
   </div>
 </template>
