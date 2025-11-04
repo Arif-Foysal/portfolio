@@ -295,7 +295,7 @@ const messagesContainer = ref(null)
 const copiedMessageId = ref(null)
 
 // API configuration
-const API_BASE_URL = 'http://localhost:8000' // Update with your backend URL
+const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app/chat' // Update with your backend URL
 
 // Quick chat suggestions
 const quickChats = [
