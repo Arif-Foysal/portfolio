@@ -8,6 +8,7 @@
 - [x] ESP32 Vehicle Tracker
 
 # Urgent fixes
+- [x] Implement chatbot 
 - [ ] Add photos to all projects
 - [x] Change the prompt input box design to match the overall site theme
 - [x] Fix the newsletter duplicate email error handling

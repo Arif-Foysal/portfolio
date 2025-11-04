@@ -114,11 +114,11 @@ class PortfolioDataService:
         # Education data
         self.education = [
             EducationData(
-                institution="University of Technology",
+                institution="United International University (UIU)",
                 degree="Bachelor of Science",
                 field="Computer Science and Engineering",
-                year="2020-2024",
-                description="Specialized in software engineering and artificial intelligence"
+                year="2020-2025",
+                description="Specialized in Software Engineering."
             ),
             EducationData(
                 institution="Tech Academy",

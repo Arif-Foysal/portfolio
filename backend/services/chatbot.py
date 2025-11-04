@@ -6,6 +6,7 @@ Implements short-term memory using simple dictionary storage.
 import os
 import json
 import uuid
+import asyncio
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
 
@@ -62,6 +63,77 @@ class ChatbotService:
         # Session memory storage (in production, use Redis or database)
         self.session_memories: Dict[str, SimpleMemory] = {}
         self.session_timestamps: Dict[str, datetime] = {}
+        
+        # Simple response cache for common questions
+        self.response_cache: Dict[str, ChatResponse] = {}
+        self._init_common_responses()
+    
+    def _init_common_responses(self):
+        """Initialize cache with common responses to avoid API calls"""
+        # Cache common greetings and simple questions
+        self.response_cache = {
+            "hello": ChatResponse(
+                type=MessageType.TEXT,
+                data="Hello! I'm Arif Foysal, a Full Stack Developer and AI enthusiast. How can I help you today?",
+                session_id=""
+            ),
+            "hi": ChatResponse(
+                type=MessageType.TEXT,
+                data="Hi there! I'm Arif, nice to meet you! What would you like to know about my work?",
+                session_id=""
+            ),
+            "what is your name": ChatResponse(
+                type=MessageType.TEXT,
+                data="I'm Arif Foysal, a Full Stack Developer and AI Engineer from Bangladesh.",
+                session_id=""
+            ),
+            "who are you": ChatResponse(
+                type=MessageType.TEXT,
+                data="I'm Arif Foysal, a passionate software developer specializing in full-stack web development and AI. I love building innovative solutions that solve real-world problems.",
+                session_id=""
+            ),
+            # Cached responses for quick action buttons (zero API cost!)
+            "show me your projects": ChatResponse(
+                type=MessageType.PROJECTS_LIST,
+                data=portfolio_service.get_projects(),
+                session_id=""
+            ),
+            "what are your skills?": ChatResponse(
+                type=MessageType.SKILLS_LIST,
+                data=portfolio_service.get_skills(),
+                session_id=""
+            ),
+            "tell me about your experience": ChatResponse(
+                type=MessageType.EXPERIENCE_LIST,
+                data=portfolio_service.get_experience(),
+                session_id=""
+            ),
+            "how can i contact you?": ChatResponse(
+                type=MessageType.CONTACT_INFO,
+                data=portfolio_service.get_contact_info(),
+                session_id=""
+            ),
+            "what is your background?": ChatResponse(
+                type=MessageType.TEXT,
+                data="I'm Arif Foysal, a Full Stack Developer and AI Enthusiast from Bangladesh with 3+ years of experience. I specialize in building innovative web applications and AI solutions. I've won multiple awards including finalist positions in national project showcases like UIU CSE Fest, Inventious 4.1, and Hult Prize Bangladesh 2025. Currently, I work at Amar Fuel developing IoT-based fuel station solutions, while also freelancing as a Full Stack Developer on Fiverr. My passion lies in creating technology solutions that solve real-world problems.",
+                session_id=""
+            ),
+        }
+    
+    async def _get_cached_response(self, message: str, session_id: str) -> Optional[ChatResponse]:
+        """Check if we have a cached response for this message"""
+        normalized_message = message.lower().strip()
+        if normalized_message in self.response_cache:
+            # Add 1 second delay to make it feel more natural
+            await asyncio.sleep(2)
+            cached_response = self.response_cache[normalized_message]
+            # Update session_id and return copy
+            return ChatResponse(
+                type=cached_response.type,
+                data=cached_response.data,
+                session_id=session_id
+            )
+        return None
     
     def _get_or_create_memory(self, session_id: str) -> SimpleMemory:
         """Get existing memory or create new one for session"""
@@ -128,7 +200,7 @@ User message: "{message}"
         
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4-turbo-preview",
+                model="gpt-4o-mini",  # Even cheaper than gpt-3.5-turbo
                 messages=[
                     {"role": "system", "content": classification_prompt}
                 ],
@@ -244,12 +316,12 @@ Respond naturally as Arif Foysal:"""
         
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4-turbo-preview",
+                model="gpt-4o-mini",  # Even cheaper than gpt-3.5-turbo
                 messages=[
                     {"role": "system", "content": response_prompt}
                 ],
                 temperature=0.7,
-                max_tokens=500
+                max_tokens=400  # Reduced from 500
             )
             
             return response.choices[0].message.content.strip()
@@ -264,6 +336,11 @@ Respond naturally as Arif Foysal:"""
         # Generate session ID if not provided
         if not session_id:
             session_id = str(uuid.uuid4())
+        
+        # Check cache first (with 1 second delay)
+        cached_response = await self._get_cached_response(message, session_id)
+        if cached_response:
+            return cached_response
         
         # Get session memory
         memory = self._get_or_create_memory(session_id)
