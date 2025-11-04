@@ -499,6 +499,7 @@ onMounted(async () => {
     // Scroll to bottom if we have stored messages
     nextTick(() => {
       scrollToBottom()
+      sendMessage()
     })
   }
   
