@@ -200,7 +200,7 @@ const sessionId = ref(null)
 const messagesContainer = ref(null)
 
 // API configuration
-const API_BASE_URL = 'http://localhost:8000'  // Update with your backend URL
+const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'  // Update with your backend URL
 
 // Generate or get session ID
 if (process.client && !sessionId.value) {
