@@ -353,8 +353,8 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
-import { useChatState } from '~/composables/useChat'
+import { ref, nextTick, onMounted } from 'vue'
+import { useChatState, useAuthentication } from '~/composables/useChat'
 
 // Page metadata
 useSeoMeta({
@@ -362,8 +362,19 @@ useSeoMeta({
   description: 'Ask me anything about my projects, skills, experience, and background.'
 })
 
-// Chat state
+// Chat state and authentication
 const { initialMessage } = useChatState()
+const { 
+  signInAnonymously, 
+  validateSession, 
+  refreshSession,
+  logout,
+  restoreSession,
+  userId,
+  sessionId: authSessionId,
+  authToken,
+  isAuthenticated
+} = useAuthentication()
 
 // Reactive data
 const messages = ref([])
@@ -374,12 +385,13 @@ const messagesContainer = ref(null)
 const copiedMessageId = ref(null)
 
 // API configuration
-const API_BASE_URL = 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app' // Update with your backend URL
+const API_BASE_URL = process.env.NUXT_PUBLIC_API_URL || 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
 
 // localStorage keys
 const STORAGE_KEYS = {
   MESSAGES: 'chat_messages',
-  SESSION_ID: 'chat_session_id'
+  SESSION_ID: 'chat_session_id',
+  CHAT_HISTORY: 'chat_history'
 }
 
 // Quick chat suggestions
@@ -449,10 +461,21 @@ function clearChatHistory() {
     console.warn('Failed to clear chat history:', error)
   }
 }
-
 // Initialize session
-onMounted(() => {
-  // Initialize session ID
+onMounted(async () => {
+  // Restore authentication session
+  restoreSession()
+  
+  // Initialize anonymous auth if not already authenticated
+  if (!isAuthenticated.value) {
+    try {
+      await signInAnonymously()
+    } catch (error) {
+      console.error('Failed to initialize anonymous session:', error)
+    }
+  }
+  
+  // Initialize session ID for chat
   if (!sessionId.value) {
     sessionId.value = sessionStorage.getItem(STORAGE_KEYS.SESSION_ID) || generateSessionId()
     sessionStorage.setItem(STORAGE_KEYS.SESSION_ID, sessionId.value)
@@ -476,6 +499,13 @@ onMounted(() => {
       scrollToBottom()
     })
   }
+  
+  // Refresh session every 20 minutes to keep it alive
+  setInterval(() => {
+    if (authSessionId.value) {
+      refreshSession(authSessionId.value)
+    }
+  }, 20 * 60 * 1000)
 })
 
 // Scroll to bottom
@@ -534,15 +564,17 @@ async function sendMessage() {
   isLoading.value = true
 
   try {
-    // Call chatbot API
+    // Call chatbot API with user authentication
     const response = await $fetch(`${API_BASE_URL}/chat/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...(authToken.value && { 'Authorization': `Bearer ${authToken.value}` })
       },
       body: {
         message: userMessage,
-        session_id: sessionId.value
+        session_id: sessionId.value,
+        user_id: userId.value  // Include user ID for tracking
       }
     })
 

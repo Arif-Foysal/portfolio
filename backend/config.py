@@ -27,6 +27,8 @@ class Settings:
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",  # Local development
         "http://localhost:3001", 
+        "http://127.0.0.1:3000",  # Alternative localhost
+        "http://127.0.0.1:3001",
         "https://arif.it.com",  # Replace with your actual domain
         "https://*.vercel.app",  # Vercel deployments
         "*"  # Allow all origins (use with caution in production)

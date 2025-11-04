@@ -1,6 +1,7 @@
 from typing import Optional, List, Dict, Any, Union
 from pydantic import BaseModel, EmailStr
 from enum import Enum
+from datetime import datetime
 
 class NewsletterSubscription(BaseModel):
     """Model for newsletter subscription request"""
@@ -33,6 +34,7 @@ class ChatRequest(BaseModel):
     """Model for chat request"""
     message: str
     session_id: Optional[str] = None
+    user_id: Optional[str] = None
 
 class ProjectData(BaseModel):
     """Model for project information"""
@@ -92,4 +94,81 @@ class ClassificationResult(BaseModel):
     intent: str
     confidence: float
     requires_special_ui: bool
+
+
+# ==================== Authentication Models ====================
+
+class AnonymousAuthRequest(BaseModel):
+    """Model for requesting anonymous authentication"""
+    pass
+
+class AnonymousAuthResponse(BaseModel):
+    """Model for anonymous authentication response"""
+    success: bool
+    user_id: str
+    session_id: str
+    token: str
+    is_anonymous: bool
+    expires_at: Optional[datetime] = None
+
+class SessionInfo(BaseModel):
+    """Model for session information"""
+    session_id: str
+    user_id: str
+    is_anonymous: bool
+    created_at: datetime
+    expires_at: Optional[datetime] = None
+
+class SessionValidationResponse(BaseModel):
+    """Model for session validation response"""
+    valid: bool
+    user_id: Optional[str] = None
+    message: Optional[str] = None
+
+
+# ==================== Chat History Models ====================
+
+class ChatMessage(BaseModel):
+    """Model for a single chat message entry"""
+    id: Optional[str] = None
+    user_id: str
+    session_id: str
+    message: str
+    response: str
+    message_type: str
+    created_at: Optional[datetime] = None
+
+class ChatHistoryEntry(BaseModel):
+    """Model for chat history entry with metadata"""
+    id: str
+    user_id: str
+    session_id: str
+    message: str
+    response: str
+    message_type: str
+    created_at: datetime
+
+class ChatHistoryRequest(BaseModel):
+    """Model for requesting chat history"""
+    user_id: str
+    session_id: Optional[str] = None
+    limit: int = 50
+
+class ChatHistoryResponse(BaseModel):
+    """Model for chat history response"""
+    success: bool
+    messages: List[ChatHistoryEntry]
+    total_count: int
+
+class ClearChatHistoryRequest(BaseModel):
+    """Model for requesting to clear chat history"""
+    user_id: str
+    session_id: Optional[str] = None
+
+class ClearChatHistoryResponse(BaseModel):
+    """Model for clear chat history response"""
+    success: bool
+    message: str
+    deleted_count: int
+
 
