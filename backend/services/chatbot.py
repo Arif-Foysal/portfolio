@@ -1,6 +1,6 @@
 """
 Chatbot service with message classification, routing, and response generation using OpenAI API.
-Implements short-term memory using simple dictionary storage.
+Implements short-term memory and semantic caching using vector database.
 """
 
 import os
@@ -18,6 +18,14 @@ from models import (
     AchievementData, ContactData
 )
 from services.portfolio_data import portfolio_service
+
+# Try to import vector store, but make it optional
+try:
+    from services.vector_store import VectorStore
+    VECTOR_STORE_AVAILABLE = True
+except Exception as e:
+    print(f"Warning: Vector store not available: {e}")
+    VECTOR_STORE_AVAILABLE = False
 
 class SimpleMemory:
     """Simple conversation memory implementation"""
@@ -59,6 +67,15 @@ class ChatbotService:
         
         # Initialize OpenAI client
         self.client = AsyncOpenAI(api_key=self.openai_api_key)
+        
+        # Initialize vector store for semantic caching
+        self.vector_store = None
+        if VECTOR_STORE_AVAILABLE:
+            try:
+                self.vector_store = VectorStore()
+                print("✓ Vector store initialized for semantic caching")
+            except Exception as e:
+                print(f"⚠ Vector store initialization failed: {e}")
         
         # Session memory storage (in production, use Redis or database)
         self.session_memories: Dict[str, SimpleMemory] = {}
@@ -124,7 +141,7 @@ class ChatbotService:
         """Check if we have a cached response for this message"""
         normalized_message = message.lower().strip()
         if normalized_message in self.response_cache:
-            # Add 1 second delay to make it feel more natural
+            # Add 2 second delay to make it feel more natural
             await asyncio.sleep(2)
             cached_response = self.response_cache[normalized_message]
             # Update session_id and return copy
@@ -133,6 +150,41 @@ class ChatbotService:
                 data=cached_response.data,
                 session_id=session_id
             )
+        return None
+    
+    async def _get_semantic_cached_response(self, message: str, session_id: str) -> Optional[ChatResponse]:
+        """Search for semantically similar cached responses using vector database"""
+        if not self.vector_store:
+            return None
+        
+        try:
+            similar_responses = await self.vector_store.search_similar_responses(message, limit=1, threshold=0.85)
+            
+            if similar_responses and len(similar_responses) > 0:
+                # Found a very similar past response
+                await asyncio.sleep(2)
+                
+                similar_response = similar_responses[0]
+                response_str = similar_response.get("response", "{}")
+                
+                # Handle both JSON and plain text responses
+                try:
+                    response_data = json.loads(response_str)
+                except (json.JSONDecodeError, ValueError):
+                    # If parsing fails, treat as plain text
+                    response_data = {
+                        "type": MessageType.TEXT,
+                        "data": response_str
+                    }
+                
+                return ChatResponse(
+                    type=response_data.get("type", MessageType.TEXT),
+                    data=response_data.get("data"),
+                    session_id=session_id
+                )
+        except Exception as e:
+            print(f"Error in semantic caching: {e}")
+        
         return None
     
     def _get_or_create_memory(self, session_id: str) -> SimpleMemory:
@@ -337,35 +389,64 @@ Respond naturally as Arif Foysal:"""
         if not session_id:
             session_id = str(uuid.uuid4())
         
-        # Check cache first (with 1 second delay)
+        # 1. Try exact match cache first (fastest)
         cached_response = await self._get_cached_response(message, session_id)
         if cached_response:
             return cached_response
         
-        # Get session memory
+        # 2. Try semantic cache (using vector similarity)
+        semantic_cached = await self._get_semantic_cached_response(message, session_id)
+        if semantic_cached:
+            return semantic_cached
+        
+        # 3. Get session memory
         memory = self._get_or_create_memory(session_id)
         
-        # Classify the message
+        # 4. Classify the message
         classification = await self.classify_message(message)
         
-        # Get relevant portfolio data
+        # 5. Get relevant portfolio data
         portfolio_data = self._get_portfolio_data(classification)
         
-        # Determine response type
+        # 6. Determine response type
         response_type = self._determine_response_type(classification)
         
-        # Get chat history
+        # 7. Get chat history
         chat_history = memory.get_context()
         
-        # Generate conversational response
+        # 8. Generate conversational response
         response_text = await self.generate_response(
             message, classification, portfolio_data, chat_history
         )
         
-        # Save to memory
+        # 9. Store in vector database for future semantic search
+        if self.vector_store:
+            try:
+                # Convert response type to string enum value if needed
+                response_type_str = response_type.value if hasattr(response_type, 'value') else str(response_type)
+                
+                # For structured responses (projects_list, skills_list, etc.), store the data as JSON
+                if response_type != MessageType.TEXT and portfolio_data:
+                    response_to_store = json.dumps({
+                        "type": response_type_str,
+                        "data": portfolio_data
+                    })
+                else:
+                    response_to_store = response_text
+                
+                await self.vector_store.store_response(
+                    message, 
+                    response_to_store,
+                    {"category": classification.category, "intent": classification.intent},
+                    response_type=response_type_str
+                )
+            except Exception as e:
+                print(f"Warning: Could not store in vector database: {e}")
+        
+        # 10. Save to memory
         memory.add_message(message, response_text)
         
-        # If special UI is required, return structured data
+        # 11. If special UI is required, return structured data
         if classification.requires_special_ui and portfolio_data:
             return ChatResponse(
                 type=response_type,
