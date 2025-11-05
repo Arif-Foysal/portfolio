@@ -35,7 +35,7 @@ const items = computed(() => [
 </script>
 
 <template>
-  <UHeader class="items-center">
+  <UHeader class="sticky top-0">
     <template #left>
       <NuxtLink to="/">
         <!-- <AppLogo class=" h-6" /> -->

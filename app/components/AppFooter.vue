@@ -38,6 +38,7 @@ const columns = [{
 }]
 
 const toast = useToast()
+const { subscribe } = useNewsletterApi()
 
 const email = ref('')
 const loading = ref(false)
@@ -48,7 +49,7 @@ function isValidEmail(email: string) {
 
 async function onSubmit() {
   if (!isValidEmail(email.value)) {
-    toast.clear() // Clear previous toasts
+    toast.clear()
     toast.add({
       title: 'Invalid Email',
       description: 'Please enter a valid email address.',
@@ -60,39 +61,30 @@ async function onSubmit() {
   loading.value = true
   
   try {
-    const response = await fetch('https://portfolio-lyart-rho-bxg93lsyt1.vercel.app/newsletter/subscribe', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email.value
-      })
+    const result = await subscribe({
+      email: email.value
     })
     
-    const data = await response.json()
+    toast.clear()
     
-    toast.clear() // Clear previous toasts
-    
-    if (response.ok && data.success) {
+    if (result.success && result.data.success) {
       toast.add({
         title: 'Subscribed!',
-        description: data.message || 'You\'ve been subscribed to our newsletter.'
+        description: result.data.message || 'You\'ve been subscribed to our newsletter.'
       })
       email.value = '' // Clear the email input
-    } else if (response.ok && !data.success) {
+    } else if (result.success && !result.data.success) {
       // Handle case where email is already subscribed
       toast.add({
         title: 'Already Subscribed',
-        description: data.message || 'You are already subscribed.',
+        description: result.data.message || 'You are already subscribed.',
         color: 'warning'
       })
     } else {
-      // Handle HTTP errors
+      // Handle API errors
       toast.add({
         title: 'Subscription Failed',
-        description: 'There was an error subscribing to the newsletter. Please try again.',
+        description: result.error || 'There was an error subscribing to the newsletter. Please try again.',
         color: 'error'
       })
     }

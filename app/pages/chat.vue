@@ -1,12 +1,12 @@
 <template>
   <!-- Main chat container -->
-  <div class="h-[calc(100vh-4rem)] flex flex-col">
+  <div class="flex flex-col min-h-screen">
     <!-- Chat content -->
     <main :class="messages.length > 0 ? 'flex-1 pb-24' : 'flex-1'">
-      <UContainer class="max-w-4xl mx-auto py-8 h-full">
+      <UContainer class="max-w-4xl mx-auto py-8">
         
         <!-- Welcome screen when no messages -->
-        <div v-if="messages.length === 0" class="flex flex-col items-center justify-center gap-6 text-center h-full">
+        <div v-if="messages.length === 0" class="flex flex-col items-center justify-center gap-6 text-center min-h-[calc(100vh-8rem)]">
           <div class="space-y-4">
             <div class="size-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
               <UIcon name="i-lucide-message-circle" class="size-8 text-primary" />
@@ -62,6 +62,7 @@
             :key="index"
             class="flex gap-4"
             :class="message.role === 'user' ? 'justify-end' : 'justify-start'"
+            data-message
           >
             <!-- Assistant avatar -->
             <div v-if="message.role === 'assistant'" class="shrink-0">
@@ -376,6 +377,9 @@ const {
   isAuthenticated
 } = useAuthentication()
 
+// API composables
+const { sendMessage: apiSendMessage } = useChatApi()
+
 // Reactive data
 const messages = ref([])
 const inputMessage = ref('')
@@ -383,11 +387,6 @@ const isLoading = ref(false)
 const sessionId = ref(null)
 const messagesContainer = ref(null)
 const copiedMessageId = ref(null)
-
-// API configuration  
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
-  : 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app'
 
 // localStorage keys
 const STORAGE_KEYS = {
@@ -511,11 +510,21 @@ onMounted(async () => {
 // Scroll to bottom
 async function scrollToBottom() {
   await nextTick()
-  // Use window scroll since we simplified to whole page scrolling
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth'
-  })
+  // Scroll to the last message instead of the entire document
+  if (messages.value.length > 0) {
+    // Find the last message element and scroll it into view
+    const messageElements = document.querySelectorAll('[data-message]')
+    const lastMessage = messageElements[messageElements.length - 1]
+    if (lastMessage) {
+      lastMessage.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    } else {
+      // Fallback: scroll to bottom of main content area
+      const mainContent = document.querySelector('main')
+      if (mainContent) {
+        mainContent.scrollTop = mainContent.scrollHeight
+      }
+    }
+  }
 }
 
 // Send quick message
@@ -566,38 +575,43 @@ async function sendMessage() {
   isLoading.value = true
 
   try {
-    // Call chatbot API with user authentication
-    const response = await $fetch(`${API_BASE_URL}/chat/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...(authToken.value && { 'Authorization': `Bearer ${authToken.value}` })
-      },
-      body: {
-        message: userMessage,
-        session_id: sessionId.value,
-        user_id: userId.value  // Include user ID for tracking
+    // Call chatbot API using the new composable
+    const result = await apiSendMessage({
+      message: userMessage,
+      session_id: sessionId.value,
+      user_id: userId.value
+    })
+
+    if (result.success) {
+      // Add bot response to chat
+      messages.value.push({
+        role: 'assistant',
+        type: result.data.type,
+        content: result.data.type === 'text' ? result.data.data : null,
+        data: result.data.type !== 'text' ? result.data.data : null,
+        timestamp: new Date()
+      })
+      
+      // Save to localStorage after adding assistant message
+      saveMessagesToStorage()
+
+      // Update session ID if provided
+      if (result.data.session_id) {
+        sessionId.value = result.data.session_id
+        sessionStorage.setItem(STORAGE_KEYS.SESSION_ID, result.data.session_id)
       }
-    })
-
-    // Add bot response to chat
-    messages.value.push({
-      role: 'assistant',
-      type: response.type,
-      content: response.type === 'text' ? response.data : null,
-      data: response.type !== 'text' ? response.data : null,
-      timestamp: new Date()
-    })
-    
-    // Save to localStorage after adding assistant message
-    saveMessagesToStorage()
-
-    // Update session ID if provided
-    if (response.session_id) {
-      sessionId.value = response.session_id
-      sessionStorage.setItem(STORAGE_KEYS.SESSION_ID, response.session_id)
+    } else {
+      // Handle API error
+      messages.value.push({
+        role: 'assistant',
+        type: 'text',
+        content: result.error || 'Sorry, I encountered an error. Please try again later.',
+        timestamp: new Date()
+      })
+      
+      // Save error message to localStorage
+      saveMessagesToStorage()
     }
-
   } catch (error) {
     console.error('Error sending message:', error)
     

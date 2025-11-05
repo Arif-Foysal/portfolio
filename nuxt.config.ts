@@ -11,12 +11,13 @@ export default defineNuxtConfig({
   ],
 
 
-  // runtimeConfig: {
-  //   public: {
-  //     gaId: process.env.NUXT_PUBLIC_GA_ID || '',               // set in Netlify UI
-  //     enableAnalytics: process.env.NUXT_PUBLIC_ENABLE_ANALYTICS === 'true'
-  //   }
-  // },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: 'https://portfolio-lyart-rho-bxg93lsyt1.vercel.app',
+      gaId: process.env.NUXT_PUBLIC_GA_ID || '',               // set in Netlify UI
+      enableAnalytics: process.env.NUXT_PUBLIC_ENABLE_ANALYTICS === 'true'
+    }
+  },
 
   // gtag: {
   //   id: process.env.NUXT_PUBLIC_GA_ID || '',
