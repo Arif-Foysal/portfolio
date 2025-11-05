@@ -41,7 +41,6 @@
           <div class="w-full max-w-4xl mt-8">
             <UChatPrompt
               v-model="inputMessage"
-              color="secondary"
               :disabled="isLoading"
               placeholder="Ask me about my projects, skills, experience..."
               @send="sendMessage"
@@ -337,7 +336,6 @@
       <UContainer class="max-w-4xl mx-auto">
         <UChatPrompt
           v-model="inputMessage"
-          color="secondary"
           :disabled="isLoading"
           placeholder="Ask me about my projects, skills, experience..."
           @send="sendMessage"

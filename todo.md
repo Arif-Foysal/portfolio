@@ -1,5 +1,4 @@
 # Projects to add
-
 - [x] SkinCheck
 - [x] Adventure Amigos
 - [x] Blue Horizon
@@ -20,10 +19,12 @@ Achievements to add:
 3. finalist, mist invention
 4. finalist, hult prize bangladesh
 5. google tech support certification - operating system and you: becoming a power user
-6.  
+
+
 # Later improvements
 - [ ] Project DetailsPage
 - [ ] Add videos and gifs in the projects section
+- [ ] SEO + LLO
 
 
 # Blog posts about

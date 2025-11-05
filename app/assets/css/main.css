@@ -28,3 +28,8 @@
   --ui-bg-elevated: var(--ui-color-neutral-900);
   --ui-bg-accented: var(--ui-color-neutral-800);
 }
+
+
+.glowing-shadow {
+@apply shadow-2xl  drop-shadow-[0_0_15px_var(--ui-primary)];
+}

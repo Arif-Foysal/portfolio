@@ -168,7 +168,7 @@ useSeoMeta({
           class="text-lg leading-relaxed"
         />
       </template>
-      <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg shadow-2xl  drop-shadow-[0_0_15px_var(--ui-primary)]" />
+      <img src="/profile.jpeg" alt="App screenshot" class="rounded-lg glowing-shadow" />
 
       <template #links>
         <div class="flex flex-col justify-center items-center gap-8 w-full">
@@ -237,10 +237,26 @@ useSeoMeta({
             </section>
           </template>
 
-          <div class="mt-6 w-full ">
-            <img src="/projects/blue-horizon/main.jpg" :alt="section.title + ' screenshot'"
+          <div class="mt-6 w-full">
+            <ProjectVideo
+              v-if="section.video"
+              :video-src="section.video.src"
+              :poster-src="section.video.poster"
+              :alt="`${section.title} demo video`"
+              :title="section.title"
+              :description="section.video.description"
+              :duration="section.video.duration"
+              :upload-date="section.video.uploadDate"
+              :thumbnail-url="section.video.poster"
+              class="glowing-shadow"
+            />
+            <img 
+              v-else
+              src="/projects/blue-horizon/main.jpg" 
+              :alt="section.title + ' screenshot'"
               class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
-              loading="lazy" />
+              loading="lazy" 
+            />
           </div>
         </UPageSection>
 

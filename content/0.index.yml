@@ -27,6 +27,12 @@ sections:
     description: An advanced Remotely Operated Vehicle (ROV) designed for underwater exploration and research. Equipped with high-definition cameras, sonar systems, and robotic arms, it enables scientists to study marine environments in detail while ensuring safety and efficiency.
     id: projects
     orientation: horizontal
+    video:
+      src: /projects/blue-horizon-demo.mp4
+      poster: /projects/blue-horizon-poster.jpg
+      duration: PT30S
+      uploadDate: '2024-11-05'
+      description: 'Demonstration of Blue Horizon ROV underwater capabilities'
     links:
       - label: "Watch Video"
         to: "https://example.com/blue-horizon"
@@ -78,6 +84,12 @@ sections:
     description: A smart tourism web application designed to make traveling seamless and enjoyable. Adventure Amigos allows users to plan trips, book tours and accommodations, discover local businesses, and explore historical sites — all in one unified platform powered by AI-driven personalization and multilingual support.
     id: projects
     orientation: horizontal
+    video:
+      src: /projects/adventure-amigos-demo.mp4
+      poster: /projects/adventure-amigos-poster.jpg
+      duration: PT30S
+      uploadDate: '2024-11-05'
+      description: 'Demo of Adventure Amigos travel planning and booking features'
     links:
       - label: "GitHub"
         to: "https://github.com/example/adventure-amigos"
@@ -130,6 +142,12 @@ sections:
     description: SkinCheck AI is an intelligent skin disease detection platform that uses deep learning to classify skin lesions as benign or malignant. Trained on the HAM10000 dataset, it combines a FastAPI backend, Supabase authentication, and secure cloud deployment to deliver accurate real-time predictions from uploaded skin images — empowering users with early awareness and actionable insights.
     id: projects
     orientation: horizontal
+    video:
+      src: /projects/blue-horizon-demo.mp4
+      poster: /projects/blue-horizon-poster.jpg
+      duration: PT30S
+      uploadDate: '2024-11-05'
+      description: 'Demonstration of Blue Horizon ROV underwater capabilities'
     links:
       - label: "Live Api"
         to: "https://example.com/adventure-amigos"
@@ -185,6 +203,12 @@ sections:
     description: Resumind is an AI-powered resume builder that helps users create professional, personalized, and ATS-friendly resumes in minutes. Built with Nuxt for an elegant, interactive interface and Django for scalable backend APIs, it integrates OpenAI’s generative models to automatically craft job descriptions, summarize achievements, and tailor content for specific roles — making resume building faster and smarter than ever.
     id: projects
     orientation: horizontal
+    video:
+      src: /projects/blue-horizon-demo.mp4
+      poster: /projects/blue-horizon-poster.jpg
+      duration: PT30S
+      uploadDate: '2024-11-05'
+      description: 'Demonstration of Blue Horizon ROV underwater capabilities'
     links:
       - label: "Try Demo"
         to: "https://arif.it.com/projects/resumind"
@@ -251,6 +275,12 @@ sections:
     description: ESP32 Vehicle Tracker is a real-time vehicle monitoring and control system powered by MicroPython and FastAPI. It enables live tracking, collision detection, and remote vehicle control via a cloud dashboard. The system integrates sensor data, secure cloud APIs, and a modern web interface for reliable and accessible fleet management.
     id: projects
     orientation: horizontal
+    video:
+      src: /projects/blue-horizon-demo.mp4
+      poster: /projects/blue-horizon-poster.jpg
+      duration: PT30S
+      uploadDate: '2024-11-05'
+      description: 'Demonstration of Blue Horizon ROV underwater capabilities'
     links:
       - label: "Live Dashboard"
         to: "https://esp32-vehicle-tracker.onrender.com"
