@@ -155,6 +155,8 @@ useSeoMeta({
       </template>
       <template #title>
         <MDC :value="page.title" unwrap="p" class="leading-tight" />
+        
+        <p class="mt-2 text-4xl md:text-5xl font-medium leading-tight">AI and Software Engineer</p>
       </template>
       <template #description>
         <TextGen
