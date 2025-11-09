@@ -6,6 +6,10 @@
 - [ ] Amar Fuel
 - [x] ESP32 Vehicle Tracker
 
+- [ ] Add Tritron Z publication
+    Links:
+    - https://arxiv.org/html/2506.18343v1
+    - https://arxiv.org/abs/2506.18343
 # Urgent fixes
 - [x] Implement chatbot 
 - [ ] Add photos to all projects

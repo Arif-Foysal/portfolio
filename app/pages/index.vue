@@ -3,6 +3,7 @@ import PromptInput from '~/components/PromptInput.vue'
 import TextGen from '~/components/TextGen.vue'
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue';
+import Publications from '~/components/Publications.vue';
 
 
 interface Technology {
@@ -131,7 +132,7 @@ const Projectlinks = ref([
 ])
 
 
-const { data: page } = await useAsyncData('index', () => queryCollection('index').first())
+const { data: page } = await useAsyncData('index-page', () => queryCollection('index').first())
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -182,7 +183,7 @@ useSeoMeta({
     </UPageHero>
     <!-- <br> -->
 
-
+<!-- make it seperate component -->
     <div>
       <PatternHeader :title="page.features.title" />
     </div>
@@ -209,102 +210,20 @@ useSeoMeta({
       </div>
     </UPageSection>
 
-    <section class="">
 
-      <div>
-        <PatternHeader title="Projects I've built" />
-      </div>
+      <!-- Publications Section -->
+      <Projects :sections="page.sections" />
+      <br><br>
+      <Achievements/>
+      <br><br>
+      
+      <Publications />
+      <br><br>
 
+      <Education />
+      <br><br>  
 
-      <br> <br>
+      <Cta :cta="page.cta" />
 
-
-      <!-- Projects section -->
-      <USeparator color="secondary" type="solid" size="sm" />
-      <div v-for="(section, index) in page.sections" :key="index" class="text-secondary">
-        <UPageSection :title="section.title" :description="section.description" :orientation="section.orientation"
-          :reverse="section.reverse" :links="section.links" :features="section.features"
-          :ui="{ container: ' md:border-l-2 md:border-r-2 border-secondary cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 ' }">
-          <template #title>
-            <section class="flex flex-col gap-4">
-              <h2 class=" text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted">
-                {{ section.title }}
-              </h2>
-              <div class="flex gap-2 flex-wrap">
-                <UBadge v-for="(badge, i) in section.badges" :key="i" :icon="badge.icon" size="lg" color="neutral"
-                  variant="subtle" class="tracking-wider">
-                  {{ badge.label }}
-                </UBadge>
-              </div>
-            </section>
-          </template>
-
-          <div class="mt-6 w-full">
-            <ProjectVideo
-              v-if="section.video"
-              :video-src="section.video.src"
-              :poster-src="section.video.poster"
-              :alt="`${section.title} demo video`"
-              :title="section.title"
-              :description="section.video.description"
-              :duration="section.video.duration"
-              :upload-date="section.video.uploadDate"
-              :thumbnail-url="section.video.poster"
-              class="glowing-shadow"
-            />
-            <img 
-              v-else
-              src="/projects/blue-horizon/main.jpg" 
-              :alt="section.title + ' screenshot'"
-              class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
-              loading="lazy" 
-            />
-          </div>
-        </UPageSection>
-
-        <!-- divider after each section (omit after last to avoid duplicate separators) -->
-        <!-- <hr class="border-secondary" /> -->
-        <USeparator color="secondary" type="solid" size="sm" />
-      </div>
-      <br> <br>
-
-      <div>
-        <PatternHeader title="Education" />
-      </div>
-      <br> <br>
-      <section class="max-w-7xl  mx-auto ">
-        <Education />
-      </section>
-      <br> <br>
-    </section>
-
-    <section>
-      <PatternHeader title="Achievements" />
-      <br> <br>
-      <section class="max-w-7xl  mx-auto ">
-        <Achievements />
-      </section>
-      <br> <br>
-    </section>
-
-    <!-- 
-    <UPageSection id="testimonials" :headline="page.testimonials.headline" :title="page.testimonials.title"
-      :description="page.testimonials.description">
-      <UPageColumns class="xl:columns-4">
-        <UPageCard v-for="(testimonial, index) in page.testimonials.items" :key="index" variant="subtle"
-          :description="testimonial.quote"
-          :ui="{ description: 'before:content-[open-quote] after:content-[close-quote]' }">
-          <template #footer>
-            <UUser v-bind="testimonial.user" size="lg" />
-          </template>
-        </UPageCard>
-      </UPageColumns>
-    </UPageSection> -->
-
-    <USeparator />
-
-    <UPageCTA v-bind="page.cta" variant="naked" class="overflow-hidden">
-      <LazyStarsBg />
-    </UPageCTA>
   </div>
 </template>

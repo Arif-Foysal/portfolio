@@ -49,12 +49,14 @@ const posts = ref([
 </script>
 
 <template>
-
+        <PatternHeader title="Achievements" />
+      <br> <br>
 
     <UBlogPosts 
  
     orientation="vertical" 
     :posts="posts" 
+    class="max-w-7xl  mx-auto "
     />
  
 </template>

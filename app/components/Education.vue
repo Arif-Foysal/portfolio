@@ -34,12 +34,20 @@ const versions = ref([
 </script>
 
 <template>
-  <UChangelogVersions :versions="versions">
-    <template #title="{ version }">
-      <div class="flex items-center gap-3">
-        <img :src="version.logo" class="w-12" alt="Icon" />
-        <span>{{ version.title }}</span>
-      </div>
-    </template>
-  </UChangelogVersions>
-</template>
+  <div class="">
+    <PatternHeader title="Education" />
+<br><br>
+    <section class="max-w-7xl  mx-auto ">
+
+         
+    <UChangelogVersions :versions="versions">
+      <template #title="{ version }">
+        <div class="flex items-center gap-3">
+          <img :src="version.logo" class="w-12" alt="Icon" />
+          <span>{{ version.title }}</span>
+        </div>
+      </template>
+    </UChangelogVersions>
+     </section>
+  </div>
+  </template>
