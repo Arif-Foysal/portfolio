@@ -199,8 +199,10 @@ const startReveal = () => {
         shimmerActive.value = true
       }
       
-      console.log('Revealed', props.byWord ? 'word' : 'character', revealedCount.value, 'of', itemsToReveal.length)
+      // console.log('Revealed', props.byWord ? 'word' : 'character', revealedCount.value, 'of', itemsToReveal.length)
+   
       setTimeout(revealNext, props.revealMs)
+   
     } else {
       isComplete.value = true
       console.log('Animation complete')
