@@ -52,24 +52,23 @@ defineProps<{
             </section>
           </template>
 
-          <div class="mt-6 w-full">
-            <ProjectVideo
-              v-if="section.video"
-              :video-src="section.video.src"
-              :poster-src="section.video.poster"
-              :alt="`${section.title} demo video`"
-              :title="section.title"
-              :description="section.video.description"
-              :duration="section.video.duration"
-              :upload-date="section.video.uploadDate"
-              :thumbnail-url="section.video.poster"
-              class="glowing-shadow"
-            />
+          <ProjectVideo
+            v-if="section.video"
+            :video-src="section.video.src"
+            :poster-src="section.video.poster"
+            :alt="`${section.title} demo video`"
+            :title="section.title"
+            :description="section.video.description"
+            :duration="section.video.duration"
+            :upload-date="section.video.uploadDate"
+            :thumbnail-url="section.video.poster"
+            class="glowing-shadow"
+          />
+          <div v-else class="relative w-full glowing-shadow">
             <img 
-              v-else
               src="/projects/blue-horizon/main.jpg" 
               :alt="section.title + ' screenshot'"
-              class="w-full max-h-[500px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
+              class="w-full h-auto rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300 bg-gray-100 dark:bg-gray-800"
               loading="lazy" 
             />
           </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const posts = ref([
+const achievements = ref([
   {
     title: 'Finalist – National Project Showcase, UIU CSE Fest',
     description: 'Selected as a finalist in the national-level project showcase at UIU CSE Fest — recognized among top student innovators for presenting a solution-driven tech project demonstrating strong concept, execution and real-world relevance.',
@@ -55,7 +55,7 @@ const posts = ref([
     <UBlogPosts 
  
     orientation="vertical" 
-    :posts="posts" 
+    :posts="achievements" 
     class="max-w-7xl  mx-auto "
     />
  
