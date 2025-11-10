@@ -29,7 +29,7 @@ sections:
     orientation: horizontal
     video:
       src: /projects/blue-horizon-demo.mp4
-      poster: /projects/blue-horizon-poster.jpg
+      poster: /projects/blue-horizon/blue-horizon-poster.jpg
       duration: PT30S
       uploadDate: '2024-11-05'
       description: 'Demonstration of Blue Horizon ROV underwater capabilities'

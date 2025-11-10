@@ -100,7 +100,7 @@ useHead({
 
 <template>
   <div class="relative w-full">
-    <!-- Video Element with Poster and Lazy Loading -->
+    <!-- Video Element with Safari compatibility fixes -->
     <video
       ref="videoRef"
       :poster="posterSrc"
@@ -109,11 +109,14 @@ useHead({
       muted
       loop
       playsinline
-      preload="metadata"
+      webkit-playsinline
+      preload="auto"
+      x-webkit-airplay="allow"
       @loadeddata="handleLoadedData"
+      @canplay="handleLoadedData"
       @error="handleError"
     >
-      <source :src="videoSrc" type="video/mp4" />
+      <source :src="videoSrc" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
       
       <!-- Fallback for browsers that don't support video -->
       <img 
@@ -128,7 +131,7 @@ useHead({
       v-if="!hasLoaded" 
       class="absolute inset-0 flex items-center justify-center bg-gray-900/20 rounded-xl"
     >
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div class="animate-spin rounded-full h-12 w-12 border-b-3 border-primary"></div>
     </div>
   </div>
 </template>
@@ -139,8 +142,18 @@ video {
   background: transparent;
 }
 
-/* Smooth transition for poster to video */
+/* Style the poster image */
 video[poster] {
-  object-fit: cover;
+  object-fit: cover; /* or object-contain, object-fill, etc. */
+  /* Add any other poster-specific styles here */
+  /* Examples:
+  filter: blur(5px);
+  opacity: 0.8;
+  transform: scale(1.05);
+  */
+
+
+
+
 }
 </style>
