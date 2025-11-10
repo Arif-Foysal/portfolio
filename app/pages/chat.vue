@@ -2,11 +2,11 @@
   <!-- Main chat container -->
   <div class="flex flex-col min-h-screen">
     <!-- Chat content -->
-    <main :class="messages.length > 0 ? 'flex-1 pb-24' : 'flex-1'">
+    <main :class="messages.length > 0 || initialMessage ? 'flex-1 pb-24' : 'flex-1'">
       <UContainer class="max-w-4xl mx-auto py-8">
         
-        <!-- Welcome screen when no messages -->
-        <div v-if="messages.length === 0" class="flex flex-col items-center justify-center gap-6 text-center min-h-[calc(100vh-8rem)]">
+        <!-- Welcome screen when no messages and no initial message -->
+        <div v-if="messages.length === 0 && !initialMessage" class="flex flex-col items-center justify-center gap-6 text-center min-h-[calc(100vh-8rem)]">
           <div class="space-y-4">
             <div class="size-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
               <UIcon name="i-lucide-message-circle" class="size-8 text-primary" />
@@ -328,9 +328,9 @@
       </UContainer>
     </main>
 
-    <!-- Input area - Fixed at bottom when there are messages -->
+    <!-- Input area - Fixed at bottom when there are messages or initial message -->
     <div 
-      v-if="messages.length > 0"
+      v-if="messages.length > 0 || initialMessage"
       class="fixed bottom-0 left-0 right-0 bg-default/95 backdrop-blur p-4 z-50"
     >
       <UContainer class="max-w-4xl mx-auto">
